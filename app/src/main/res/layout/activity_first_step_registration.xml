@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Register">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".SignUp">
+
+        <!--
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/Theme.MyApplication.AppBarOverlay">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                app:title="Registrazione"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/Theme.Progetto" />
+
+
+        </com.google.android.material.appbar.AppBarLayout>
+        -->
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/back"
+                    android:id="@+id/previous_activity_button"/>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp" />
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/logo"
+                    android:layout_gravity="center_horizontal"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_name"
+                    android:textSize="20dp"
+                    android:layout_gravity="center_horizontal"/>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Benvenuto in MusicMatch"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+
+                    android:layout_gravity="center_horizontal"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Scegli un tipologia di utente per iniziare,\n se hai dubbi puoi visitare il link sottostante"
+                    android:textSize="16dp"
+                    android:textAlignment="center"
+                    android:layout_gravity="center_horizontal"/>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"/>
+
+                <Button
+                    android:layout_width="300dp"
+                    android:layout_height="60dp"
+                    android:textAllCaps="true"
+                    android:text="ARTISTA"
+                    android:textSize="15dp"
+                    android:background="@drawable/button"
+                    android:layout_gravity="center_horizontal"
+                    android:id="@+id/artist_registration"/>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"/>
+
+                <Button
+                    android:layout_width="300dp"
+                    android:layout_height="60dp"
+                    android:textAllCaps="true"
+                    android:text="PRODUTTORE"
+                    android:textSize="15dp"
+                    android:background="@drawable/button"
+                    android:layout_gravity="center_horizontal"
+                    android:id="@+id/producer_registration"/>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dubbi?"
+                    android:textSize="16dp"
+                    android:layout_gravity="center_horizontal"
+                    android:id="@+id/info"
+                    android:linksClickable="true"
+                    />
+
+            </LinearLayout>
+        </ScrollView>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
