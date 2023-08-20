@@ -5,25 +5,43 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Search extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_search);
+
+        bottomNavigationConfig();
+
+        List<Artist> artists = ArtistService.getInstance().getAllArtist();
+
+        Artist a = artists.get(1);
+
+        Log.d("Artist:", a.getNomeDarte());
+
+    }
+
+    private void bottomNavigationConfig() {
 
         FloatingActionButton home_button = findViewById(R.id.home_button);
 
         // Initialize and assign variable
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottomNavigationView);
 
-        // Set Home selected
+        // Set Search selected
         bottomNavigationView.setSelectedItemId(R.id.search_button);
 
         // Perform item selected listener
@@ -61,5 +79,6 @@ public class Search extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(),Home.class));
             }
         });
+
     }
 }
