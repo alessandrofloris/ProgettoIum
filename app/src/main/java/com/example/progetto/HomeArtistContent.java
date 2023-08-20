@@ -1,16 +1,14 @@
 package com.example.progetto;
-import androidx.appcompat.app.AppCompatActivity;
 
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-
-public class PrivateChat extends AppCompatActivity {
+public class HomeArtistContent extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_private_chat);
-
+        setContentView(R.layout.activity_home_artist_content);
     }
 }
