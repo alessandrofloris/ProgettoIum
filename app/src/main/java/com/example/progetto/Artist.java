@@ -1,6 +1,7 @@
 package com.example.progetto;
 
 public class Artist {
+
     private String nome;
     private String cognome;
     private String nomeDarte;
@@ -18,6 +19,12 @@ public class Artist {
         this.dataNascita = dataNascita;
         this.cittaResidenza = cittaResidenza;
         this.generi = generi;
+    }
+
+    public Artist(String nome, String cognome, String nomeDarte) {
+        this.nome = nome;
+        this.cognome = cognome;
+        this.nomeDarte = nomeDarte;
     }
 
 }
