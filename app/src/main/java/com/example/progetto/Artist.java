@@ -34,6 +34,16 @@ public class Artist implements Serializable {
         this.setGeneri("");
     }
 
+    public Artist(String nome, String cognome, String nomeDarte, Integer imageID) {
+        this.nome = nome;
+        this.cognome = cognome;
+        this.nomeDarte = nomeDarte;
+        this.setImgID(imageID);
+        this.setDataNascita("");
+        this.setCittaResidenza("");
+        this.setGeneri("");
+    }
+
 
     static public String utenteartista = "mario";
 

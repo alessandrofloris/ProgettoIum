@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -47,13 +48,12 @@ public class SearchAdapter extends BaseAdapter {
 
         Artist currentArtist = (Artist) getItem(i);
 
+        ImageView artist_image_view = view.findViewById(R.id.artist_image);
         TextView nickname_view = view.findViewById(R.id.text_view_nickname);
-        TextView name_view = view.findViewById(R.id.text_view_item_name);
-        TextView surname_view = view.findViewById(R.id.text_view_item_surname);
 
+        // todo aggiungere controllo quando l'artista non ha l'immagine
+        artist_image_view.setImageResource(currentArtist.getImgID());
         nickname_view.setText(currentArtist.getNomeDarte());
-        name_view.setText(currentArtist.getNome());
-        surname_view.setText(currentArtist.getCognome());
 
         return view;
     }
