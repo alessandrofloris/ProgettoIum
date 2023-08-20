@@ -3,6 +3,8 @@ package com.example.progetto;
 import java.io.Serializable;
 
 public class Artist implements Serializable {
+
+    // todo è necessario aggiungere al model dell'artista un campo Id
     private String nome;
     private String cognome;
     private String nomeDarte;
@@ -26,6 +28,10 @@ public class Artist implements Serializable {
         this.nome = nome;
         this.cognome = cognome;
         this.nomeDarte = nomeDarte;
+        this.setImgID(0);
+        this.setDataNascita("");
+        this.setCittaResidenza("");
+        this.setGeneri("");
     }
 
 

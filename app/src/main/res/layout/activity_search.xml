@@ -35,21 +35,55 @@
             android:inputType="text">
         </androidx.appcompat.widget.SearchView>
 
-        <TextView
-            android:layout_width="250dp"
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/no_search_content"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="10dp"
-            android:text="Trova gli artisti che rispettano le tue preferenze"
-            android:textSize="24sp" />
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
+                android:text="Trova gli artisti che rispettano le tue preferenze"
+                android:textSize="24sp" />
+
+            <TextView
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
+                android:text="Cerca per nome, genere e paese di residenza"
+                android:textSize="18sp" />
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
         <TextView
+            android:id="@+id/no_matching_results"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginStart="10dp"
-            android:text="Cerca per nome, genere e paese di residenza"
-            android:textSize="18sp" />
+            android:text="Nessun risultato trovato"
+            android:textSize="18sp"
+            android:visibility="gone"/>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="24dp" />
+
+        <ListView
+            android:id="@+id/artists_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:visibility="gone"
+            >
+
+        </ListView>
 
     </LinearLayout>
 
