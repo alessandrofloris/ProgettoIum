@@ -5,13 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-tools:context=".SelectRegionActivity">
+    tools:context=".SelectGenreActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/region_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        app:title="Regione"
+        app:title="Genere"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
@@ -27,7 +27,7 @@ tools:context=".SelectRegionActivity">
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginStart="10dp"
-            android:text="Seleziona fino a 3 regioni"
+            android:text="Seleziona fino a 3 generi"
             android:textSize="18sp" />
 
         <Space
@@ -35,7 +35,7 @@ tools:context=".SelectRegionActivity">
             android:layout_height="24dp" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/regions_list"
+            android:id="@+id/genres_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"

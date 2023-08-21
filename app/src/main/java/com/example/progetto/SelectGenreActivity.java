@@ -1,7 +1,8 @@
 package com.example.progetto;
 
+import static java.security.AccessController.getContext;
+
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,39 +12,44 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class SelectRegionActivity extends AppCompatActivity {
+public class SelectGenreActivity extends AppCompatActivity {
 
-    RecyclerView regions_list_view;
+    RecyclerView genres_list_view;
     ChipAdapter adapter;
+    List<Genres> selectedGenres;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_select_region);
+        setContentView(R.layout.activity_select_genre);
 
         toolbarConfig();
 
         chipsConfig();
 
+        selectedGenres = new ArrayList<>();
+
     }
 
     private void chipsConfig() {
-        regions_list_view = findViewById(R.id.regions_list);
+        genres_list_view = findViewById(R.id.genres_list);
 
-        ArrayList<String> locations = new ArrayList<>();
+        ArrayList<String> genres = new ArrayList<>();
 
-        for(Locations location: Locations.values()) {
-            locations.add(location.getDesc());
+        for(Genres genre: Genres.values()) {
+            genres.add(genre.getDesc());
         }
-        locations.remove(locations.size()-1); // rimuovo l'enum "NONE"
+        genres.remove(genres.size()-1); // rimuovo l'enum "NONE"
 
-        adapter = new ChipAdapter(locations, new ChipAdapter.OnChipClickListener() {
+        adapter = new ChipAdapter(genres, new ChipAdapter.OnChipClickListener() {
             @Override public void onChipClick(String item) {
-                Toast.makeText(SelectRegionActivity.this, "Item Clicked", Toast.LENGTH_LONG).show();
+                Toast.makeText(SelectGenreActivity.this, "Item Clicked", Toast.LENGTH_LONG).show();
+
             }
         });
-        regions_list_view.setAdapter(adapter);
+        genres_list_view.setAdapter(adapter);
     }
 
     private void toolbarConfig() {
@@ -64,5 +70,4 @@ public class SelectRegionActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 }

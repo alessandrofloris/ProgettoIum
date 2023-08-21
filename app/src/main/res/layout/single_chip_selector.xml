@@ -18,7 +18,7 @@
         >
 
         <TextView
-            android:id="@+id/region_chip_text"
+            android:id="@+id/chip_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

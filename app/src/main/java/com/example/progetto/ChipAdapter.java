@@ -13,7 +13,12 @@ import java.util.List;
 
 public class ChipAdapter extends RecyclerView.Adapter<ChipAdapter.ViewHolder>{
 
-    private List<String> animals;
+    public interface OnChipClickListener {
+        void onChipClick(String item);
+    }
+
+    private List<String> items;
+    private final OnChipClickListener listener;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView textView;
@@ -21,7 +26,16 @@ public class ChipAdapter extends RecyclerView.Adapter<ChipAdapter.ViewHolder>{
         public ViewHolder(View view) {
             super(view);
 
-            textView = (TextView) view.findViewById(R.id.region_chip_text);
+            textView = (TextView) view.findViewById(R.id.chip_text);
+        }
+
+        public void bind(final String chip, final OnChipClickListener listener) {
+            textView.setText(chip);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override public void onClick(View v) {
+                    listener.onChipClick(chip);
+                }
+            });
         }
 
         public TextView getTextView() {
@@ -29,8 +43,9 @@ public class ChipAdapter extends RecyclerView.Adapter<ChipAdapter.ViewHolder>{
         }
     }
 
-    public ChipAdapter(List<String> animals) {
-        this.animals = animals;
+    public ChipAdapter(List<String> items, OnChipClickListener listener) {
+        this.items = items;
+        this.listener = listener;
     }
 
     @NonNull
@@ -44,13 +59,14 @@ public class ChipAdapter extends RecyclerView.Adapter<ChipAdapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull ChipAdapter.ViewHolder holder, int position) {
-        String item = this.animals.get(position);
-        holder.getTextView().setText(item);
+        String item = this.items.get(position);
+//        holder.getTextView().setText(item);
+        holder.bind(item, listener);
     }
 
     @Override
     public int getItemCount() {
-        return this.animals.size();
+        return this.items.size();
     }
 
 

@@ -60,6 +60,14 @@ public class Search extends AppCompatActivity{
         genre_badge_view = findViewById(R.id.genre_badge);
         region_badge_view = findViewById(R.id.region_badge);
 
+        genre_badge_view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Search.this, SelectGenreActivity.class);
+                startActivity(intent);
+            }
+        });
+
         region_badge_view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
