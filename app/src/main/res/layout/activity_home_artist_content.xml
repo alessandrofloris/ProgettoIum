@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -10,18 +10,21 @@
     android:theme="@style/Theme.BottomAppBar"
     android:id="@+id/home_page">
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="55dp"
         android:layout_marginStart="10dp"
         android:text="Suggeriti per te"
-        android:textSize="28sp" />
+        android:textSize="20sp"
+        android:textStyle="bold"/>
 
     <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="85dp">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -34,7 +37,50 @@
                 android:layout_margin="10dp"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="10dp"
-                android:id="@+id/card_artist_1">
+                android:id="@+id/card_artist_0">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        app:cardCornerRadius="250dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_gravity="center">
+
+                        <ImageView
+                            android:layout_height="100dp"
+                            android:layout_width="100dp"
+                            android:id="@+id/imageView0"
+                            android:layout_gravity="center"
+                            android:scaleType="centerCrop"
+                            />
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text=""
+                        android:textSize="20sp"
+                        android:id="@+id/artista0"/>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="10dp"
+                android:id="@+id/card_artist_1"
+                app:cardBackgroundColor="@color/white">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -62,13 +108,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text=""
-                        android:textSize="20sp"
-                        android:id="@+id/artista1"/>
+                        android:id="@+id/artista1"
+                        android:text=" "
+                        android:textSize="20sp" />
 
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
+
 
             <androidx.cardview.widget.CardView
                 android:layout_width="150dp"
@@ -76,7 +123,7 @@
                 android:layout_margin="10dp"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="10dp"
-                app:cardBackgroundColor="@color/white">
+                android:id="@+id/card_artist_2">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -104,21 +151,21 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
+                        android:text=""
                         android:id="@+id/artista2"
-                        android:text=" "
                         android:textSize="20sp" />
 
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
 
-
             <androidx.cardview.widget.CardView
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_margin="10dp"
                 app:cardCornerRadius="20dp"
-                app:cardElevation="10dp">
+                app:cardElevation="10dp"
+                android:id="@+id/card_artist_3">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -146,48 +193,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text=""
                         android:id="@+id/artista3"
-                        android:textSize="20sp" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_margin="10dp"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="10dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical">
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        app:cardCornerRadius="250dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_gravity="center">
-
-                        <ImageView
-                            android:layout_height="100dp"
-                            android:layout_width="100dp"
-                            android:id="@+id/imageView4"
-                            android:layout_gravity="center"
-                            android:scaleType="centerCrop"
-                            />
-                    </androidx.cardview.widget.CardView>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:id="@+id/artista4"
                         android:text=""
                         android:textSize="20sp" />
 
@@ -198,21 +204,23 @@
         </LinearLayout>
 
     </HorizontalScrollView>
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="10dp"/>
 
     <!-- I PIU' POPOLARI -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="275dp"
         android:layout_marginStart="10dp"
         android:text="I più popolari"
-        android:textSize="28sp" />
+        android:textSize="20sp"
+        android:textStyle="bold"/>
 
     <HorizontalScrollView
         android:id="@+id/horizontalScrollView2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="305dp">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -224,7 +232,49 @@
                 android:layout_height="150dp"
                 android:layout_margin="10dp"
                 app:cardCornerRadius="20dp"
-                app:cardElevation="10dp">
+                app:cardElevation="10dp"
+                android:id="@+id/card_artist_4">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        app:cardCornerRadius="250dp">
+
+                        <ImageView
+                            android:id="@+id/imageView4"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center"
+                            android:scaleType="centerCrop" />
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text=""
+                        android:textSize="20sp"
+                        android:id="@+id/artista4"/>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="10dp"
+                android:id="@+id/card_artist_5">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -252,19 +302,21 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:text=""
-                        android:textSize="20sp"
-                        android:id="@+id/artista5"/>
+                        android:id="@+id/artista5"
+                        android:textSize="20sp" />
 
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
+
 
             <androidx.cardview.widget.CardView
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_margin="10dp"
                 app:cardCornerRadius="20dp"
-                app:cardElevation="10dp">
+                app:cardElevation="10dp"
+                android:id="@+id/card_artist_6">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -291,21 +343,21 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text=""
                         android:id="@+id/artista6"
+                        android:text=""
                         android:textSize="20sp" />
 
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
 
-
             <androidx.cardview.widget.CardView
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_margin="10dp"
                 app:cardCornerRadius="20dp"
-                app:cardElevation="10dp">
+                app:cardElevation="10dp"
+                android:id="@+id/card_artist_7">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -332,20 +384,44 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:id="@+id/artista7"
                         android:text=""
+                        android:id="@+id/artista7"
                         android:textSize="20sp" />
 
                 </LinearLayout>
-
             </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </HorizontalScrollView>
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="10dp"/>
+
+    <!-- Nella tua zona -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="Nella tua zona"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_margin="10dp"
                 app:cardCornerRadius="20dp"
-                app:cardElevation="10dp">
+                app:cardElevation="10dp"
+                android:id="@+id/card_artist_8">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -373,42 +449,20 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:text=""
-                        android:id="@+id/artista8"
-                        android:textSize="20sp" />
+                        android:textSize="20sp"
+                        android:id="@+id/artista8"/>
 
                 </LinearLayout>
+
             </androidx.cardview.widget.CardView>
-        </LinearLayout>
-    </HorizontalScrollView>
-
-
-
-    <!-- Nella tua zona -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="495dp"
-        android:layout_marginStart="10dp"
-        android:text="Nella tua zona"
-        android:textSize="28sp" />
-
-    <HorizontalScrollView
-        android:id="@+id/horizontalScrollView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="525dp">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_margin="10dp"
                 app:cardCornerRadius="20dp"
-                app:cardElevation="10dp">
+                app:cardElevation="10dp"
+                android:id="@+id/card_artist_9">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -436,19 +490,21 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:text=""
-                        android:textSize="20sp"
-                        android:id="@+id/artista9"/>
+                        android:id="@+id/artista9"
+                        android:textSize="20sp" />
 
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
+
 
             <androidx.cardview.widget.CardView
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_margin="10dp"
                 app:cardCornerRadius="20dp"
-                app:cardElevation="10dp">
+                app:cardElevation="10dp"
+                android:id="@+id/card_artist_10">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -475,25 +531,26 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text=""
                         android:id="@+id/artista10"
+                        android:text=""
                         android:textSize="20sp" />
 
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
 
-
             <androidx.cardview.widget.CardView
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_margin="10dp"
                 app:cardCornerRadius="20dp"
-                app:cardElevation="10dp">
+                app:cardElevation="10dp"
+                android:layout_gravity="center"
+                android:id="@+id/card_artist_11">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="140dp"
+                    android:layout_height="135dp"
                     android:gravity="center_horizontal"
                     android:orientation="vertical">
 
@@ -513,51 +570,13 @@
                     </androidx.cardview.widget.CardView>
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
                         android:id="@+id/artista11"
-                        android:text=""
-                        android:textSize="20sp" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_margin="10dp"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="10dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical">
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="5dp"
-                        app:cardCornerRadius="250dp">
-
-                        <ImageView
-                            android:id="@+id/imageView12"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:layout_gravity="center"
-                            android:scaleType="centerCrop" />
-                    </androidx.cardview.widget.CardView>
-
-                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
                         android:text=""
-                        android:id="@+id/artista12"
                         android:textSize="20sp" />
 
                 </LinearLayout>
@@ -565,4 +584,4 @@
         </LinearLayout>
     </HorizontalScrollView>
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</LinearLayout>

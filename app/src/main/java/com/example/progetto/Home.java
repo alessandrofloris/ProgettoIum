@@ -17,15 +17,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
-public class Home extends AppCompatActivity {
+public class Home extends AppCompatActivity implements View.OnClickListener {
 
-    public ActionBarDrawerToggle actionBarDrawerToggle;
-
-    // Risorse per il menu laterlae
+    public static final String ARTIST_EXTRA ="com.example.progetto.Artist";
+    ActionBarDrawerToggle actionBarDrawerToggle;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
-    CardView cardView1;
+    Integer numArtists = 12;
+    Artist clickedArtist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,78 +37,56 @@ public class Home extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
 
-        // Artista posizione 1
-        TextView printArtist1 = (TextView) findViewById(R.id.artista1);
-        printArtist1.setText(Artist.artist1.getNomeDarte());
-        ImageView printImg1 = (ImageView) findViewById(R.id.imageView1);
-        printImg1.setImageResource(Artist.artist1.getImgID());
-        cardView1 = findViewById(R.id.card_artist_1);
+        TextView[] textViews = new TextView[numArtists];
+        textViews[0] =(TextView) findViewById(R.id.artista0);
+        textViews[1] =(TextView) findViewById(R.id.artista1);
+        textViews[2] =(TextView) findViewById(R.id.artista2);
+        textViews[3] =(TextView) findViewById(R.id.artista3);
+        textViews[4] =(TextView) findViewById(R.id.artista4);
+        textViews[5] =(TextView) findViewById(R.id.artista5);
+        textViews[6] =(TextView) findViewById(R.id.artista6);
+        textViews[7] =(TextView) findViewById(R.id.artista7);
+        textViews[8] =(TextView) findViewById(R.id.artista8);
+        textViews[9] =(TextView) findViewById(R.id.artista9);
+        textViews[10] =(TextView) findViewById(R.id.artista10);
+        textViews[11] =(TextView) findViewById(R.id.artista11);
 
-        // Artista posizione 2
-        TextView printArtist2 = (TextView) findViewById(R.id.artista2);
-        printArtist2.setText(Artist.artist2.getNomeDarte());
-        ImageView printImg2 = (ImageView) findViewById(R.id.imageView2);
-        printImg2.setImageResource(Artist.artist2.getImgID());
+        ImageView[] imageViews = new ImageView[numArtists];
+        imageViews[0] = (ImageView) findViewById(R.id.imageView0);
+        imageViews[1] = (ImageView) findViewById(R.id.imageView1);
+        imageViews[2] = (ImageView) findViewById(R.id.imageView2);
+        imageViews[3] = (ImageView) findViewById(R.id.imageView3);
+        imageViews[4] = (ImageView) findViewById(R.id.imageView4);
+        imageViews[5] = (ImageView) findViewById(R.id.imageView5);
+        imageViews[6] = (ImageView) findViewById(R.id.imageView6);
+        imageViews[7] = (ImageView) findViewById(R.id.imageView7);
+        imageViews[8] = (ImageView) findViewById(R.id.imageView8);
+        imageViews[9] = (ImageView) findViewById(R.id.imageView9);
+        imageViews[10] = (ImageView) findViewById(R.id.imageView10);
+        imageViews[11] = (ImageView) findViewById(R.id.imageView11);
 
-        // Artista posizione 3
-        TextView printArtist3 = (TextView) findViewById(R.id.artista3);
-        printArtist3.setText(Artist.artist3.getNomeDarte());
-        ImageView printImg3 = (ImageView) findViewById(R.id.imageView3);
-        printImg3.setImageResource(Artist.artist3.getImgID());
+        CardView[] cardViews = new CardView[numArtists];
+        cardViews[0] = findViewById(R.id.card_artist_0);
+        cardViews[1] = findViewById(R.id.card_artist_1);
+        cardViews[2] = findViewById(R.id.card_artist_2);
+        cardViews[3] = findViewById(R.id.card_artist_3);
+        cardViews[4] = findViewById(R.id.card_artist_4);
+        cardViews[5] = findViewById(R.id.card_artist_5);
+        cardViews[6] = findViewById(R.id.card_artist_6);
+        cardViews[7] = findViewById(R.id.card_artist_7);
+        cardViews[8] = findViewById(R.id.card_artist_8);
+        cardViews[9] = findViewById(R.id.card_artist_9);
+        cardViews[10] = findViewById(R.id.card_artist_10);
+        cardViews[11] = findViewById(R.id.card_artist_11);
 
-        // Artista posizione 4
-        TextView printArtist4 = (TextView) findViewById(R.id.artista4);
-        printArtist4.setText(Artist.artist4.getNomeDarte());
-        ImageView printImg4 = (ImageView) findViewById(R.id.imageView4);
-        printImg4.setImageResource(Artist.artist4.getImgID());
 
-        // Artista posizione 5
-        TextView printArtist5 = (TextView) findViewById(R.id.artista5);
-        printArtist5.setText(Artist.artist5.getNomeDarte());
-        ImageView printImg5 = (ImageView) findViewById(R.id.imageView5);
-        printImg5.setImageResource(Artist.artist5.getImgID());
+        for(int i=0; i<=11;i++) {
+            Artist tmpArtist =ArtistService.getInstance().getById(i);
+            textViews[i].setText(tmpArtist.getNomeDarte());
+            imageViews[i].setImageResource(tmpArtist.getImgID());
+            cardViews[i].setOnClickListener(this);
+        }
 
-        // Artista posizione 6
-        TextView printArtist6 = (TextView) findViewById(R.id.artista6);
-        printArtist6.setText(Artist.artist6.getNomeDarte());
-        ImageView printImg6 = (ImageView) findViewById(R.id.imageView6);
-        printImg6.setImageResource(Artist.artist6.getImgID());
-
-        // Artista posizione 7
-        TextView printArtist7 = (TextView) findViewById(R.id.artista7);
-        printArtist7.setText(Artist.artist7.getNomeDarte());
-        ImageView printImg7 = (ImageView) findViewById(R.id.imageView7);
-        printImg7.setImageResource(Artist.artist7.getImgID());
-
-        // Artista posizione 8
-        TextView printArtist8 = (TextView) findViewById(R.id.artista8);
-        printArtist8.setText(Artist.artist8.getNomeDarte());
-        ImageView printImg8 = (ImageView) findViewById(R.id.imageView8);
-        printImg8.setImageResource(Artist.artist8.getImgID());
-
-        // Artista posizione 9
-        TextView printArtist9 = (TextView) findViewById(R.id.artista9);
-        printArtist9.setText(Artist.artist9.getNomeDarte());
-        ImageView printImg9 = (ImageView) findViewById(R.id.imageView9);
-        printImg9.setImageResource(Artist.artist9.getImgID());
-
-        // Artista posizione 10
-        TextView printArtist10 = (TextView) findViewById(R.id.artista10);
-        printArtist10.setText(Artist.artist10.getNomeDarte());
-        ImageView printImg10 = (ImageView) findViewById(R.id.imageView10);
-        printImg10.setImageResource(Artist.artist10.getImgID());
-
-        // Artista posizione 11
-        TextView printArtist11 = (TextView) findViewById(R.id.artista11);
-        printArtist11.setText(Artist.artist11.getNomeDarte());
-        ImageView printImg11 = (ImageView) findViewById(R.id.imageView11);
-        printImg11.setImageResource(Artist.artist11.getImgID());
-
-        // Artista posizione 12
-        TextView printArtist12 = (TextView) findViewById(R.id.artista12);
-        printArtist12.setText(Artist.artist12.getNomeDarte());
-        ImageView printImg12 = (ImageView) findViewById(R.id.imageView12);
-        printImg12.setImageResource(Artist.artist12.getImgID());
 
         setSupportActionBar(toolbar);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.nav_open, R.string.nav_close);
@@ -155,14 +133,9 @@ public class Home extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), Home.class));
             }
         });
-
-        cardView1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), ArtistProfile.class));
-            }
-        });
     }
+
+
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -178,4 +151,55 @@ public class Home extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.card_artist_0:
+                openArtistProfile(0);
+                break;
+            case R.id.card_artist_1:
+                openArtistProfile(1);
+                break;
+            case R.id.card_artist_2:
+                openArtistProfile(2);
+                break;
+            case R.id.card_artist_3:
+                openArtistProfile(3);
+                break;
+            case R.id.card_artist_4:
+                openArtistProfile(4);
+                break;
+            case R.id.card_artist_5:
+                openArtistProfile(5);
+                break;
+            case R.id.card_artist_6:
+                openArtistProfile(6);
+                break;
+            case R.id.card_artist_7:
+                openArtistProfile(7);
+                break;
+            case R.id.card_artist_8:
+                openArtistProfile(8);
+                break;
+            case R.id.card_artist_9:
+                openArtistProfile(9);
+                break;
+            case R.id.card_artist_10:
+                openArtistProfile(10);
+                break;
+            case R.id.card_artist_11:
+                openArtistProfile(11);
+                break;
+            default:
+                break;
+
+        }
+    }
+
+    public void openArtistProfile(Integer i) {
+        clickedArtist = ArtistRepository.getInstance().artistList.get(i);
+        Intent artistProfile = new Intent(getApplicationContext(), ArtistProfile.class);
+        artistProfile.putExtra(ARTIST_EXTRA, ArtistRepository.getInstance().artistList.get(i));
+        startActivity(artistProfile);
+    }
 }

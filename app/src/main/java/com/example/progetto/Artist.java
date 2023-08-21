@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class Artist implements Serializable {
 
     // todo è necessario aggiungere al model dell'artista un campo Id
+    private Integer idArtist;
     private String nome;
     private String cognome;
     private String nomeDarte;
@@ -12,10 +13,12 @@ public class Artist implements Serializable {
     private String dataNascita;
     private String cittaResidenza;
     private String generi;
+    private String shortDesc;
 
 
 
-    public Artist(String nome, String cognome, String nomeDarte, Integer imgID, String dataNascita, String cittaResidenza, String generi) {
+    public Artist(Integer idArtist,String nome, String cognome, String nomeDarte, Integer imgID, String dataNascita, String cittaResidenza, String generi, String shortDesc) {
+        this.idArtist = idArtist;
         this.nome = nome;
         this.cognome = cognome;
         this.nomeDarte = nomeDarte;
@@ -23,9 +26,11 @@ public class Artist implements Serializable {
         this.dataNascita = dataNascita;
         this.cittaResidenza = cittaResidenza;
         this.generi = generi;
+        this.shortDesc = shortDesc;
     }
 
-    public Artist(String nome, String cognome, String nomeDarte) {
+    public Artist(Integer idArtist, String nome, String cognome, String nomeDarte, String shortDesc) {
+        this.idArtist = idArtist;
         this.nome = nome;
         this.cognome = cognome;
         this.nomeDarte = nomeDarte;
@@ -33,9 +38,19 @@ public class Artist implements Serializable {
         this.setDataNascita("");
         this.setCittaResidenza("");
         this.setGeneri("");
+        this.setShortDesc("");
     }
 
-    public Artist(String nome, String cognome, String nomeDarte, Integer imageID) {
+    public String getShortDesc() {
+        return shortDesc;
+    }
+
+    public void setShortDesc(String shortDesc) {
+        this.shortDesc = shortDesc;
+    }
+
+    public Artist(Integer idArtist, String nome, String cognome, String nomeDarte, Integer imageID, String shortDesc) {
+        this.idArtist = idArtist;
         this.nome = nome;
         this.cognome = cognome;
         this.nomeDarte = nomeDarte;
@@ -43,12 +58,14 @@ public class Artist implements Serializable {
         this.setDataNascita("");
         this.setCittaResidenza("");
         this.setGeneri("");
+        this.setShortDesc("");
     }
 
 
     static public String utenteartista = "mario";
 
     public Artist() {
+        this.setIdArtist(0);
         this.setNome("");
         this.setCognome("");
         this.setNomeDarte("");
@@ -56,6 +73,15 @@ public class Artist implements Serializable {
         this.setDataNascita("");
         this.setCittaResidenza("");
         this.setGeneri("");
+        this.setShortDesc("");
+    }
+
+    public Integer getIdArtist() {
+        return idArtist;
+    }
+
+    public void setIdArtist(Integer idArtist) {
+        this.idArtist = idArtist;
     }
 
     public String getNome() {
@@ -113,22 +139,5 @@ public class Artist implements Serializable {
     public void setGeneri(String generi) {
         this.generi = generi;
     }
-
-
-
-    //Artisti
-    public static Artist artist1 = new Artist("Davide", "Moi", "Rinfiggi", R.drawable.rinfiggi, "02/08/2004", "Sinnai", "Indi-Rock");
-    public static Artist artist2 = new Artist("Brittany", "Sheets", "Mars Argo", R.drawable.marsargo, "20/04/1997", "Gonnesa", "Indi-Rock");
-    public static Artist artist3 = new Artist("Giulia", "Corona", "Mazulco", R.drawable.mazulco, "06/09/2002", "Cagliari", "Pop");
-    public static Artist artist4 = new Artist("Malik", "Jatar", "Mahalik", R.drawable.mahalik, "25/04/1998", "Cagliari", "Trap");
-    public static Artist artist5 = new Artist("Valentina", "Luiu", "Valucre", R.drawable.valucre, "20/07/2001", "Cagliari", "Indi-pop");
-    public static Artist artist6 = new Artist("Franco", "Cordini", "Sxrrxwland", R.drawable.sxrrxwland, "10/10/1997", "Padova", "Rock");
-    public static Artist artist7 = new Artist("Emanuele", "Farina", "FunkyLemonade", R.drawable.funkylemonade, "07/07/1987", "Milano", "Jass");
-    public static Artist artist8 = new Artist("Luca", "Bianchi", "I marciapiede", R.drawable.imarciapiede, "08/11/1999", "Bari", "Trap");
-    public static Artist artist9 = new Artist();
-    public static Artist artist10 = new Artist();
-    public static Artist artist11 = new Artist();
-    public static Artist artist12 = new Artist();
-
 
 }

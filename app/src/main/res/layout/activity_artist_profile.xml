@@ -81,13 +81,13 @@
     </LinearLayout>
     <Space
         android:layout_width="wrap_content"
-        android:layout_height="5dp"/>
+        android:layout_height="3dp"/>
     <TextView
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:text="Questa è una breve descrizione dell'artista ehehehehe dai riempio ancora un po' dai oooooooooooooooooooooo"
+        android:text="..."
         android:id="@+id/bio"
         android:textSize="15dp"/>
     
@@ -125,7 +125,7 @@
     <Space
         android:layout_width="match_parent"
         android:layout_height="30dp"/>
-
+<!--
     <VideoView
         android:layout_width="250dp"
         android:layout_height="130dp"
@@ -135,6 +135,35 @@
     <Space
         android:layout_width="match_parent"
         android:layout_height="30dp"/>
+-->
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+    <Button
+        android:id="@+id/video_section"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text="Videos"/>
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/photo_section"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:text="Photos"/>
+
+    </LinearLayout>
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
 </LinearLayout>
