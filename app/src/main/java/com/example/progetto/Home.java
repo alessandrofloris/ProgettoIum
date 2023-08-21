@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.view.MenuItem;
@@ -24,6 +25,7 @@ public class Home extends AppCompatActivity {
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
+    CardView cardView1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,7 @@ public class Home extends AppCompatActivity {
         printArtist1.setText(Artist.artist1.getNomeDarte());
         ImageView printImg1 = (ImageView) findViewById(R.id.imageView1);
         printImg1.setImageResource(Artist.artist1.getImgID());
+        cardView1 = findViewById(R.id.card_artist_1);
 
         // Artista posizione 2
         TextView printArtist2 = (TextView) findViewById(R.id.artista2);
@@ -59,8 +62,53 @@ public class Home extends AppCompatActivity {
         ImageView printImg4 = (ImageView) findViewById(R.id.imageView4);
         printImg4.setImageResource(Artist.artist4.getImgID());
 
+        // Artista posizione 5
+        TextView printArtist5 = (TextView) findViewById(R.id.artista5);
+        printArtist5.setText(Artist.artist5.getNomeDarte());
+        ImageView printImg5 = (ImageView) findViewById(R.id.imageView5);
+        printImg5.setImageResource(Artist.artist5.getImgID());
 
+        // Artista posizione 6
+        TextView printArtist6 = (TextView) findViewById(R.id.artista6);
+        printArtist6.setText(Artist.artist6.getNomeDarte());
+        ImageView printImg6 = (ImageView) findViewById(R.id.imageView6);
+        printImg6.setImageResource(Artist.artist6.getImgID());
 
+        // Artista posizione 7
+        TextView printArtist7 = (TextView) findViewById(R.id.artista7);
+        printArtist7.setText(Artist.artist7.getNomeDarte());
+        ImageView printImg7 = (ImageView) findViewById(R.id.imageView7);
+        printImg7.setImageResource(Artist.artist7.getImgID());
+
+        // Artista posizione 8
+        TextView printArtist8 = (TextView) findViewById(R.id.artista8);
+        printArtist8.setText(Artist.artist8.getNomeDarte());
+        ImageView printImg8 = (ImageView) findViewById(R.id.imageView8);
+        printImg8.setImageResource(Artist.artist8.getImgID());
+
+        // Artista posizione 9
+        TextView printArtist9 = (TextView) findViewById(R.id.artista9);
+        printArtist9.setText(Artist.artist9.getNomeDarte());
+        ImageView printImg9 = (ImageView) findViewById(R.id.imageView9);
+        printImg9.setImageResource(Artist.artist9.getImgID());
+
+        // Artista posizione 10
+        TextView printArtist10 = (TextView) findViewById(R.id.artista10);
+        printArtist10.setText(Artist.artist10.getNomeDarte());
+        ImageView printImg10 = (ImageView) findViewById(R.id.imageView10);
+        printImg10.setImageResource(Artist.artist10.getImgID());
+
+        // Artista posizione 11
+        TextView printArtist11 = (TextView) findViewById(R.id.artista11);
+        printArtist11.setText(Artist.artist11.getNomeDarte());
+        ImageView printImg11 = (ImageView) findViewById(R.id.imageView11);
+        printImg11.setImageResource(Artist.artist11.getImgID());
+
+        // Artista posizione 12
+        TextView printArtist12 = (TextView) findViewById(R.id.artista12);
+        printArtist12.setText(Artist.artist12.getNomeDarte());
+        ImageView printImg12 = (ImageView) findViewById(R.id.imageView12);
+        printImg12.setImageResource(Artist.artist12.getImgID());
 
         setSupportActionBar(toolbar);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.nav_open, R.string.nav_close);
@@ -70,31 +118,30 @@ public class Home extends AppCompatActivity {
 
         // Gestione del bottom menù
         FloatingActionButton home_button = findViewById(R.id.home_button);
-        BottomNavigationView bottomNavigationView=findViewById(R.id.bottomNavigationView);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.home_button);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                switch(item.getItemId())
-                {
+                switch (item.getItemId()) {
                     case R.id.favorites_button:
-                        startActivity(new Intent(getApplicationContext(),Favorites.class));
-                        overridePendingTransition(0,0);
+                        startActivity(new Intent(getApplicationContext(), Favorites.class));
+                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.chat_button:
-                        startActivity(new Intent(getApplicationContext(),Chat.class));
-                        overridePendingTransition(0,0);
+                        startActivity(new Intent(getApplicationContext(), Chat.class));
+                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.home_button:
                         return true;
                     case R.id.profile_button:
-                        startActivity(new Intent(getApplicationContext(),Profile.class));
-                        overridePendingTransition(0,0);
+                        startActivity(new Intent(getApplicationContext(), Profile.class));
+                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.search_button:
-                        startActivity(new Intent(getApplicationContext(),Search.class));
-                        overridePendingTransition(0,0);
+                        startActivity(new Intent(getApplicationContext(), Search.class));
+                        overridePendingTransition(0, 0);
                         return true;
 
                 }
@@ -105,7 +152,14 @@ public class Home extends AppCompatActivity {
         home_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),Home.class));
+                startActivity(new Intent(getApplicationContext(), Home.class));
+            }
+        });
+
+        cardView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), ArtistProfile.class));
             }
         });
     }
@@ -122,5 +176,6 @@ public class Home extends AppCompatActivity {
     public void printArtist(Artist artistToPrint) {
 
     }
+
 
 }
