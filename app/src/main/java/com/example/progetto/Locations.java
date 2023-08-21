@@ -1,0 +1,27 @@
+package com.example.progetto;
+
+enum Locations {
+    ABRUZZO,
+    BASILICATA,
+    CALABRIA,
+    CAMPANIA,
+    EMILIA_ROMAGNA,
+    FRIULI_VENEZIA_GIULIA,
+    LAZIO,
+    LIGURIA,
+    LOMBARDIA,
+    MARCHE,
+    MOLISE,
+    PIEMONTE,
+    PUGLIA,
+    SARDEGNA,
+    SICILIA,
+    TOSCANA,
+    TRENTINO_ALTO_ADIGE,
+    UMBIRIA,
+    VAL_D_AOSTA,
+    VENETO,
+    PROVINCIA_AUTONOMA_DI_TRENTO,
+    PROVINCIA_AUTONOMA_DI_BOLZANO,
+    NONE
+}

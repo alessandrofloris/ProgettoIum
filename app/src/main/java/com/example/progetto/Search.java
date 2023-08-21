@@ -63,8 +63,8 @@ public class Search extends AppCompatActivity{
         region_badge_view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // deve aprire un dialog da cui poter filtrare per regioni
-                Log.d("Region Dialog:", "Aperto");
+                Intent intent = new Intent(Search.this, SelectRegionActivity.class);
+                startActivity(intent);
             }
         });
     }
