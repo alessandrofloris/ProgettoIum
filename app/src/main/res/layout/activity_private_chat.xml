@@ -1,19 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PrivateChat"
-    android:theme="@style/Theme.BottomAppBar">
+    tools:context=".PrivateChat">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="32dp"
-        android:text="Private chat"/>
-
+   <LinearLayout
+       android:id="@+id/topLinearLayout"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="vertical"
+       app:layout_constraintTop_toTopOf="parent">
 
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+       <LinearLayout
+           android:clickable="true"
+           android:focusable="true"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:orientation="horizontal">
+
+           <ImageButton
+               android:id="@+id/backButton"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:src="@drawable/ic_baseline_arrow_back_24"
+               android:background="@color/white"
+               android:layout_gravity="center"
+               android:layout_margin="10dp" />
+
+           <androidx.cardview.widget.CardView
+               android:layout_width="50dp"
+               android:layout_height="50dp"
+               app:cardCornerRadius="250dp"
+               android:layout_gravity="center"
+               android:layout_margin="20dp">
+
+               <ImageView
+                   android:layout_height="50dp"
+                   android:layout_width="50dp"
+                   android:id="@+id/profileView1"
+                   android:src="@drawable/artist1"
+                   android:layout_gravity="center"
+                   android:scaleType="centerCrop"
+                   />
+           </androidx.cardview.widget.CardView>
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:orientation="vertical"
+               android:gravity="center">
+
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center"
+                   android:text="Artista 1"
+                   android:textStyle="bold" />
+
+           </LinearLayout>
+
+       </LinearLayout>
+
+   </LinearLayout>
+
+    <!-- messaggio -->
+
+    <LinearLayout
+        android:id="@+id/MiddleLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="580dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topLinearLayout">
+
+
+        <TextView
+            android:id="@+id/messageView1"
+            android:layout_width="250dp"
+            android:layout_height="100dp"
+            android:textColor="@color/black"
+            android:visibility="invisible"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_gravity="right"
+            android:gravity="center"
+            />
+
+
+
+        <TextView
+            android:id="@+id/messageView2"
+            android:layout_width="250dp"
+            android:layout_height="100dp"
+            android:textColor="@color/black"
+            android:visibility="invisible"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_gravity="left"
+            android:gravity="center"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/BottomLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:layout_gravity="bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/MiddleLinearLayout"
+        app:layout_constraintEnd_toEndOf="parent">
+
+    <EditText
+        android:id="@+id/messageEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Scrivi un messaggio..."
+            android:textSize="15dp"
+            android:layout_margin="10dp"
+            android:paddingRight="180dp"/>
+
+        <ImageButton
+            android:id="@+id/sendButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_baseline_send_24"
+            android:background="@color/white"
+            android:layout_margin="10dp" />
+
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
