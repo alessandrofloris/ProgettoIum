@@ -11,6 +11,8 @@ public class Artist implements Serializable {
     private Integer imgID;
     private String dataNascita;
     private String cittaResidenza;
+
+    private Locations regioneResidenza;
     private String generi;
 
 
@@ -20,6 +22,7 @@ public class Artist implements Serializable {
         this.nomeDarte = nomeDarte;
         this.imgID = imgID;
         this.dataNascita = dataNascita;
+        this.regioneResidenza = Locations.NONE;
         this.cittaResidenza = cittaResidenza;
         this.generi = generi;
     }
@@ -39,6 +42,17 @@ public class Artist implements Serializable {
         this.cognome = cognome;
         this.nomeDarte = nomeDarte;
         this.setImgID(imageID);
+        this.setDataNascita("");
+        this.setCittaResidenza("");
+        this.setGeneri("");
+    }
+
+    public Artist(String nome, String cognome, String nomeDarte, Integer imageID, Locations regioneResidenza) {
+        this.nome = nome;
+        this.cognome = cognome;
+        this.nomeDarte = nomeDarte;
+        this.setImgID(imageID);
+        this.regioneResidenza = regioneResidenza;
         this.setDataNascita("");
         this.setCittaResidenza("");
         this.setGeneri("");

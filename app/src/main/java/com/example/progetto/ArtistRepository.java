@@ -10,13 +10,13 @@ public class ArtistRepository {
 
     private ArtistRepository() {
         artistList = new ArrayList<>();
-        artistList.add(new Artist("marco", "rossi", "marione", R.drawable.rinfiggi));
-        artistList.add(new Artist("giulio", "regeni", "regi", R.drawable.marsargo));
-        artistList.add(new Artist("sandro", "porta", "portone magico pasoliniano", R.drawable.valucre));
-        artistList.add(new Artist("carla", "mora", "la diva", R.drawable.mahalik));
-        artistList.add(new Artist("jhonna", "simoun", "simonajh", R.drawable.mazulco));
-        artistList.add(new Artist("maurizio", "balzotti", "maurizione", R.drawable.mahalik));
-        artistList.add(new Artist("ben", "porceddu", "potassio verde", R.drawable.rinfiggi));
+        artistList.add(new Artist("marco", "rossi", "marione", R.drawable.rinfiggi, Locations.SARDEGNA));
+        artistList.add(new Artist("giulio", "regeni", "regi", R.drawable.marsargo, Locations.EMILIA_ROMAGNA));
+        artistList.add(new Artist("sandro", "porta", "portone magico pasoliniano", R.drawable.valucre, Locations.EMILIA_ROMAGNA));
+        artistList.add(new Artist("carla", "mora", "la diva", R.drawable.mahalik, Locations.MOLISE));
+        artistList.add(new Artist("jhonna", "simoun", "simonajh", R.drawable.mazulco, Locations.EMILIA_ROMAGNA));
+        artistList.add(new Artist("maurizio", "balzotti", "maurizione", R.drawable.mahalik, Locations.BASILICATA));
+        artistList.add(new Artist("ben", "porceddu", "potassio verde", R.drawable.rinfiggi, Locations.SARDEGNA));
     }
 
     public static ArtistRepository getInstance() {

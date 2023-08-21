@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.appcompat.widget.SearchView;
 
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListAdapter;
@@ -26,6 +28,8 @@ public class Search extends AppCompatActivity{
     LinearLayoutCompat no_search_content_view;
     ListView artists_list_view;
     TextView no_matching_results_view;
+    MaterialCardView genre_badge_view;
+    MaterialCardView region_badge_view;
     SearchAdapter adapter;
     List<Artist> artists = new ArrayList<>();
 
@@ -38,16 +42,31 @@ public class Search extends AppCompatActivity{
 
         bottomNavigationConfig();
         searchBarConfig();
+        searchBadgesConfig();
 
-        //general configurations
+        //general config
 
         no_search_content_view = findViewById(R.id.no_search_content);
         no_matching_results_view = findViewById(R.id.no_matching_results);
         artists_list_view = findViewById(R.id.artists_list);
 
-
         adapter = new SearchAdapter(this, artists);
         artists_list_view.setAdapter(adapter);
+
+    }
+
+    private void searchBadgesConfig() {
+
+        genre_badge_view = findViewById(R.id.genre_badge);
+        region_badge_view = findViewById(R.id.region_badge);
+
+        region_badge_view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // deve aprire un dialog da cui poter filtrare per regioni
+                Log.d("Region Dialog:", "Aperto");
+            }
+        });
     }
 
     private void searchBarConfig() {
