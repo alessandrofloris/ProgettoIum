@@ -48,8 +48,6 @@
                 android:layout_margin="10dp"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="10dp"
-                app:strokeColor="@color/blue"
-                app:strokeWidth="2dp"
                 >
 
                     <TextView
@@ -73,8 +71,7 @@
                 android:layout_margin="10dp"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="10dp"
-                app:strokeColor="@color/yellow"
-                app:strokeWidth="2dp">
+                >
 
                     <TextView
                         android:id="@+id/text_view_nickname"
@@ -135,9 +132,10 @@
             android:id="@+id/artists_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
             android:visibility="gone"
+            android:divider="@null"
             >
 
         </ListView>

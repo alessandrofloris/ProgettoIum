@@ -26,7 +26,7 @@ public class ChipAdapter extends RecyclerView.Adapter<ChipAdapter.ViewHolder>{
         public ViewHolder(View view) {
             super(view);
 
-            textView = (TextView) view.findViewById(R.id.chip_text);
+            textView = (TextView) view.findViewById(R.id.chip);
         }
 
         public void bind(final String chip, final OnChipClickListener listener) {
