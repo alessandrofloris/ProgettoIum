@@ -196,8 +196,6 @@ public class Search extends AppCompatActivity{
                 Search.this.nickname = nickname;
 
                 updateSearch();
-                //updateSearchResult(nickname);
-                //updateResultView();
 
                 return false;
             }

@@ -136,6 +136,7 @@
             android:layout_marginRight="0dp"
             android:visibility="gone"
             android:divider="@null"
+            android:layout_marginBottom="50dp"
             >
 
         </ListView>
@@ -144,7 +145,7 @@
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_gravity="bottom"
         android:id="@+id/bottomAppBar"
         app:fabCradleMargin="10dp"

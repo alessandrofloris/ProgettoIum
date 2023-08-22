@@ -22,10 +22,11 @@ public class ArtistService {
     }
 
     public List<Artist> searchArtistsByPartialNickName(String nickname) {
+        nickname = nickname.toLowerCase();
         List<Artist> allArtists = ArtistRepository.getInstance().getAllArtists();
         List<Artist> resultArtists = new ArrayList<>();
         for(Artist artist : allArtists) {
-            if(artist.getNomeDarte().startsWith(nickname)) {
+            if(artist.getNomeDarte().toLowerCase().startsWith(nickname)) {
                 resultArtists.add(artist);
             }
         }
@@ -62,7 +63,7 @@ public class ArtistService {
         List<Artist> resultArtists = new ArrayList<>();
         for(Artist artist : allArtists) {
             for(Genres genre : genres) {
-                if(artist.getRegioneResidenza().getDesc().equals(genre.getDesc())) {
+                if(artist.getGeneri().getDesc().equals(genre.getDesc())) {
                     resultArtists.add(artist);
                     break;
                 }
@@ -76,7 +77,7 @@ public class ArtistService {
         List<Artist> resultArtists = new ArrayList<>();
         for(Artist artist : artists) {
             for(Genres genre : genres) {
-                if(artist.getRegioneResidenza().getDesc().equals(genre.getDesc())) {
+                if(artist.getGeneri().getDesc().equals(genre.getDesc())) {
                     resultArtists.add(artist);
                     break;
                 }

@@ -12,21 +12,20 @@ public class Artist implements Serializable {
     private Integer imgID;
     private String dataNascita;
     private String cittaResidenza;
-
     private Locations regioneResidenza;
-    private String generi;
+    private Genres generi;
     private String shortDesc;
 
 
 
-    public Artist(Integer idArtist,String nome, String cognome, String nomeDarte, Integer imgID, String dataNascita, String cittaResidenza, String generi, String shortDesc) {
+    public Artist(Integer idArtist,String nome, String cognome, String nomeDarte, Integer imgID, String dataNascita, String cittaResidenza, Locations regione,  Genres generi, String shortDesc) {
         this.idArtist = idArtist;
         this.nome = nome;
         this.cognome = cognome;
         this.nomeDarte = nomeDarte;
         this.imgID = imgID;
         this.dataNascita = dataNascita;
-        this.regioneResidenza = Locations.NONE;
+        this.regioneResidenza = regione;
         this.cittaResidenza = cittaResidenza;
         this.generi = generi;
         this.shortDesc = shortDesc;
@@ -40,7 +39,7 @@ public class Artist implements Serializable {
         this.setImgID(0);
         this.setDataNascita("");
         this.setCittaResidenza("");
-        this.setGeneri("");
+        this.setGeneri(Genres.NONE);
         this.setShortDesc("");
     }
 
@@ -60,7 +59,7 @@ public class Artist implements Serializable {
         this.setImgID(imageID);
         this.setDataNascita("");
         this.setCittaResidenza("");
-        this.setGeneri("");
+        this.setGeneri(Genres.NONE);
         this.setShortDesc("");
     }
 
@@ -72,7 +71,7 @@ public class Artist implements Serializable {
         this.regioneResidenza = regioneResidenza;
         this.setDataNascita("");
         this.setCittaResidenza("");
-        this.setGeneri("");
+        this.setGeneri(Genres.NONE);
     }
 
 
@@ -86,7 +85,8 @@ public class Artist implements Serializable {
         this.setImgID(0);
         this.setDataNascita("");
         this.setCittaResidenza("");
-        this.setGeneri("");
+        this.setRegioneResidenza(Locations.NONE);
+        this.setGeneri(Genres.NONE);
         this.setShortDesc("");
     }
 
@@ -122,7 +122,7 @@ public class Artist implements Serializable {
         return cittaResidenza;
     }
 
-    public String getGeneri() {
+    public Genres getGeneri() {
         return generi;
     }
 
@@ -150,7 +150,7 @@ public class Artist implements Serializable {
         this.cittaResidenza = cittaResidenza;
     }
 
-    public void setGeneri(String generi) {
+    public void setGeneri(Genres generi) {
         this.generi = generi;
     }
 

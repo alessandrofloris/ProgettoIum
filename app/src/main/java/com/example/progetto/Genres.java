@@ -12,9 +12,12 @@ public enum Genres implements FiltersInterface, Serializable {
     PROGRESSIVE_ROCK("Progressive Rock"),
     BLUES("Blues"),
     METAL("Metal"),
-    HARD_METAL("Hard Metal"),
+    HEAVY_METAL("Heavy Metal"),
     REGGAETON("Reggaeton"),
     BOSSA_NOVA("Bossa Nova"),
+    INDIE_ROCK("Indie Rock"),
+    INDIE_POP("Indie Pop"),
+    TRAP("Trap"),
     NONE("");
 
     private String desc;
