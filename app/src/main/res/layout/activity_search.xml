@@ -85,12 +85,40 @@
                         />
 
             </com.google.android.material.card.MaterialCardView>
+
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/selected_filters_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:visibility="gone"
+            android:orientation="vertical">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I tuoi filtri"
+                >
+
+            </TextView>
+
+            <com.google.android.material.chip.ChipGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager">
+
+            </com.google.android.material.chip.ChipGroup>
+
+
+        </LinearLayout>
 
         <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/no_search_content"
+            android:id="@+id/no_filters_selected_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -114,32 +142,54 @@
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <TextView
-            android:id="@+id/no_matching_results"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="10dp"
-            android:text="Nessun risultato trovato"
-            android:textSize="18sp"
-            android:visibility="gone"/>
-
-        <Space
+        <LinearLayout
+            android:id="@+id/no_results_found_content"
             android:layout_width="wrap_content"
-            android:layout_height="24dp" />
-
-        <ListView
-            android:id="@+id/artists_list"
-            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="0dp"
-            android:layout_marginRight="0dp"
             android:visibility="gone"
-            android:divider="@null"
-            android:layout_marginBottom="50dp"
             >
 
-        </ListView>
+            <TextView
+                android:id="@+id/no_matching_results"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
+                android:text="Nessun risultato trovato"
+                android:textSize="18sp"
+                />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/results_found_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I tuoi risultati"
+                android:layout_marginStart="10dp"
+                >
+            </TextView>
+
+            <ListView
+                android:id="@+id/artists_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:divider="@null"
+                android:layout_marginBottom="50dp"
+                >
+            </ListView>
+
+        </LinearLayout>
+
 
     </LinearLayout>
 
