@@ -17,6 +17,8 @@ public class ArtistRepository {
         artistList.add(new Artist("jhonna", "simoun", "simonajh", R.drawable.mazulco, Locations.EMILIA_ROMAGNA));
         artistList.add(new Artist("maurizio", "balzotti", "maurizione", R.drawable.mahalik, Locations.BASILICATA));
         artistList.add(new Artist("ben", "porceddu", "potassio verde", R.drawable.rinfiggi, Locations.SARDEGNA));
+        artistList.add(new Artist("ximena", "sarinana", "ximena", R.drawable.ximena, Locations.SARDEGNA));
+        artistList.add(new Artist("silvana", "estrada", "silvana", R.drawable.silvana, Locations.SARDEGNA));
     }
 
     public static ArtistRepository getInstance() {

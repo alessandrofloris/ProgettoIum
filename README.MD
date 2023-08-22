@@ -4,4 +4,5 @@
 
 - Modificare colore icone bottom bar quando vengono selezionate (usare un colore che facilit capire in quale sezione ci troviamo, il nero è troppo 
 poco distinguibile dal grigio)  
-- 
+- Fare un trim dell'username in fase di login (per esempio, se scrivo admin con lo spazio non riconosce l'username)
+- Durante la ricerca, abbassare keybord quando l'utente scorre verso il basso la lista di risultati

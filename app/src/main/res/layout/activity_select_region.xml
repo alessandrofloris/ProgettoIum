@@ -34,17 +34,18 @@ tools:context=".SelectRegionActivity">
             android:layout_width="wrap_content"
             android:layout_height="24dp" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/regions_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
-            >
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/regions_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
+                >
 
-        </androidx.recyclerview.widget.RecyclerView>
+            </androidx.recyclerview.widget.RecyclerView>
+
 
     </LinearLayout>
 

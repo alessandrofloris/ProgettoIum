@@ -138,4 +138,11 @@ public class Artist implements Serializable {
     public static Artist artist4 = new Artist("Malik", "Jatar", "Mahalik", R.drawable.mahalik, "25/04/1998", "Cagliari", "Trap");
     public static Artist artist5 = new Artist("Giulia", "Corona", "Mazulco", R.drawable.mazulco, "06/09/2002", "Cagliari", "Pop");
 
+    public Locations getRegioneResidenza() {
+        return regioneResidenza;
+    }
+
+    public void setRegioneResidenza(Locations regioneResidenza) {
+        this.regioneResidenza = regioneResidenza;
+    }
 }

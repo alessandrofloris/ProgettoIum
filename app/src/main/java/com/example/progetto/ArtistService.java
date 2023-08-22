@@ -32,4 +32,63 @@ public class ArtistService {
 
         return resultArtists;
     }
+
+    public List<Artist> searchArtistsByLocations(List<Locations> locations) {
+        List<Artist> allArtists = ArtistRepository.getInstance().getAllArtists();
+        List<Artist> resultArtists = new ArrayList<>();
+        for(Artist artist : allArtists) {
+            for(Locations location : locations) {
+                if(artist.getRegioneResidenza().getDesc().equals(location.getDesc())) {
+                    resultArtists.add(artist);
+                    break;
+                }
+            }
+        }
+
+        return resultArtists;
+    }
+
+    public List<Artist> searchArtistsByGenres(List<Genres> genres) {
+        List<Artist> allArtists = ArtistRepository.getInstance().getAllArtists();
+        List<Artist> resultArtists = new ArrayList<>();
+        for(Artist artist : allArtists) {
+            for(Genres genre : genres) {
+                if(artist.getRegioneResidenza().getDesc().equals(genre.getDesc())) {
+                    resultArtists.add(artist);
+                    break;
+                }
+            }
+        }
+
+        return resultArtists;
+    }
+
+    public List<Artist> filterByGenres(List<Artist> artists, List<Genres> genres) {
+        List<Artist> resultArtists = new ArrayList<>();
+        for(Artist artist : artists) {
+            for(Genres genre : genres) {
+                if(artist.getRegioneResidenza().getDesc().equals(genre.getDesc())) {
+                    resultArtists.add(artist);
+                    break;
+                }
+            }
+        }
+
+        return resultArtists;
+    }
+
+    public List<Artist> filterByLocations(List<Artist> artists, List<Locations> locations) {
+        List<Artist> resultArtists = new ArrayList<>();
+        for(Artist artist : artists) {
+            for(Locations location : locations) {
+                if(artist.getRegioneResidenza().getDesc().equals(location.getDesc())) {
+                    resultArtists.add(artist);
+                    break;
+                }
+            }
+        }
+
+        return resultArtists;
+    }
+
 }

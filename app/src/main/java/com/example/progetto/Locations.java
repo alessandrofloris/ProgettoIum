@@ -1,6 +1,8 @@
 package com.example.progetto;
 
-public enum Locations {
+import java.io.Serializable;
+
+public enum Locations implements FiltersInterface, Serializable {
     ABRUZZO("Abruzzo"),
     BASILICATA("Basilicata"),
     CALABRIA("Calabria"),

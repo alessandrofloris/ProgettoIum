@@ -1,5 +1,9 @@
 package com.example.progetto;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.LinearLayoutCompat;
@@ -9,6 +13,7 @@ import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,6 +38,11 @@ public class Search extends AppCompatActivity{
     SearchAdapter adapter;
     List<Artist> artists = new ArrayList<>();
 
+    ArrayList<Locations> selectedLocations;
+    ArrayList<Genres> selectedGenres;
+    String nickname;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +63,100 @@ public class Search extends AppCompatActivity{
         adapter = new SearchAdapter(this, artists);
         artists_list_view.setAdapter(adapter);
 
+        nickname = "";
+        selectedLocations = new ArrayList<>();
+        selectedGenres = new ArrayList<>();
+
+    }
+
+    public ActivityResultLauncher<Intent> startActivityIntentLocation = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+
+                    Intent intent = result.getData();
+
+                    try{
+                        selectedLocations = (ArrayList<Locations>)intent.getSerializableExtra("selected_locations");
+                        updateSearch();
+                    } catch (Exception e) {
+                        Log.d("Get Extra From Intent", e.toString());
+                    }
+
+                }
+            });
+
+    public ActivityResultLauncher<Intent> startActivityIntentGenre = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+
+                    Intent intent = result.getData();
+
+                    try{
+                        selectedGenres = (ArrayList<Genres>)intent.getSerializableExtra("selected_genres");
+                        updateSearch();
+                    } catch (Exception e) {
+                        Log.d("Get Extra From Intent", e.toString());
+                    }
+
+                }
+            });
+
+    private void updateFilter(FiltersInterface filter) {
+
+        if(filter instanceof Locations) {
+
+        }
+
+    }
+
+    /**
+     * Questo metodo viene chiamato quando viene modificata la stringa di ricerca
+     * o quando vengono modificati i filtri
+     * */
+    private void updateSearch() {
+
+        artists.clear();
+        List<Artist> artists_ = new ArrayList<>();
+
+        if(nickname.isEmpty()) {
+
+            if(selectedLocations.size() > 0) {
+                // ci sono dei filtri sui luoghi di residenza
+                artists_ = ArtistService.getInstance().searchArtistsByLocations(selectedLocations);
+
+                if(selectedGenres.size() > 0) {
+                    // ci sono dei filtri suo generi
+                    artists_ = ArtistService.getInstance().filterByGenres(artists_, selectedGenres);
+
+                }
+            } else {
+                if(selectedGenres.size() > 0) {
+                    // ci sono dei filtri suo generi
+                    artists_ = ArtistService.getInstance().searchArtistsByGenres(selectedGenres);
+                }
+            }
+        }
+
+        if(!nickname.isEmpty()) {
+            artists_ = ArtistService.getInstance().searchArtistsByPartialNickName(nickname);
+            if(!artists_.isEmpty() && !selectedLocations.isEmpty()) {
+                artists_ = ArtistService.getInstance().filterByLocations(artists_, selectedLocations);
+//                artists_ = ArtistService.getInstance().filterByGenres(artists_, selectedGenres);
+            }
+            if(!artists_.isEmpty() && !selectedGenres.isEmpty()) {
+//                artists_ = ArtistService.getInstance().filterByLocations(artists_, selectedLocations);
+                artists_ = ArtistService.getInstance().filterByGenres(artists_, selectedGenres);
+            }
+        }
+
+        artists.addAll(artists_);
+
+        updateResultView();
+
     }
 
     private void searchBadgesConfig() {
@@ -64,7 +168,7 @@ public class Search extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Search.this, SelectGenreActivity.class);
-                startActivity(intent);
+                startActivityIntentGenre.launch(intent);
             }
         });
 
@@ -72,7 +176,7 @@ public class Search extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Search.this, SelectRegionActivity.class);
-                startActivity(intent);
+                startActivityIntentLocation.launch(intent);
             }
         });
     }
@@ -89,16 +193,18 @@ public class Search extends AppCompatActivity{
             @Override
             public boolean onQueryTextChange(String nickname) {
 
-                updateSearchResult(nickname);
+                Search.this.nickname = nickname;
 
-                updateResultView(nickname);
+                updateSearch();
+                //updateSearchResult(nickname);
+                //updateResultView();
 
                 return false;
             }
         });
     }
 
-    private void updateResultView(String nickname) {
+    private void updateResultView() {
 
         adapter.notifyDataSetChanged();
 
@@ -119,13 +225,13 @@ public class Search extends AppCompatActivity{
 
     }
 
-    private void updateSearchResult(String nickname) {
-        artists.clear();
-        if(!nickname.isEmpty()) {
-            List<Artist> artists_ = ArtistService.getInstance().searchArtistsByPartialNickName(nickname);
-            artists.addAll(artists_);
-        }
-    }
+//    private void updateSearchResult(String nickname) {
+//        artists.clear();
+//        if(!nickname.isEmpty()) {
+//            List<Artist> artists_ = ArtistService.getInstance().searchArtistsByPartialNickName(nickname);
+//            artists.addAll(artists_);
+//        }
+//    }
 
     private void bottomNavigationConfig() {
 

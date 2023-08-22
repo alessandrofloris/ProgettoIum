@@ -1,6 +1,8 @@
 package com.example.progetto;
 
-public enum Genres {
+import java.io.Serializable;
+
+public enum Genres implements FiltersInterface, Serializable {
     POP("Pop"),
     Hip_HOP("Hip-Hop"),
     TECHNO("Techno"),
