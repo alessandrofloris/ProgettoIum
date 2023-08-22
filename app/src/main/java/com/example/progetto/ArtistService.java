@@ -33,6 +33,15 @@ public class ArtistService {
         return resultArtists;
     }
 
+    public Artist getById(Integer id) {
+        List<Artist> allArtists = ArtistRepository.getInstance().getAllArtists();
+        for(Artist artist : allArtists)
+            if(artist.getIdArtist() == id)
+                return artist;
+
+        return null;
+    }
+
     public List<Artist> searchArtistsByLocations(List<Locations> locations) {
         List<Artist> allArtists = ArtistRepository.getInstance().getAllArtists();
         List<Artist> resultArtists = new ArrayList<>();

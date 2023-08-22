@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#FFC107" /> <!-- Imposta il colore di riempimento -->
+            <corners android:radius="12dp" /> <!-- Imposta il raggio degli angoli arrotondati -->
+        </shape>
+    </item>
+</layer-list>
