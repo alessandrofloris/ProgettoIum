@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 
 import com.google.android.material.chip.Chip;
@@ -43,6 +44,21 @@ public class SelectRegionActivity extends AppCompatActivity {
 
     }
 
+    private void handleAlreadySelectedLocations() {
+        try {
+            ArrayList<Locations> locations = (ArrayList<Locations>) getIntent().getSerializableExtra("selected_locations_search");
+            Chip c;
+            for(Locations location : locations) {
+                c = regions_list_recyclerview.findViewWithTag(location);
+                c.setChecked(true);
+                chips_checked.put((Locations)c.getTag(), true);
+                chips_checked_counter = chips_checked_counter + 1;
+            }
+        } catch(Exception e) {
+            Log.d("RecyclerView Chip Err", e.getMessage());
+        }
+    }
+
     private void applyButtonConfig() {
         apply_button = findViewById(R.id.apply_changes);
         apply_button.setOnClickListener(new View.OnClickListener() {
@@ -69,7 +85,16 @@ public class SelectRegionActivity extends AppCompatActivity {
         this.chips_checked = new HashMap<>();
 
         regions_list_recyclerview = findViewById(R.id.regions_recyclerview);
+        regions_list_recyclerview.getViewTreeObserver()
+                .addOnGlobalLayoutListener(
+                        new ViewTreeObserver.OnGlobalLayoutListener() {
+                            @Override
+                            public void onGlobalLayout() {
+                                handleAlreadySelectedLocations();
+                                regions_list_recyclerview.getViewTreeObserver().removeOnGlobalLayoutListener(this);
 
+                            }
+                        });
         ArrayList<String> locations = new ArrayList<>();
         ArrayList<FiltersInterface> locations_id = new ArrayList<>();
 

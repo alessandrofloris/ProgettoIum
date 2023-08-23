@@ -21,6 +21,7 @@ import android.widget.ListView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -88,6 +89,7 @@ public class Search extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Search.this, SelectRegionActivity.class);
+                intent.putExtra("selected_locations_search", (Serializable) Search.this.selectedLocations);
                 startActivityIntentLocation.launch(intent);
             }
         });

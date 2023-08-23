@@ -33,6 +33,7 @@ public class ChipAdapter extends RecyclerView.Adapter<ChipAdapter.ViewHolder>{
         public void bind(final String chip, final FiltersInterface item_id, final OnChipClickListener listener) {
             chipView.setText(chip);
             chipView.setTag(item_id);
+
             chipView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
                     listener.onChipClick(chipView);
