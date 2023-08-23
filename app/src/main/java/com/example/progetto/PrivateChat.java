@@ -9,8 +9,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import java.io.Serializable;
 
 
 public class PrivateChat extends AppCompatActivity {
@@ -21,14 +24,24 @@ public class PrivateChat extends AppCompatActivity {
     private LinearLayout messageSentLayout;
     private LinearLayout messageReceivedLayout;
     private TextView displayText;
+    private TextView artistName;
+    private ImageView profilePhoto;
+    private Artist artist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_private_chat);
 
+        Intent intent = getIntent();
+        Serializable obj = intent.getSerializableExtra(Home.ARTIST_EXTRA);
+        artist = (Artist) obj;
 
         editText = findViewById(R.id.messageEditText);
+        artistName = findViewById(R.id.artist_name);
+        artistName.setText(artist.getNomeDarte());
+        profilePhoto = findViewById(R.id.profileView);
+        profilePhoto.setImageResource(artist.getImgID());
         displayText = findViewById(R.id.right_chat_textView);
         displayText = findViewById(R.id.right_chat_textView);
         showButton = findViewById(R.id.sendButton);
@@ -46,6 +59,8 @@ public class PrivateChat extends AppCompatActivity {
                 messageReceivedLayout.setVisibility(View.VISIBLE);
             }
         });
+
+
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override

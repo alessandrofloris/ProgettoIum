@@ -36,8 +36,7 @@
                <ImageView
                    android:layout_height="50dp"
                    android:layout_width="50dp"
-                   android:id="@+id/profileView1"
-                   android:src="@drawable/artist1"
+                   android:id="@+id/profileView"
                    android:layout_gravity="center"
                    android:scaleType="centerCrop"
                    />
@@ -50,10 +49,10 @@
                android:gravity="center">
 
                <TextView
+                   android:id="@+id/artist_name"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
                    android:layout_gravity="center"
-                   android:text="Artista 1"
                    android:textStyle="bold" />
 
            </LinearLayout>

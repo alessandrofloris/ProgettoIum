@@ -45,7 +45,6 @@
                         android:layout_height="100dp"
                         android:layout_width="100dp"
                         android:id="@+id/profileView1"
-                        android:src="@drawable/artist1"
                         android:layout_gravity="center"
                         android:scaleType="centerCrop"
                         />
@@ -58,17 +57,18 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
                 <TextView
+                    android:id="@+id/artist_name1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Artista 1"
                     android:textStyle="bold"
                     android:layout_marginLeft="30dp"
                     android:layout_marginTop="10dp"/>
 
                     <TextView
+                        android:id="@+id/artist_chat1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Chat artista ..."
+                        android:text="..."
                         android:layout_marginTop="10dp"
                         android:layout_marginLeft="30dp" />
 
@@ -98,7 +98,6 @@
                         android:layout_height="100dp"
                         android:layout_width="100dp"
                         android:id="@+id/profileView2"
-                        android:src="@drawable/artist1"
                         android:layout_gravity="center"
                         android:scaleType="centerCrop"
                         />
@@ -111,17 +110,18 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
                     <TextView
+                        android:id="@+id/artist_name2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Artista 2"
                         android:textStyle="bold"
                         android:layout_marginLeft="30dp"
                         android:layout_marginTop="10dp"/>
 
                     <TextView
+                        android:id="@+id/artist_chat2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Chat artista ..."
+                        android:text="..."
                         android:layout_marginTop="10dp"
                         android:layout_marginLeft="30dp" />
 
@@ -150,7 +150,6 @@
                         android:layout_height="100dp"
                         android:layout_width="100dp"
                         android:id="@+id/profileView3"
-                        android:src="@drawable/artist1"
                         android:layout_gravity="center"
                         android:scaleType="centerCrop"
                         />
@@ -163,26 +162,24 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
                     <TextView
+                        android:id="@+id/artist_name3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Artista 3"
                         android:textStyle="bold"
                         android:layout_marginLeft="30dp"
                         android:layout_marginTop="10dp"/>
 
                     <TextView
+                        android:id="@+id/artist_chat3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Chat artista ..."
+                        android:text="..."
                         android:layout_marginTop="10dp"
                         android:layout_marginLeft="30dp" />
 
                 </LinearLayout>
             </LinearLayout>
-
-
         </LinearLayout>
-
 
     </ScrollView>
 

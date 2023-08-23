@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,17 +16,42 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class Chat extends AppCompatActivity {
 
+    public static final String ARTIST_EXTRA ="com.example.progetto.Artist";
+    Artist clickedArtist;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
 
+        TextView[] textViewsNames = new TextView[3];
+        textViewsNames[0] =(TextView) findViewById(R.id.artist_name1);
+        textViewsNames[1] =(TextView) findViewById(R.id.artist_name2);
+        textViewsNames[2] =(TextView) findViewById(R.id.artist_name3);;
+
+        ImageView[] imageViewsProfile = new ImageView[3];
+        imageViewsProfile[0] = (ImageView) findViewById(R.id.profileView1);
+        imageViewsProfile[1] = (ImageView) findViewById(R.id.profileView2);
+        imageViewsProfile[2] = (ImageView) findViewById(R.id.profileView3);
+
+        for(int i=0; i<=2;i++) {
+            Artist tmpArtist =ArtistService.getInstance().getById(i);
+            textViewsNames[i].setText(tmpArtist.getNomeDarte());
+            imageViewsProfile[i].setImageResource(tmpArtist.getImgID());
+        }
+
+
+
+
         LinearLayout linearLayoutButton1 = findViewById(R.id.profileButton1);
         linearLayoutButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Chat.this, PrivateChat.class));
+                clickedArtist = ArtistRepository.getInstance().artistList.get(0);
+                Intent privateChat = new Intent(getApplicationContext(), PrivateChat.class);
+                privateChat.putExtra(ARTIST_EXTRA, ArtistRepository.getInstance().artistList.get(0));
+                startActivity(privateChat);
             }
         });
 
@@ -32,7 +59,10 @@ public class Chat extends AppCompatActivity {
         linearLayoutButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Chat.this, PrivateChat.class));
+                clickedArtist = ArtistRepository.getInstance().artistList.get(1);
+                Intent privateChat = new Intent(getApplicationContext(), PrivateChat.class);
+                privateChat.putExtra(ARTIST_EXTRA, ArtistRepository.getInstance().artistList.get(1));
+                startActivity(privateChat);
             }
         });
 
@@ -40,7 +70,10 @@ public class Chat extends AppCompatActivity {
         linearLayoutButton3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Chat.this, PrivateChat.class));
+                clickedArtist = ArtistRepository.getInstance().artistList.get(2);
+                Intent privateChat = new Intent(getApplicationContext(), PrivateChat.class);
+                privateChat.putExtra(ARTIST_EXTRA, ArtistRepository.getInstance().artistList.get(2));
+                startActivity(privateChat);
             }
         });
 
