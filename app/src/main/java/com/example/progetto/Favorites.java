@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,12 +12,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.List;
+
 public class Favorites extends AppCompatActivity {
+
+
+
+    ListView favoriteListView;
+    List<Artist> artists = ArtistRepository.getInstance().artistList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorites);
+
+
+        favoriteListView = (ListView) findViewById(R.id.favoritesList);
+        FavoritesAdapter favoritesAdapter = new FavoritesAdapter(getApplicationContext(), artists);
+        favoriteListView.setAdapter(favoritesAdapter);
+
 
         FloatingActionButton home_button = findViewById(R.id.home_button);
 

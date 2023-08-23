@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".PrivateChat">
 
-
-
        <LinearLayout
            android:id="@+id/topLinearLayout"
            android:clickable="true"
