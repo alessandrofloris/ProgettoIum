@@ -30,7 +30,7 @@
 
 
     <androidx.cardview.widget.CardView
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="3dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -39,8 +39,8 @@
 
         <ImageView
             android:id="@+id/artist_profile_pic"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
             android:layout_gravity="center"
             android:scaleType="centerCrop" />
     </androidx.cardview.widget.CardView>
@@ -51,7 +51,7 @@
         android:text="Nome d'arte"
         android:layout_gravity="center"
         android:id="@+id/artist_stage_name"
-        android:textSize="32dp"
+        android:textSize="34dp"
         android:textStyle="bold"/>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -59,31 +59,31 @@
         android:gravity="center"
         android:layout_gravity="center"
         android:orientation="horizontal">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Nome"
-        android:id="@+id/artist_name"
-        android:textSize="15dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Nome"
+            android:id="@+id/artist_name"
+            android:textSize="17dp"/>
         
         <Space
             android:layout_width="5dp"
             android:layout_height="wrap_content"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Cognome"
-        android:id="@+id/artist_surname"
-        android:textSize="15dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Cognome"
+            android:id="@+id/artist_surname"
+            android:textSize="17dp"/>
     </LinearLayout>
     <Space
         android:layout_width="wrap_content"
         android:layout_height="3dp"/>
     <TextView
-        android:layout_width="300dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
@@ -98,67 +98,126 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_gravity="center"
+
         android:gravity="center">
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Like"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:backgroundTint="#D33656"
-            android:elevation="10dp"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/like_button_card"
+            android:layout_width="100dp"
+            android:layout_height="35dp"
+            app:cardCornerRadius="10dp"
+            >
+            <RelativeLayout
+                android:layout_width="100dp"
+                android:layout_height="35dp"
+                android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/heart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/heart_nolike"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="15dp"/>
+
+                <TextView
+                    android:id="@+id/like_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="11dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/heart"
+                    android:text="LIKE"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+
         <Space
             android:layout_width="40dp"
             android:layout_height="wrap_content"/>
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:text="Messaggio"
             android:layout_gravity="center"
             android:gravity="center"
             android:backgroundTint="#3C3C3C"/>
 
-
     </LinearLayout>
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="30dp"/>
-<!--
-    <VideoView
-        android:layout_width="250dp"
-        android:layout_height="130dp"
-        android:layout_gravity="center"
-        android:id="@+id/video_view"
-        />
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="30dp"/>
--->
-
+        android:layout_height="10dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center">
-    <Button
-        android:id="@+id/video_section"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:text="Videos"/>
-        <Space
-            android:layout_width="10dp"
-            android:layout_height="wrap_content"/>
+        android:layout_gravity="center">
 
-    <Button
-        android:id="@+id/photo_section"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
-        android:text="Photos"/>
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_video"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            app:cardElevation="15dp"
+            android:clickable="true"
+            android:focusable="true"
+            >
+
+        <TextView
+            android:id="@+id/text_video"
+            android:layout_width="136dp"
+            android:layout_height="45dp"
+            android:text="VIDEO"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textColor="@color/black"
+            />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_photo"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            app:cardElevation="15dp"
+            >
+            <TextView
+                android:id="@+id/text_photo"
+                android:layout_width="136dp"
+                android:layout_height="45dp"
+                android:text="PHOTO"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:textColor="@color/black"
+                />
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_audio"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            app:cardElevation="15dp"
+            >
+        <TextView
+            android:id="@+id/text_audio"
+            android:layout_width="136dp"
+            android:layout_height="45dp"
+            android:text="AUDIO"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textColor="@color/black"
+            />
+        </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>
     <FrameLayout

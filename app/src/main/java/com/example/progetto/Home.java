@@ -32,7 +32,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        // Gestione del menù laterale
         toolbar = findViewById(R.id.toolbar);
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
@@ -197,6 +196,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
     }
 
     public void openArtistProfile(Integer i) {
+        clickedArtist = new Artist();
         clickedArtist = ArtistRepository.getInstance().artistList.get(i);
         Intent artistProfile = new Intent(getApplicationContext(), ArtistProfile.class);
         artistProfile.putExtra(ARTIST_EXTRA, ArtistRepository.getInstance().artistList.get(i));

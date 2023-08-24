@@ -1,10 +1,9 @@
 package com.example.progetto;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Artist implements Serializable {
-
-    // todo è necessario aggiungere al model dell'artista un campo Id
     private Integer idArtist;
     private String nome;
     private String cognome;
@@ -15,10 +14,46 @@ public class Artist implements Serializable {
     private Locations regioneResidenza;
     private Genres generi;
     private String shortDesc;
+    private boolean liked;
+    private ArrayList<Video> videos;
+    private ArrayList<Photo> photos;
+    private ArrayList<Audio> audios;
 
 
+    public Artist(Integer idArtist, String nome, String cognome, String nomeDarte, Integer imgID, String dataNascita, String cittaResidenza, Locations regioneResidenza, Genres generi, ArrayList<Video> videos, ArrayList<Photo> photos, ArrayList<Audio> audios) {
+        this.idArtist = idArtist;
+        this.nome = nome;
+        this.cognome = cognome;
+        this.nomeDarte = nomeDarte;
+        this.imgID = imgID;
+        this.dataNascita = dataNascita;
+        this.cittaResidenza = cittaResidenza;
+        this.regioneResidenza = regioneResidenza;
+        this.generi = generi;
+        this.shortDesc = "Ciao, sono "+ getNome() +" vengo da " + getCittaResidenza() + " e faccio " + getGeneri().getDesc() + ", dai un'occhiata alla mia musica!";
+        this.liked = false;
+        this.videos = videos;
+        this.photos = photos;
+        this.audios = audios;
+    }
 
-    public Artist(Integer idArtist,String nome, String cognome, String nomeDarte, Integer imgID, String dataNascita, String cittaResidenza, Locations regione,  Genres generi, String shortDesc) {
+    public Artist(Integer idArtist, String nome, String cognome, String nomeDarte, Integer imgID, String dataNascita, String cittaResidenza, Locations regioneResidenza, Genres generi, ArrayList<Video> videos, ArrayList<Photo> photos) {
+        this.idArtist = idArtist;
+        this.nome = nome;
+        this.cognome = cognome;
+        this.nomeDarte = nomeDarte;
+        this.imgID = imgID;
+        this.dataNascita = dataNascita;
+        this.cittaResidenza = cittaResidenza;
+        this.regioneResidenza = regioneResidenza;
+        this.generi = generi;
+        this.liked = false;
+        this.shortDesc = "Ciao, sono "+ getNome() +" vengo da " + getCittaResidenza() + " e faccio " + getGeneri().getDesc() + ", dai un'occhiata alla mia musica!";
+        this.videos = videos;
+        this.photos = photos;
+    }
+
+    public Artist(Integer idArtist, String nome, String cognome, String nomeDarte, Integer imgID, String dataNascita, String cittaResidenza, Locations regione, Genres generi, ArrayList<Video> videos) {
         this.idArtist = idArtist;
         this.nome = nome;
         this.cognome = cognome;
@@ -28,8 +63,25 @@ public class Artist implements Serializable {
         this.regioneResidenza = regione;
         this.cittaResidenza = cittaResidenza;
         this.generi = generi;
-        this.shortDesc = shortDesc;
+        this.shortDesc = "Ciao, sono "+ getNome() +" vengo da " + getCittaResidenza() + " e faccio " + getGeneri().getDesc() + ", dai un'occhiata alla mia musica!";
+        this.liked = false;
+        this.videos = videos;
     }
+
+    public Artist(Integer idArtist,String nome, String cognome, String nomeDarte, Integer imgID, String dataNascita, String cittaResidenza, Locations regione,  Genres generi) {
+        this.idArtist = idArtist;
+        this.nome = nome;
+        this.cognome = cognome;
+        this.nomeDarte = nomeDarte;
+        this.imgID = imgID;
+        this.dataNascita = dataNascita;
+        this.regioneResidenza = regione;
+        this.cittaResidenza = cittaResidenza;
+        this.generi = generi;
+        this.shortDesc = "Ciao, sono "+ getNome() +" vengo da " + getCittaResidenza() + " e faccio " + getGeneri().getDesc() +", dai un'occhiata alla mia musica!";
+        this.liked=false;
+    }
+
 
     public Artist(Integer idArtist, String nome, String cognome, String nomeDarte, String shortDesc) {
         this.idArtist = idArtist;
@@ -41,15 +93,10 @@ public class Artist implements Serializable {
         this.setCittaResidenza("");
         this.setGeneri(Genres.NONE);
         this.setShortDesc("");
+        this.setLiked(false);
     }
 
-    public String getShortDesc() {
-        return shortDesc;
-    }
 
-    public void setShortDesc(String shortDesc) {
-        this.shortDesc = shortDesc;
-    }
 
     public Artist(Integer idArtist, String nome, String cognome, String nomeDarte, Integer imageID, String shortDesc) {
         this.idArtist = idArtist;
@@ -61,6 +108,7 @@ public class Artist implements Serializable {
         this.setCittaResidenza("");
         this.setGeneri(Genres.NONE);
         this.setShortDesc("");
+        this.setLiked(false);
     }
 
     public Artist(String nome, String cognome, String nomeDarte, Integer imageID, Locations regioneResidenza) {
@@ -72,6 +120,7 @@ public class Artist implements Serializable {
         this.setDataNascita("");
         this.setCittaResidenza("");
         this.setGeneri(Genres.NONE);
+        this.liked =false;
     }
 
 
@@ -88,6 +137,10 @@ public class Artist implements Serializable {
         this.setRegioneResidenza(Locations.NONE);
         this.setGeneri(Genres.NONE);
         this.setShortDesc("");
+        this.setLiked(false);
+        this.setVideos(new ArrayList<>());
+        this.setPhotos(new ArrayList<>());
+        this.setAudios(new ArrayList<>());
     }
 
     public Integer getIdArtist() {
@@ -160,5 +213,44 @@ public class Artist implements Serializable {
 
     public void setRegioneResidenza(Locations regioneResidenza) {
         this.regioneResidenza = regioneResidenza;
+    }
+   public ArrayList<Video> getVideos() {
+        return videos;
+    }
+
+    public void setVideos(ArrayList<Video> videos) {
+        this.videos = videos;
+    }
+
+    public String getShortDesc() {
+        return shortDesc;
+    }
+
+    public void setShortDesc(String shortDesc) {
+        this.shortDesc = shortDesc;
+    }
+
+    public ArrayList<Photo> getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(ArrayList<Photo> photos) {
+        this.photos = photos;
+    }
+
+    public ArrayList<Audio> getAudios() {
+        return audios;
+    }
+
+    public void setAudios(ArrayList<Audio> audios) {
+        this.audios = audios;
+    }
+
+    public boolean isLiked() {
+        return liked;
+    }
+
+    public void setLiked(boolean liked) {
+        this.liked = liked;
     }
 }
