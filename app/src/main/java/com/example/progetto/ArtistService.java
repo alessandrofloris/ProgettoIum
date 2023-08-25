@@ -113,4 +113,13 @@ public class ArtistService {
 
         return resultArtists;
     }
+    public List<Artist> getPopularArtists() {
+        List<Artist> resultArtists = new ArrayList<>();
+        //Per adesso prendo i primi 6 artisti, poi ci pensiamo
+        for(int i=0; i<=5; i++) {
+            resultArtists.add(getById(i));
+        }
+        return resultArtists;
+    }
+
 }

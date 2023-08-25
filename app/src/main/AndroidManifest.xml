@@ -11,7 +11,8 @@
         android:theme="@style/Theme.Progetto">
         <activity
             android:name=".ArtistProfile"
-            android:exported="false">
+            android:exported="false"
+            android:parentActivityName=".Home">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

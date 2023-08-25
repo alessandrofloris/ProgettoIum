@@ -131,14 +131,14 @@ public class Search extends AppCompatActivity{
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.profile_button:
+                        startActivity(new Intent(getApplicationContext(),Profile.class));
+                        overridePendingTransition(0,0);
                         return true;
                     case R.id.chat_button:
                         startActivity(new Intent(getApplicationContext(),Chat.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.search_button:
-                        startActivity(new Intent(getApplicationContext(),Search.class));
-                        overridePendingTransition(0,0);
                         return true;
 
                 }
@@ -150,6 +150,8 @@ public class Search extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(),Home.class));
+                overridePendingTransition(0, 0);
+
             }
         });
 

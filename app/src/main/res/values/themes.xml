@@ -20,7 +20,7 @@
         <item name="colorPrimaryVariant">@color/white</item>
         <item name="colorOnPrimary">@color/white</item>
         <item name="colorSecondaryVariant">@color/red</item>
-        <item name="colorSecondary">#22282C</item>
+        <item name="colorSecondary">#0099FF</item>
         <item name="colorOnSecondary">@color/white</item>
     </style>
 

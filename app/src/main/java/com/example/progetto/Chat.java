@@ -1,6 +1,7 @@
 package com.example.progetto;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -78,22 +79,14 @@ public class Chat extends AppCompatActivity {
         });
 
         FloatingActionButton home_button = findViewById(R.id.home_button);
-
-        // Initialize and assign variable
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottomNavigationView);
-
-        // Set Home selected
         bottomNavigationView.setSelectedItemId(R.id.chat_button);
-
-        // Perform item selected listener
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
                 switch(item.getItemId())
                 {
-                    case R.id.home_button:
-                        return true;
                     case R.id.favorites_button:
                         startActivity(new Intent(getApplicationContext(),Favorites.class));
                         overridePendingTransition(0,0);
@@ -118,6 +111,7 @@ public class Chat extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(),Home.class));
+                overridePendingTransition(0, 0);
             }
         });
     }

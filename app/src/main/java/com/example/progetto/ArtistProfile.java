@@ -2,6 +2,7 @@ package com.example.progetto;
 
 import androidx.annotation.ColorRes;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -38,6 +39,7 @@ public class ArtistProfile extends AppCompatActivity {
     View previous_activity_button;
     MaterialCardView videoFragment, photoFragment, audioFragment, likeButton;
     Button messageButton;
+    Toolbar toolbar;
 
 
     @Override
@@ -50,8 +52,6 @@ public class ArtistProfile extends AppCompatActivity {
         Serializable obj = intent.getSerializableExtra(Home.ARTIST_EXTRA);
         artist = (Artist) obj;
 
-
-        previous_activity_button = findViewById(R.id.previous_activity_button1);
         profilePic = findViewById(R.id.artist_profile_pic);
         nomeDarte = findViewById(R.id.artist_stage_name);
         nomeArtista =findViewById(R.id.artist_name);
@@ -70,6 +70,7 @@ public class ArtistProfile extends AppCompatActivity {
 
 
         changeLikeButton(artist.isLiked());
+        toolbarConfig();
 
 
         likeButton.setOnClickListener(new View.OnClickListener() {
@@ -118,6 +119,7 @@ public class ArtistProfile extends AppCompatActivity {
         audioFragment = findViewById(R.id.card_audio);
 
         videoFragment.setCardBackgroundColor(Color.parseColor("#C7D0D6"));
+
         videoFragment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -148,17 +150,16 @@ public class ArtistProfile extends AppCompatActivity {
             }
         });
 
-
-
-        previous_activity_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent goBack = new Intent(ArtistProfile.this, Home.class);
-                startActivity(goBack);
-            }
-        });
     }
 
+    private void toolbarConfig() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setTitle("");
+        if(getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+    }
 
 
     private void replaceFragment(Fragment fragment) {

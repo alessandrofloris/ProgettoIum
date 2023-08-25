@@ -101,7 +101,6 @@ public class SelectGenreActivity extends AppCompatActivity {
 
     private void toolbarConfig() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.region_toolbar);
-
         setSupportActionBar(toolbar);
         if(getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);

@@ -9,6 +9,6 @@ public class HomeArtistContent extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_artist_content);
+        setContentView(R.layout.home_content);
     }
 }
