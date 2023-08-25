@@ -23,6 +23,7 @@ public class Favorites extends AppCompatActivity {
     FavoritesAdapter favoritesAdapter;
     List<Artist> likedArtists = new ArrayList<>();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

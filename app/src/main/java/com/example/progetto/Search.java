@@ -115,16 +115,9 @@ public class Search extends AppCompatActivity{
     }
 
     private void bottomNavigationConfig() {
-
         FloatingActionButton home_button = findViewById(R.id.home_button);
-
-        // Initialize and assign variable
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottomNavigationView);
-
-        // Set Search selected
         bottomNavigationView.setSelectedItemId(R.id.search_button);
-
-        // Perform item selected listener
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
