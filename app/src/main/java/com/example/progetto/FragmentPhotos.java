@@ -17,7 +17,7 @@ import android.widget.TextView;
 import android.widget.VideoView;
 
 
-public class FragmentPhotos extends Fragment {
+public class FragmentPhotos extends Fragment implements View.OnClickListener{
 
     View view;
     ImageView imageView;
@@ -31,22 +31,29 @@ public class FragmentPhotos extends Fragment {
         ArtistProfile activity = (ArtistProfile) getActivity();
         Artist artist = activity.getCurrentArtist();
 
-        noVideoFoundMessage = view.findViewById(R.id.error_message);
+       noVideoFoundMessage = view.findViewById(R.id.error_message_photos);
 
         if (artist.getPhotos() != null) {
-            imageView = (ImageView) view.findViewById(R.id.photo_artist);
-            imageView.setImageResource(artist.getPhotos().get(0).getIdPhoto());
+            imageView = (ImageView) view.findViewById(R.id.photo_view);
             noVideoFoundMessage.setVisibility(View.GONE);
+            RecyclerView recyclerView = view.findViewById(R.id.photo_recycleview);
+            recyclerView.setHasFixedSize(true);
+            recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+            recyclerView.setAdapter(new PhotoAdapter(view.getContext(), artist.getPhotos()));
 
-        }
-        else {
-            String message = artist.getNomeDarte() + " non ha ancora caricato nessuna foto";
+        } else {
+            String message = artist.getNomeDarte() + " non ha ancora caricato nessun video";
             noVideoFoundMessage.setText(message);
             noVideoFoundMessage.setVisibility(View.VISIBLE);
+
         }
 
+        return view;
+    }
 
-            return view;
+    @Override
+    public void onClick(View view) {
+
     }
 
 }

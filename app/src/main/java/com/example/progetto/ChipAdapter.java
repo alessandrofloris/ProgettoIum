@@ -71,6 +71,4 @@ public class ChipAdapter extends RecyclerView.Adapter<ChipAdapter.ViewHolder>{
     public int getItemCount() {
         return this.items.size();
     }
-
-
 }

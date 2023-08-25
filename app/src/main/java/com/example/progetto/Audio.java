@@ -3,16 +3,26 @@ package com.example.progetto;
 import java.io.Serializable;
 
 public class Audio implements Serializable {
+    private String songTitle;
     private Integer idAudio;
     private String uploadDate;
     private Integer durationInSec;
     private Integer nLikes;
 
-    public Audio(Integer idAudio, String uploadDate, Integer durationInSec, Integer nLikes) {
+    public Audio(String songTitle, Integer idAudio, String uploadDate, Integer durationInSec, Integer nLikes) {
+        this.songTitle =songTitle;
         this.idAudio = idAudio;
         this.uploadDate = uploadDate;
         this.durationInSec = durationInSec;
         this.nLikes = nLikes;
+    }
+
+    public String getSongTitle() {
+        return songTitle;
+    }
+
+    public void setSongTitle(String songTitle) {
+        this.songTitle = songTitle;
     }
 
     public Integer getIdAudio() {

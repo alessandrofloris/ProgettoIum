@@ -13,15 +13,13 @@ public class VideoHolder extends RecyclerView.ViewHolder {
 
     VideoView videoView;
     TextView date, likes;
-    ImageView playButton;
 
 
     public VideoHolder(@NonNull View itemView) {
         super(itemView);
-        videoView = itemView.findViewById(R.id.video_view);
+        //videoView = itemView.findViewById(R.id.video_view);
         date = itemView.findViewById(R.id.upload_video_date);
         likes = itemView.findViewById(R.id.video_likes_number);
-        //playButton = itemView.findViewById(R.id.play_button);
     }
 
     public VideoView getVideoView(){

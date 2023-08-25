@@ -21,6 +21,7 @@ public class Favorites extends AppCompatActivity {
     ListView favoriteListView;
     List<Artist> artists = ArtistRepository.getInstance().artistList;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

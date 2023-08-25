@@ -63,13 +63,13 @@ public class ArtistService {
         List<Artist> resultArtists = new ArrayList<>();
         for(Artist artist : allArtists) {
             for(Genres genre : genres) {
-                if(artist.getGeneri().getDesc().equals(genre.getDesc())) {
-                    resultArtists.add(artist);
+                for(Genres artistGenre : artist.getGeneri())
+                    if(artistGenre.getDesc().equals(genre.getDesc())) {
+                        resultArtists.add(artist);
                     break;
                 }
             }
         }
-
         return resultArtists;
     }
 
@@ -77,8 +77,9 @@ public class ArtistService {
         List<Artist> resultArtists = new ArrayList<>();
         for(Artist artist : artists) {
             for(Genres genre : genres) {
-                if(artist.getGeneri().getDesc().equals(genre.getDesc())) {
-                    resultArtists.add(artist);
+                for(Genres artistGenre : artist.getGeneri())
+                    if(artistGenre.getDesc().equals(genre.getDesc())) {
+                        resultArtists.add(artist);
                     break;
                 }
             }
