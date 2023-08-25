@@ -2,8 +2,10 @@ package com.example.progetto;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
@@ -12,23 +14,24 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Favorites extends AppCompatActivity {
 
-
-
     ListView favoriteListView;
-    List<Artist> artists = ArtistRepository.getInstance().artistList;
+    FavoritesAdapter favoritesAdapter;
+    List<Artist> likedArtists = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorites);
 
+        likedArtists = ArtistService.getInstance().getLikedArtists();
 
         favoriteListView = (ListView) findViewById(R.id.favoritesList);
-        FavoritesAdapter favoritesAdapter = new FavoritesAdapter(getApplicationContext(), artists);
+        favoritesAdapter = new FavoritesAdapter(this, likedArtists);
         favoriteListView.setAdapter(favoritesAdapter);
 
 
@@ -69,6 +72,7 @@ public class Favorites extends AppCompatActivity {
             }
         });
 
+
         home_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,4 +80,7 @@ public class Favorites extends AppCompatActivity {
             }
         });
     }
+
+
+
 }

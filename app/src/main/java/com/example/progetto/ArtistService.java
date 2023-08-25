@@ -101,4 +101,15 @@ public class ArtistService {
         return resultArtists;
     }
 
+    public List<Artist> getLikedArtists() {
+        List<Artist> allArtists = ArtistRepository.getInstance().getAllArtists();
+        List<Artist> resultArtists = new ArrayList<>();
+        for(Artist artist : allArtists) {
+            if(artist.isLiked()) {
+                resultArtists.add(artist);
+            }
+        }
+
+        return resultArtists;
+    }
 }

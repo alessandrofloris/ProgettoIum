@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Artist implements Serializable {
+
     private Integer idArtist;
     private String nome;
     private String cognome;
