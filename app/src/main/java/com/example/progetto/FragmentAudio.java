@@ -72,7 +72,6 @@ public class FragmentAudio extends Fragment {
         else {
             String message = artist.getNomeDarte() + " non ha ancora caricato nessun audio";
             noVideoFoundMessage.setText(message);
-            noVideoFoundMessage.setVisibility(View.VISIBLE);
         }
 
         return view;
