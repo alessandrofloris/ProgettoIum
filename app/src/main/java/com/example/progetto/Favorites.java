@@ -17,6 +17,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import org.w3c.dom.Text;
+
 import java.time.temporal.Temporal;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +37,10 @@ public class Favorites extends AppCompatActivity {
         setContentView(R.layout.activity_favorites);
 
         likedArtists = ArtistService.getInstance().getLikedArtists();
+
+        TextView nLikedArtists = findViewById(R.id.number_liked_artist);
+        String messageNumberLikedArtists = "Artisti piaciuti: "+likedArtists.size();
+        nLikedArtists.setText(messageNumberLikedArtists);
 
         if(likedArtists.size()>0) {
             TextView errorMessage = findViewById(R.id.nochatyet_message);

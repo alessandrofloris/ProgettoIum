@@ -22,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.io.Serializable;
 import java.sql.Array;
@@ -36,10 +37,8 @@ public class ArtistProfile extends AppCompatActivity {
     Artist artist;
     ImageView profilePic, heartShape;
     TextView nomeDarte, nomeArtista, cognomeArtista, bio, likeText;
-    View previous_activity_button;
     MaterialCardView videoFragment, photoFragment, audioFragment, likeButton;
     Button messageButton;
-    Toolbar toolbar;
 
 
     @Override
@@ -61,6 +60,7 @@ public class ArtistProfile extends AppCompatActivity {
         heartShape = findViewById(R.id.heart);
         likeText = findViewById(R.id.like_button);
         messageButton = findViewById(R.id.message_button);
+        ImageView shareButton = findViewById(R.id.share);
 
         nomeDarte.setText(artist.getNomeDarte());
         profilePic.setImageResource(artist.getImgID());
@@ -73,15 +73,27 @@ public class ArtistProfile extends AppCompatActivity {
         toolbarConfig();
 
 
+
+        shareButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Funzionalità non implementata.", Snackbar.LENGTH_SHORT).show();
+            }
+        });
+
+
         likeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Integer artistIndex = (Integer) artist.getIdArtist();
                 if(artist.isLiked()) {
+                    Snackbar.make(view, "Hai rimosso " +artist.getNomeDarte()+" dai tuoi artisti preferiti", Snackbar.LENGTH_SHORT).show();
                     ArtistService.getInstance().getAllArtist().get(artistIndex).setLiked(false);
                     artist.setLiked(false);
                 }
                 else{
+                    Snackbar.make(view, "Hai aggiunto " +artist.getNomeDarte()+" ai tuoi artisti preferiti", Snackbar.LENGTH_SHORT).show();
                     ArtistService.getInstance().getAllArtist().get(artistIndex).setLiked(true);
                     artist.setLiked(true);
                 }
@@ -151,6 +163,7 @@ public class ArtistProfile extends AppCompatActivity {
         });
 
     }
+
 
     private void toolbarConfig() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

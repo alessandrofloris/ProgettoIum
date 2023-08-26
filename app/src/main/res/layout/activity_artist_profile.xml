@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ArtistProfile">
+    tools:context=".ArtistProfile"
+    android:id="@+id/id_artist_profile_activity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"

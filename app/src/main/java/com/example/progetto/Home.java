@@ -3,6 +3,7 @@ package com.example.progetto;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
+import android.view.Menu;
 import android.view.MenuItem;
 import com.google.android.flexbox.FlexDirection;
 import com.google.android.flexbox.FlexboxLayoutManager;
@@ -19,7 +21,14 @@ import com.google.android.flexbox.JustifyContent;
 import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
+
 import android.view.View;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 public class Home extends AppCompatActivity implements View.OnClickListener {
@@ -34,6 +43,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
 
         toolbarConfig();
 
+        sideMenuConfig();
+
         //recyclerView list of popular artists
         ArrayList<Artist> popularArtists = (ArrayList<Artist>) ArtistService.getInstance().getPopularArtists();
         recycleViewPopularArtistConfig(popularArtists);
@@ -47,6 +58,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
         recyclerViewNearToYouArtists(neartoyouArstists);
 
         bottomMenuConfig();
+
     }
 
 
@@ -118,6 +130,30 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
         startActivity(artistProfile);
     }
 
+    public void sideMenuConfig() {
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.nav_profile:
+                        startActivity(new Intent(getApplicationContext(), Profile.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.nav_settings:
+                        Snackbar.make(navigationView, "Funzionalità non implementata.", Snackbar.LENGTH_SHORT).show();
+                        return true;
+                    case R.id.nav_aboutus:
+                        Snackbar.make(navigationView, "Funzionalità non implementata.", Snackbar.LENGTH_SHORT).show();
+                        return true;
+                    case R.id.nav_exit:
+                        Snackbar.make(navigationView, "Funzionalità non implementata.", Snackbar.LENGTH_SHORT).show();
+                        return true;
+                }
+            return false;
+            }
+        });
+    }
 
     public void bottomMenuConfig() {
         FloatingActionButton home_button = findViewById(R.id.home_button);
