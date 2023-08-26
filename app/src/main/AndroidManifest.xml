@@ -33,6 +33,7 @@
                 android:value="" />
         </activity>
         <activity
+            android:windowSoftInputMode="adjustResize"
             android:name=".PrivateChat"
             android:exported="false">
             <meta-data

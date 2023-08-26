@@ -58,8 +58,10 @@
        </LinearLayout>
 
        <LinearLayout
+           android:id="@+id/spacer"
            android:layout_width="match_parent"
            android:layout_height="0.7dp"
+           android:orientation="horizontal"
            android:background="@color/grey"
            app:layout_constraintTop_toBottomOf="@+id/topLinearLayout"/>
 
@@ -70,12 +72,10 @@
     <LinearLayout
         android:id="@+id/MiddleLinearLayout"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@id/BottomLinearLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topLinearLayout"
-        app:layout_constraintVertical_bias="0.496">
+        app:layout_constraintTop_toBottomOf="@+id/spacer">
 
         <LinearLayout
             android:id="@+id/right_chat_layout"
@@ -92,7 +92,8 @@
                 android:id="@+id/right_chat_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
+                android:text="Messaggio di prova 1"
+                android:layout_alignParentEnd="true"
                 android:textColor="@color/white"
                 android:textSize="15dp" />
 
