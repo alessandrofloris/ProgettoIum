@@ -8,9 +8,11 @@
     android:theme="@style/Theme.BottomAppBar">
 
 
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:id="@+id/Icon_layout"
@@ -73,6 +75,17 @@
                     android:textSize="13dp"
                     android:text="des desc desc desc desc desc desc desc"/>
 
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="13dp"
+                    android:text="Regioni di preferenza"/>
+
             </LinearLayout>
 
 
@@ -81,15 +94,21 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@id/Icon_layout"/>
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/Icon_layout">
 
-           <ListView
-               android:layout_width="match_parent"
-               android:layout_height="match_parent">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/producer_genres_recyclerview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp" />
+        </LinearLayout>
 
-           </ListView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <include layout="@layout/bottom_nav_bar"
         android:id="@+id/bottom_menu"/>
