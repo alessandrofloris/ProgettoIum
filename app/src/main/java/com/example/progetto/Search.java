@@ -12,6 +12,8 @@ import androidx.appcompat.widget.SearchView;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -118,14 +120,14 @@ public class Search extends AppCompatActivity{
         FloatingActionButton home_button = findViewById(R.id.home_button);
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.search_button);
+        bottomNavigationView.setItemIconTintList(null);
+        home_button.setBackgroundTintList(colorHomeConfig());
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
                 switch(item.getItemId())
                 {
-                    case R.id.home_button:
-                        return true;
                     case R.id.favorites_button:
                         startActivity(new Intent(getApplicationContext(),Favorites.class));
                         overridePendingTransition(0,0);
@@ -140,7 +142,6 @@ public class Search extends AppCompatActivity{
                         return true;
                     case R.id.search_button:
                         return true;
-
                 }
                 return false;
             }
@@ -282,6 +283,15 @@ public class Search extends AppCompatActivity{
 
     private Boolean noResultsFound() {
         return this.artists.isEmpty();
+    }
+
+    public ColorStateList colorHomeConfig() {
+        ColorStateListBuilder builder = new ColorStateListBuilder();
+        builder.addState(new int[]{android.R.attr.state_pressed}, Color.parseColor("#2196F3"));
+        builder.addState(new int[]{android.R.attr.state_selected}, Color.WHITE);
+        builder.addState(new int[]{}, Color.BLACK);
+        ColorStateList stateList = builder.build();
+        return stateList;
     }
 
 }

@@ -20,7 +20,9 @@
             android:layout_marginTop="20dp"
             android:layout_marginStart="10dp"
             android:text="Cerca artisti"
-            android:textSize="28sp" />
+            android:textSize="28sp"
+            android:textStyle="bold"
+            />
 
         <Space
             android:layout_width="wrap_content"

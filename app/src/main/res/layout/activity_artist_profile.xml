@@ -12,7 +12,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        app:title="Genere"
+        app:title=" "
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
@@ -101,23 +101,19 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-
-            />
+            android:layout_marginEnd="10dp" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-
         android:gravity="center">
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/like_button_card"
             android:layout_width="100dp"
             android:layout_height="35dp"
-            app:cardCornerRadius="10dp"
-            >
+            app:cardCornerRadius="10dp">
             <RelativeLayout
                 android:layout_width="100dp"
                 android:layout_height="35dp"
@@ -159,32 +155,31 @@
             android:backgroundTint="#3C3C3C"/>
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:orientation="horizontal">
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_video"
             android:layout_width="wrap_content"
             android:layout_height="45dp"
             android:layout_marginTop="10dp"
-            app:cardElevation="15dp"
             android:clickable="true"
             android:focusable="true"
-            >
+            app:cardElevation="15dp">
 
-        <TextView
-            android:id="@+id/text_video"
-            android:layout_width="136dp"
-            android:layout_height="45dp"
-            android:text="VIDEO"
-            android:textStyle="bold"
-            android:textAlignment="center"
-            android:gravity="center"
-            android:textColor="@color/black"
-            />
+            <TextView
+                android:id="@+id/text_video"
+                android:layout_width="136dp"
+                android:layout_height="45dp"
+                android:gravity="center"
+                android:text="VIDEO"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
@@ -192,18 +187,17 @@
             android:layout_width="wrap_content"
             android:layout_height="45dp"
             android:layout_marginTop="10dp"
-            app:cardElevation="15dp"
-            >
+            app:cardElevation="15dp">
+
             <TextView
                 android:id="@+id/text_photo"
                 android:layout_width="136dp"
                 android:layout_height="45dp"
-                android:text="PHOTO"
-                android:textStyle="bold"
-                android:textAlignment="center"
                 android:gravity="center"
+                android:text="PHOTO"
+                android:textAlignment="center"
                 android:textColor="@color/black"
-                />
+                android:textStyle="bold" />
         </com.google.android.material.card.MaterialCardView>
 
 
@@ -212,24 +206,23 @@
             android:layout_width="wrap_content"
             android:layout_height="45dp"
             android:layout_marginTop="10dp"
-            app:cardElevation="15dp"
-            >
-        <TextView
-            android:id="@+id/text_audio"
-            android:layout_width="136dp"
-            android:layout_height="45dp"
-            android:text="AUDIO"
-            android:textStyle="bold"
-            android:textAlignment="center"
-            android:gravity="center"
-            android:textColor="@color/black"
-            />
+            app:cardElevation="15dp">
+
+            <TextView
+                android:id="@+id/text_audio"
+                android:layout_width="136dp"
+                android:layout_height="45dp"
+                android:gravity="center"
+                android:text="AUDIO"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
         </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>
     <FrameLayout
         android:id="@+id/frame_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+        android:layout_height="match_parent"/>
+
 </LinearLayout>

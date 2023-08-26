@@ -44,23 +44,7 @@ public class FragmentVideos extends Fragment implements View.OnClickListener{
             noVideoFoundMessage.setVisibility(View.VISIBLE);
 
         }
-/*
-        if (artist.getVideos() != null) {
-            Uri videoURI = Uri.parse(artist.getVideos().get(0).getvPath());
-            videoView.setVideoURI(videoURI);
 
-            videoView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (videoView.isPlaying()) {
-                        videoView.pause();
-                    } else {
-                        videoView.start();
-                    }
-                }
-            });
-        }
-*/
         return view;
     }
 

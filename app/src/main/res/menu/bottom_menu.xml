@@ -5,26 +5,27 @@
     <item
         android:id="@+id/profile_button"
         android:title="Profile"
-        android:icon="@drawable/ic_baseline_person_24" />
+        android:icon="@drawable/icon_selector_person" />
 
     <item
         android:id="@+id/favorites_button"
         android:title="Favorites"
-        android:icon="@drawable/ic_baseline_favorite_24" />
+        android:icon="@drawable/icon_selector_favorites"
+        />
 
     <item
         android:id="@+id/empty"
+        android:checkable="false"
         android:title="" />
-
     <item
         android:id="@+id/chat_button"
         android:title="Chat"
-        android:icon="@drawable/ic_baseline_chat_24" />
+        android:icon="@drawable/icon_selector_chat"/>
 
     <item
         android:id="@+id/search_button"
         android:title="Search"
-        android:icon="@drawable/ic_baseline_search_24"/>
+        android:icon="@drawable/icon_selector_search"/>
 
 
 </menu>

@@ -17,7 +17,7 @@ public class VideoHolder extends RecyclerView.ViewHolder {
 
     public VideoHolder(@NonNull View itemView) {
         super(itemView);
-        //videoView = itemView.findViewById(R.id.video_view);
+        videoView = itemView.findViewById(R.id.video_view);
         date = itemView.findViewById(R.id.upload_video_date);
         likes = itemView.findViewById(R.id.video_likes_number);
     }

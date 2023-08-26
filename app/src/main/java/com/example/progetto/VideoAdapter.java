@@ -25,13 +25,13 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoHolder> {
     @NonNull
     @Override
     public VideoHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new VideoHolder(LayoutInflater.from(context).inflate(R.layout.video_list_view,parent,false));
+        return new VideoHolder(LayoutInflater.from(context).inflate(R.layout.video_list_view, parent,false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull VideoHolder holder, int position) {
-        //Uri videoURI = Uri.parse(videos.get(position).getvPath());
-        //holder.getVideoView().setVideoURI(videoURI);
+        Uri videoURI = Uri.parse(videos.get(position).getvPath());
+        holder.getVideoView().setVideoURI(videoURI);
         holder.getVideoLikes().setText(String.valueOf(videos.get(position).getnLikes()));
         holder.getVideoDate().setText(videos.get(position).getUploadDate());
     }
@@ -40,7 +40,6 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoHolder> {
     public int getItemCount() {
         return videos.size();
     }
-
 
 }
 

@@ -2,6 +2,8 @@ package com.example.progetto;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -14,6 +16,7 @@ import android.view.MenuItem;
 import com.google.android.flexbox.FlexDirection;
 import com.google.android.flexbox.FlexboxLayoutManager;
 import com.google.android.flexbox.JustifyContent;
+import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import android.view.View;
@@ -119,8 +122,11 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
     public void bottomMenuConfig() {
         FloatingActionButton home_button = findViewById(R.id.home_button);
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        bottomNavigationView.setSelectedItemId(R.id.home_button);
+        bottomNavigationView.setSelectedItemId(R.id.empty);
+        bottomNavigationView.setItemIconTintList(null);
+        home_button.setBackgroundTintList(colorHomeConfig());
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
@@ -131,10 +137,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
                         return true;
                     case R.id.chat_button:
                         startActivity(new Intent(getApplicationContext(), Chat.class));
-                        overridePendingTransition(0, 0);
-                        return true;
-                    case R.id.home_button:
-                        startActivity(new Intent(getApplicationContext(), Home.class));
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.profile_button:
@@ -149,9 +151,16 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
                 return false;
             }
         });
-
     }
 
+    public ColorStateList colorHomeConfig() {
+        ColorStateListBuilder builder = new ColorStateListBuilder();
+        builder.addState(new int[] { android.R.attr.state_pressed }, Color.parseColor("#2196F3"));
+        builder.addState(new int[] { android.R.attr.state_selected }, Color.WHITE);
+        builder.addState(new int[] {}, Color.parseColor("#2196F3"));
+        ColorStateList stateList = builder.build();
+        return stateList;
+    }
 
     @Override
     public void onClick(View view) {}

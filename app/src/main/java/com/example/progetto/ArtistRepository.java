@@ -13,9 +13,9 @@ public class ArtistRepository {
         artistList = new ArrayList<>();
 
         ArrayList<Video> videoList = new ArrayList<>();
-        videoList.add(new Video(R.raw.rinfiggivideo2, "12/09/2023", 270, "android.resource://"+ ArtistProfile.class.getPackageName() +"/raw/rinfiggivideo2"));
+        videoList.add(new Video(R.raw.rinfiggivideo1, "12/09/2023", 270, "android.resource://"+ ArtistProfile.class.getPackageName() +"/raw/rinfiggivideo1"));
         videoList.add(new Video(R.raw.rinfiggivideo1, "20/05/2023", 550, "android.resource://"+ ArtistProfile.class.getPackageName() +"/raw/rinfiggivideo1"));
-        videoList.add(new Video(R.raw.rinfiggivideo2, "06/12/2022", 390, "android.resource://"+ ArtistProfile.class.getPackageName() +"/raw/rinfiggivideo2"));
+        videoList.add(new Video(R.raw.rinfiggivideo1, "06/12/2022", 390, "android.resource://"+ ArtistProfile.class.getPackageName() +"/raw/rinfiggivideo1"));
 
         ArrayList<Photo> rinfiggiPhotoList = new ArrayList<>();
         rinfiggiPhotoList.add(new Photo(R.drawable.rinfiggiphoto3, "20/03/2023", 560));

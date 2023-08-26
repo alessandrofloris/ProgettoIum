@@ -1,6 +1,7 @@
 package com.example.progetto;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -78,9 +79,13 @@ public class Chat extends AppCompatActivity {
             }
         });
 
+
+
         FloatingActionButton home_button = findViewById(R.id.home_button);
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.chat_button);
+        bottomNavigationView.setItemIconTintList(null);
+        home_button.setBackgroundTintList(colorHomeConfig());
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -107,6 +112,8 @@ public class Chat extends AppCompatActivity {
             }
         });
 
+
+
         home_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -114,5 +121,15 @@ public class Chat extends AppCompatActivity {
                 overridePendingTransition(0, 0);
             }
         });
+    }
+
+
+    public ColorStateList colorHomeConfig() {
+        ColorStateListBuilder builder = new ColorStateListBuilder();
+        builder.addState(new int[] { android.R.attr.state_pressed }, Color.parseColor("#2196F3"));
+        builder.addState(new int[] { android.R.attr.state_selected }, Color.WHITE);
+        builder.addState(new int[] {}, Color.BLACK);
+        ColorStateList stateList = builder.build();
+        return stateList;
     }
 }
