@@ -204,6 +204,7 @@ public class Search extends AppCompatActivity{
 
     private void updateFilters() {
 
+        filters_chip_group_view.removeAllViews();
         Chip chip;
         for(Locations location : this.selectedLocations) {
             chip = new Chip(this);
@@ -222,6 +223,7 @@ public class Search extends AppCompatActivity{
                         }
                     }
                     selectedLocations = newSelectedLocations;
+                    updateSearch();
                 }
             });
             filters_chip_group_view.addView(chip);
