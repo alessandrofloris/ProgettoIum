@@ -38,7 +38,12 @@ public class FragmentPhotos extends Fragment implements View.OnClickListener{
             RecyclerView recyclerView = view.findViewById(R.id.photo_recycleview);
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-            recyclerView.setAdapter(new PhotoAdapter(view.getContext(), artist.getPhotos()));
+            recyclerView.setAdapter(new PhotoAdapter(view.getContext(), artist.getPhotos(), new PhotoAdapter.OnPhotoClickListener() {
+                @Override
+                public void onPhotoClick(PhotoHolder photoHolder) {
+
+                }
+            }));
 
         } else {
             String message = artist.getNomeDarte() + " non ha ancora caricato nessun video";

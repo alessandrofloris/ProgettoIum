@@ -66,8 +66,8 @@
                 android:textAllCaps="false"
                 android:textColor="@color/azzurrinoboh"
                 app:cornerRadius="50dp"
-                app:rippleColor="@color/teal_200"
-                app:iconTint="@color/teal_700"
+                app:rippleColor="@color/azzurrinoboh"
+                app:iconTint="@color/azzurrinoboh"
                 app:iconGravity="end"
                 app:icon="@drawable/icon_downarrow"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>

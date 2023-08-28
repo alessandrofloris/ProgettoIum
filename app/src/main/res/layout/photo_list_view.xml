@@ -55,6 +55,7 @@
 
                 <ImageView
                     android:id="@+id/heart_shape"
+                    android:layout_marginLeft="10dp"
                     android:layout_width="18dp"
                     android:layout_height="18dp"
                     android:layout_alignParentEnd="true"

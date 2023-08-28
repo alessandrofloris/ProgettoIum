@@ -17,10 +17,7 @@ import android.widget.VideoView;
 public class FragmentVideos extends Fragment implements View.OnClickListener{
 
     View view;
-    VideoView videoView;
     TextView noVideoFoundMessage;
-    ImageView playButton;
-    TextView opacityLayer;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -31,12 +28,16 @@ public class FragmentVideos extends Fragment implements View.OnClickListener{
         noVideoFoundMessage = view.findViewById(R.id.error_message_video);
 
         if (artist.getVideos() != null) {
-            //videoView = (VideoView) view.findViewById(R.id.video_view);
             noVideoFoundMessage.setVisibility(View.GONE);
             RecyclerView recyclerView = view.findViewById(R.id.video_recycleview);
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-            recyclerView.setAdapter(new VideoAdapter(view.getContext(), artist.getVideos()));
+            recyclerView.setAdapter(new VideoAdapter(view.getContext(), artist.getVideos(), new VideoAdapter.OnVideoClickListener() {
+                @Override
+                public void onVideoClick(VideoHolder videoHolder) {
+
+                }
+            }));
 
         } else {
             String message = artist.getNomeDarte() + " non ha ancora caricato nessun video";

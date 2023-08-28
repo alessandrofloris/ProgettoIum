@@ -14,12 +14,19 @@ import java.util.List;
 
 public class VideoAdapter extends RecyclerView.Adapter<VideoHolder> {
 
+    public interface OnVideoClickListener {
+        void onVideoClick(VideoHolder videoHolder);
+    }
+
+    public final OnVideoClickListener listener;
+
     Context context;
     List<Video> videos;
 
-    public VideoAdapter(Context context, List<Video> videos) {
+    public VideoAdapter(Context context, List<Video> videos, OnVideoClickListener listener) {
         this.context = context;
         this.videos = videos;
+        this.listener = listener;
     }
 
     @NonNull
@@ -34,6 +41,46 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoHolder> {
         holder.getVideoView().setVideoURI(videoURI);
         holder.getVideoLikes().setText(String.valueOf(videos.get(position).getnLikes()));
         holder.getVideoDate().setText(videos.get(position).getUploadDate());
+
+        holder.getPlayButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!holder.getVideoView().isPlaying()) {
+                    holder.getVideoView().start();
+                    holder.getPlayButton().setVisibility(View.GONE);
+                }
+            }
+        });
+
+        holder.getVideoView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(holder.getVideoView().isPlaying()) {
+                    holder.getVideoView().pause();
+                    holder.getPlayButton().setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        holder.getHeartButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!holder.isLiked) {
+                    holder.isLiked = true;
+                    holder.getHeartButton().setImageResource(R.drawable.like_heart);
+                    Integer newNumber =videos.get(holder.getAdapterPosition()).getnLikes()+1;
+                    holder.getVideoLikes().setText(String.valueOf(newNumber));
+
+                }
+                else {
+                    holder.isLiked = false;
+                    holder.getHeartButton().setImageResource(R.drawable.heart_nolike);
+                    Integer newNumber =videos.get(holder.getAdapterPosition()).getnLikes();
+                    holder.getVideoLikes().setText(String.valueOf(newNumber));
+                }
+            }
+        });
+
     }
 
     @Override
