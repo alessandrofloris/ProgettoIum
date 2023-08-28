@@ -82,6 +82,7 @@ public class ArtistProfile extends AppCompatActivity {
         });
 
 
+
         likeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

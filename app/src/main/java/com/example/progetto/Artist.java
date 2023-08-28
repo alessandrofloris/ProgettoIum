@@ -1,5 +1,7 @@
 package com.example.progetto;
 
+import android.widget.TextView;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
