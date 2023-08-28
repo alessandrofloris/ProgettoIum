@@ -257,6 +257,7 @@ public class Search extends AppCompatActivity{
 
     private void updateSearch() {
 
+        nickname = nickname.trim();
         artists.clear();
         List<Artist> artists_ = new ArrayList<>();
 
