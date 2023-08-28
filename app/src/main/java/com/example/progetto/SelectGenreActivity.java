@@ -9,8 +9,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -43,6 +45,21 @@ public class SelectGenreActivity extends AppCompatActivity {
 
     }
 
+    private void handleAlreadySelectedGenres() {
+        try {
+            ArrayList<Genres> genres = (ArrayList<Genres>) getIntent().getSerializableExtra("selected_genres_search");
+            Chip c;
+            for(Genres genre : genres) {
+                c = genres_list_recyclerview.findViewWithTag(genre);
+                c.setChecked(true);
+                chips_checked.put((Genres) c.getTag(), true);
+                chips_checked_counter = chips_checked_counter + 1;
+            }
+        } catch(Exception e) {
+            Log.d("RecyclerView Chip Err", e.getMessage());
+        }
+    }
+
     private void applyButtonConfig() {
         apply_button = findViewById(R.id.apply_changes);
         apply_button.setOnClickListener(new View.OnClickListener() {
@@ -69,7 +86,16 @@ public class SelectGenreActivity extends AppCompatActivity {
         this.chips_checked = new HashMap<>();
 
         genres_list_recyclerview = findViewById(R.id.genres_recyclerview);
+        genres_list_recyclerview.getViewTreeObserver()
+                .addOnGlobalLayoutListener(
+                        new ViewTreeObserver.OnGlobalLayoutListener() {
+                            @Override
+                            public void onGlobalLayout() {
+                                handleAlreadySelectedGenres();
+                                genres_list_recyclerview.getViewTreeObserver().removeOnGlobalLayoutListener(this);
 
+                            }
+                        });
         ArrayList<String> genres = new ArrayList<>();
         ArrayList<FiltersInterface> genres_id = new ArrayList<>();
 

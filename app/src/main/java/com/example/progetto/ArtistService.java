@@ -1,5 +1,7 @@
 package com.example.progetto;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -61,12 +63,17 @@ public class ArtistService {
     public List<Artist> searchArtistsByGenres(List<Genres> genres) {
         List<Artist> allArtists = ArtistRepository.getInstance().getAllArtists();
         List<Artist> resultArtists = new ArrayList<>();
+        Boolean added = false;
         for(Artist artist : allArtists) {
+            added = false;
             for(Genres genre : genres) {
-                for(Genres artistGenre : artist.getGeneri())
+                if(added) break;
+                for(Genres artistGenre : artist.getGeneri()) {
                     if(artistGenre.getDesc().equals(genre.getDesc())) {
                         resultArtists.add(artist);
-                    break;
+                        added = true;
+                        break;
+                    }
                 }
             }
         }
@@ -75,12 +82,18 @@ public class ArtistService {
 
     public List<Artist> filterByGenres(List<Artist> artists, List<Genres> genres) {
         List<Artist> resultArtists = new ArrayList<>();
+        Boolean added = false;
         for(Artist artist : artists) {
-            for(Genres genre : genres) {
-                for(Genres artistGenre : artist.getGeneri())
+            added = false;
+            for(Genres artistGenre : artist.getGeneri()) {
+                if(added) break;
+                for(Genres genre : genres) {
                     if(artistGenre.getDesc().equals(genre.getDesc())) {
                         resultArtists.add(artist);
-                    break;
+                        added = true;
+                        Log.d("GENRE FILTER", artist.getNomeDarte());
+                        break;
+                    }
                 }
             }
         }

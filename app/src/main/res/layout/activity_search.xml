@@ -108,15 +108,19 @@
 
             </TextView>
 
-            <com.google.android.material.chip.ChipGroup
-                android:id="@+id/filters_chip_group"
+            <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager">
+                android:scrollbars="none">
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/filters_chip_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    >
 
-            </com.google.android.material.chip.ChipGroup>
-
+                </com.google.android.material.chip.ChipGroup>
+        </HorizontalScrollView>
 
         </LinearLayout>
 

@@ -88,6 +88,7 @@ public class Search extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Search.this, SelectGenreActivity.class);
+                intent.putExtra("selected_genres_search", (Serializable) Search.this.selectedGenres);
                 startActivityIntentGenre.launch(intent);
             }
         });
@@ -195,6 +196,7 @@ public class Search extends AppCompatActivity{
                     try{
                         selectedGenres = (ArrayList<Genres>)intent.getSerializableExtra("selected_genres");
                         updateSearch();
+                        updateFilters();
                     } catch (Exception e) {
                         Log.d("Get Extra From Intent", e.toString());
                     }
@@ -206,6 +208,28 @@ public class Search extends AppCompatActivity{
 
         filters_chip_group_view.removeAllViews();
         Chip chip;
+        for(Genres genre : this.selectedGenres) {
+            chip = new Chip(this);
+            chip.setId(ViewCompat.generateViewId());
+            chip.setText(genre.getDesc());
+            chip.setCloseIconVisible(true);
+            chip.setOnCloseIconClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Chip chip = (Chip) view;
+                    filters_chip_group_view.removeView(chip);
+                    ArrayList<Genres> newSelectedGenres = new ArrayList<>();
+                    for(Genres genre : selectedGenres) {
+                        if(!genre.getDesc().equals(chip.getText())) {
+                            newSelectedGenres.add(genre);
+                        }
+                    }
+                    selectedGenres = newSelectedGenres;
+                    updateSearch();
+                }
+            });
+            filters_chip_group_view.addView(chip);
+        }
         for(Locations location : this.selectedLocations) {
             chip = new Chip(this);
             chip.setId(ViewCompat.generateViewId());
