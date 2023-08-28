@@ -63,13 +63,13 @@ public class ArtistService {
         List<Artist> resultArtists = new ArrayList<>();
         for(Artist artist : allArtists) {
             for(Genres genre : genres) {
-                if(artist.getGeneri().getDesc().equals(genre.getDesc())) {
-                    resultArtists.add(artist);
+                for(Genres artistGenre : artist.getGeneri())
+                    if(artistGenre.getDesc().equals(genre.getDesc())) {
+                        resultArtists.add(artist);
                     break;
                 }
             }
         }
-
         return resultArtists;
     }
 
@@ -77,8 +77,9 @@ public class ArtistService {
         List<Artist> resultArtists = new ArrayList<>();
         for(Artist artist : artists) {
             for(Genres genre : genres) {
-                if(artist.getGeneri().getDesc().equals(genre.getDesc())) {
-                    resultArtists.add(artist);
+                for(Genres artistGenre : artist.getGeneri())
+                    if(artistGenre.getDesc().equals(genre.getDesc())) {
+                        resultArtists.add(artist);
                     break;
                 }
             }
@@ -98,6 +99,26 @@ public class ArtistService {
             }
         }
 
+        return resultArtists;
+    }
+
+    public List<Artist> getLikedArtists() {
+        List<Artist> allArtists = ArtistRepository.getInstance().getAllArtists();
+        List<Artist> resultArtists = new ArrayList<>();
+        for(Artist artist : allArtists) {
+            if(artist.isLiked()) {
+                resultArtists.add(artist);
+            }
+        }
+
+        return resultArtists;
+    }
+    public List<Artist> getPopularArtists() {
+        List<Artist> resultArtists = new ArrayList<>();
+        //Per adesso prendo i primi 6 artisti, poi ci pensiamo
+        for(int i=0; i<=5; i++) {
+            resultArtists.add(getById(i));
+        }
         return resultArtists;
     }
 

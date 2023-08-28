@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="300dp"
+        android:layout_height="180dp"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="5dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/card_video">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <VideoView
+                android:id="@+id/video_view"
+                android:layout_width="250dp"
+                android:layout_height="130dp"
+                android:layout_alignParentTop="false"
+                android:layout_centerInParent="false"
+                android:layout_gravity="center"
+                android:layout_margin="10dp" />
+
+            <RelativeLayout
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp">
+                <TextView
+                    android:id="@+id/upload_video_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:text="dataaa"
+                    android:textSize="13dp" />
+                <TextView
+                    android:id="@+id/video_likes_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="100"
+                    android:textSize="13dp"
+                    android:layout_toLeftOf="@+id/heart_shape"/>
+                <ImageView
+                    android:layout_alignParentEnd="true"
+                    android:id="@+id/heart_shape"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:src="@drawable/heart_nolike"
+                    android:layout_centerVertical="true"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

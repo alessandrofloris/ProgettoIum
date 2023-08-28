@@ -11,7 +11,8 @@
         android:theme="@style/Theme.Progetto">
         <activity
             android:name=".ArtistProfile"
-            android:exported="false">
+            android:exported="false"
+            android:parentActivityName=".Home">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -32,6 +33,7 @@
                 android:value="" />
         </activity>
         <activity
+            android:windowSoftInputMode="adjustResize"
             android:name=".PrivateChat"
             android:exported="false">
             <meta-data

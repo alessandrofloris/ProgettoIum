@@ -2,103 +2,167 @@ package com.example.progetto;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
-import androidx.cardview.widget.CardView;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
+import android.view.Menu;
 import android.view.MenuItem;
+import com.google.android.flexbox.FlexDirection;
+import com.google.android.flexbox.FlexboxLayoutManager;
+import com.google.android.flexbox.JustifyContent;
+import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
+
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
 
 public class Home extends AppCompatActivity implements View.OnClickListener {
 
     public static final String ARTIST_EXTRA ="com.example.progetto.Artist";
     ActionBarDrawerToggle actionBarDrawerToggle;
-    DrawerLayout drawerLayout;
-    NavigationView navigationView;
-    Toolbar toolbar;
-    Integer numArtists = 12;
-    Artist clickedArtist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        // Gestione del menù laterale
-        toolbar = findViewById(R.id.toolbar);
-        drawerLayout = findViewById(R.id.drawer_layout);
-        navigationView = findViewById(R.id.nav_view);
+        toolbarConfig();
 
-        TextView[] textViews = new TextView[numArtists];
-        textViews[0] =(TextView) findViewById(R.id.artista0);
-        textViews[1] =(TextView) findViewById(R.id.artista1);
-        textViews[2] =(TextView) findViewById(R.id.artista2);
-        textViews[3] =(TextView) findViewById(R.id.artista3);
-        textViews[4] =(TextView) findViewById(R.id.artista4);
-        textViews[5] =(TextView) findViewById(R.id.artista5);
-        textViews[6] =(TextView) findViewById(R.id.artista6);
-        textViews[7] =(TextView) findViewById(R.id.artista7);
-        textViews[8] =(TextView) findViewById(R.id.artista8);
-        textViews[9] =(TextView) findViewById(R.id.artista9);
-        textViews[10] =(TextView) findViewById(R.id.artista10);
-        textViews[11] =(TextView) findViewById(R.id.artista11);
+        sideMenuConfig();
 
-        ImageView[] imageViews = new ImageView[numArtists];
-        imageViews[0] = (ImageView) findViewById(R.id.imageView0);
-        imageViews[1] = (ImageView) findViewById(R.id.imageView1);
-        imageViews[2] = (ImageView) findViewById(R.id.imageView2);
-        imageViews[3] = (ImageView) findViewById(R.id.imageView3);
-        imageViews[4] = (ImageView) findViewById(R.id.imageView4);
-        imageViews[5] = (ImageView) findViewById(R.id.imageView5);
-        imageViews[6] = (ImageView) findViewById(R.id.imageView6);
-        imageViews[7] = (ImageView) findViewById(R.id.imageView7);
-        imageViews[8] = (ImageView) findViewById(R.id.imageView8);
-        imageViews[9] = (ImageView) findViewById(R.id.imageView9);
-        imageViews[10] = (ImageView) findViewById(R.id.imageView10);
-        imageViews[11] = (ImageView) findViewById(R.id.imageView11);
+        //recyclerView list of popular artists
+        ArrayList<Artist> popularArtists = (ArrayList<Artist>) ArtistService.getInstance().getPopularArtists();
+        recycleViewPopularArtistConfig(popularArtists);
 
-        CardView[] cardViews = new CardView[numArtists];
-        cardViews[0] = findViewById(R.id.card_artist_0);
-        cardViews[1] = findViewById(R.id.card_artist_1);
-        cardViews[2] = findViewById(R.id.card_artist_2);
-        cardViews[3] = findViewById(R.id.card_artist_3);
-        cardViews[4] = findViewById(R.id.card_artist_4);
-        cardViews[5] = findViewById(R.id.card_artist_5);
-        cardViews[6] = findViewById(R.id.card_artist_6);
-        cardViews[7] = findViewById(R.id.card_artist_7);
-        cardViews[8] = findViewById(R.id.card_artist_8);
-        cardViews[9] = findViewById(R.id.card_artist_9);
-        cardViews[10] = findViewById(R.id.card_artist_10);
-        cardViews[11] = findViewById(R.id.card_artist_11);
+        //Horizontal recyclerView list of suggested artists
+        ArrayList<Artist> suggestedArtists = (ArrayList<Artist>) ArtistService.getInstance().getAllArtist();
+        recycleViewRecommendedArtistConfig(suggestedArtists);
+
+        //Horizontal recyclerView list of artists near to you
+        ArrayList<Artist> neartoyouArstists = (ArrayList<Artist>) ArtistService.getInstance().getAllArtist();
+        recyclerViewNearToYouArtists(neartoyouArstists);
+
+        bottomMenuConfig();
+
+    }
 
 
-        for(int i=0; i<=11;i++) {
-            Artist tmpArtist =ArtistService.getInstance().getById(i);
-            textViews[i].setText(tmpArtist.getNomeDarte());
-            imageViews[i].setImageResource(tmpArtist.getImgID());
-            cardViews[i].setOnClickListener(this);
-        }
-
-
+    private void toolbarConfig() {
+        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        toolbar.setTitle(" ");
+        toolbar.setTitleTextColor(Color.WHITE);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.nav_open, R.string.nav_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+    }
 
+    private void recycleViewPopularArtistConfig(ArrayList<Artist> artistList) {
+        RecyclerView recyclerViewPopularArtists = findViewById(R.id.recycle_populars);
+        FlexboxLayoutManager flexboxLayoutManager = new FlexboxLayoutManager(this);
+        flexboxLayoutManager.setFlexDirection(FlexDirection.ROW);
+        flexboxLayoutManager.setJustifyContent(JustifyContent.FLEX_START);
+        PopularsAdapter adapterPopularArtists = new PopularsAdapter(this, artistList, new PopularsAdapter.OnPopularsClickListener() {
+            @Override
+            public void onPopularsClick(PopularsAdapter.MyHolderP holder) {
+                openArtistProfile(holder.artist);
+            }
+        });
+        recyclerViewPopularArtists.setLayoutManager(flexboxLayoutManager);
+        recyclerViewPopularArtists.setAdapter(adapterPopularArtists);
 
-        // Gestione del bottom menù
+    }
+
+    private void recycleViewRecommendedArtistConfig(ArrayList<Artist> artistList) {
+        RecyclerView recyclerViewSuggestedArtists = findViewById(R.id.recycle_suggeritiperte);
+        LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        ArtistListAdapter adapterSuggestedArtists = new ArtistListAdapter(this, artistList, new ArtistListAdapter.OnArtistClickListener() {
+            @Override
+            public void onArtistClick(ArtistListAdapter.MyHolder holder) {
+                openArtistProfile(holder.artist);
+            }
+        });
+        recyclerViewSuggestedArtists.setLayoutManager(linearLayoutManager1);
+        recyclerViewSuggestedArtists.setAdapter(adapterSuggestedArtists);
+
+    }
+
+    private void recyclerViewNearToYouArtists(ArrayList<Artist> artistList) {
+        RecyclerView recyclerViewNearToYouArtists = findViewById(R.id.recycle_neartoyou);
+        LinearLayoutManager linearLayoutManager2 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        ArtistListAdapter adapterNearToYouArtists = new ArtistListAdapter(this, artistList, new ArtistListAdapter.OnArtistClickListener() {
+            @Override
+            public void onArtistClick(ArtistListAdapter.MyHolder holder) {
+                openArtistProfile(holder.artist);
+            }
+        });
+        recyclerViewNearToYouArtists.setLayoutManager(linearLayoutManager2);
+        recyclerViewNearToYouArtists.setAdapter(adapterNearToYouArtists);
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (actionBarDrawerToggle.onOptionsItemSelected(item))
+            return true;
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void openArtistProfile(Artist artist) {
+        Intent artistProfile = new Intent(getApplicationContext(), ArtistProfile.class);
+        artistProfile.putExtra(ARTIST_EXTRA, artist);
+        startActivity(artistProfile);
+    }
+
+    public void sideMenuConfig() {
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.nav_profile:
+                        startActivity(new Intent(getApplicationContext(), Profile.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.nav_settings:
+                        Snackbar.make(navigationView, "Funzionalità non implementata.", Snackbar.LENGTH_SHORT).show();
+                        return true;
+                    case R.id.nav_aboutus:
+                        Snackbar.make(navigationView, "Funzionalità non implementata.", Snackbar.LENGTH_SHORT).show();
+                        return true;
+                    case R.id.nav_exit:
+                        Snackbar.make(navigationView, "Funzionalità non implementata.", Snackbar.LENGTH_SHORT).show();
+                        return true;
+                }
+            return false;
+            }
+        });
+    }
+
+    public void bottomMenuConfig() {
         FloatingActionButton home_button = findViewById(R.id.home_button);
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        bottomNavigationView.setSelectedItemId(R.id.home_button);
+        bottomNavigationView.setSelectedItemId(R.id.empty);
+        bottomNavigationView.setItemIconTintList(null);
+        home_button.setBackgroundTintList(colorHomeConfig());
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
@@ -111,8 +175,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
                         startActivity(new Intent(getApplicationContext(), Chat.class));
                         overridePendingTransition(0, 0);
                         return true;
-                    case R.id.home_button:
-                        return true;
                     case R.id.profile_button:
                         startActivity(new Intent(getApplicationContext(), Profile.class));
                         overridePendingTransition(0, 0);
@@ -121,85 +183,21 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
                         startActivity(new Intent(getApplicationContext(), Search.class));
                         overridePendingTransition(0, 0);
                         return true;
-
                 }
                 return false;
             }
         });
-
-        home_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), Home.class));
-            }
-        });
     }
 
-
+    public ColorStateList colorHomeConfig() {
+        ColorStateListBuilder builder = new ColorStateListBuilder();
+        builder.addState(new int[] { android.R.attr.state_pressed }, Color.parseColor("#2196F3"));
+        builder.addState(new int[] { android.R.attr.state_selected }, Color.WHITE);
+        builder.addState(new int[] {}, Color.parseColor("#2196F3"));
+        ColorStateList stateList = builder.build();
+        return stateList;
+    }
 
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
-        if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    public void printArtist(Artist artistToPrint) {
-
-    }
-
-
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.card_artist_0:
-                openArtistProfile(0);
-                break;
-            case R.id.card_artist_1:
-                openArtistProfile(1);
-                break;
-            case R.id.card_artist_2:
-                openArtistProfile(2);
-                break;
-            case R.id.card_artist_3:
-                openArtistProfile(3);
-                break;
-            case R.id.card_artist_4:
-                openArtistProfile(4);
-                break;
-            case R.id.card_artist_5:
-                openArtistProfile(5);
-                break;
-            case R.id.card_artist_6:
-                openArtistProfile(6);
-                break;
-            case R.id.card_artist_7:
-                openArtistProfile(7);
-                break;
-            case R.id.card_artist_8:
-                openArtistProfile(8);
-                break;
-            case R.id.card_artist_9:
-                openArtistProfile(9);
-                break;
-            case R.id.card_artist_10:
-                openArtistProfile(10);
-                break;
-            case R.id.card_artist_11:
-                openArtistProfile(11);
-                break;
-            default:
-                break;
-
-        }
-    }
-
-    public void openArtistProfile(Integer i) {
-        clickedArtist = ArtistRepository.getInstance().artistList.get(i);
-        Intent artistProfile = new Intent(getApplicationContext(), ArtistProfile.class);
-        artistProfile.putExtra(ARTIST_EXTRA, ArtistRepository.getInstance().artistList.get(i));
-        startActivity(artistProfile);
-    }
+    public void onClick(View view) {}
 }

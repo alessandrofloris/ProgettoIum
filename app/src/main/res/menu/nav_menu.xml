@@ -6,22 +6,36 @@
     <group
         android:checkableBehavior="single">
         <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/icon_person"
+            android:title="NOMEACCOUNT"
+            android:checkable="true"
+            />
+        <item
             android:id="@+id/nav_settings"
             android:icon="@drawable/ic_baseline_settings_24"
-            android:title="Settings"/>
+            android:title="Settings"
+            android:checkable="true"
+            />
         <item
             android:id="@+id/nav_aboutus"
             android:icon="@drawable/ic_baseline_info_24"
-            android:title="About up"/>
+            android:title="About us"
+            android:checkable="true"
+            />
     </group>
+
 
     <item
         android:title="">
         <menu>
             <item
+            android:title=""/>
+            <item
                 android:id="@+id/nav_exit"
                 android:icon="@drawable/ic_baseline_logout_24"
-                android:title="Logout"/>
+                android:title="Logout"
+                android:checkable="true"/>
         </menu>
     </item>
 
