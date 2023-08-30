@@ -9,13 +9,16 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.graphics.Region;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,22 +27,52 @@ public class Profile extends AppCompatActivity {
 
     List<Genres> genresList = new ArrayList<>();
     RecyclerView genresRecyclerView;
+    RecyclerView regionsRecyclerView;
+    List<Region> regionsList = new ArrayList<>();
     GenreTagAdapter genreTagAdapter;
+    ImageButton addGenres;
+    ImageButton addRegions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        genresList.add(Genres.POP);
-        genresList.add(Genres.ROCK);
-        genresRecyclerView = findViewById(R.id.producer_genres_recyclerview);
+
+
+        genresRecyclerView = findViewById(R.id.producer_genres_recyclerView);
+        addGenres = findViewById(R.id.add_genres);
+
+        regionsRecyclerView = findViewById(R.id.producer_regions_recyclerView);
+        addRegions = findViewById(R.id.add_regions);
+
+
         genreTagAdapter = new GenreTagAdapter(this, genresList);
         genresRecyclerView.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         genresRecyclerView.setLayoutManager(layoutManager);
         genresRecyclerView.setAdapter(genreTagAdapter);
 
+
+
+
+        addGenres.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Profile.this, SelectGenreActivity.class);
+                intent.putExtra("selected_genres_search", (Serializable) Profile.this.regionsList);
+                startActivity(intent);
+            }
+        });
+
+        addRegions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Profile.this, SelectRegionActivity.class);
+                intent.putExtra("selected_genres_search", (Serializable) Profile.this.regionsList);
+                startActivity(intent);
+            }
+        });
 
 
 
@@ -93,4 +126,6 @@ public class Profile extends AppCompatActivity {
         ColorStateList stateList = builder.build();
         return stateList;
     }
+
+
 }
