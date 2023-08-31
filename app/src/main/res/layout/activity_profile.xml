@@ -125,21 +125,34 @@
             app:layout_constraintTop_toBottomOf="@+id/genreTitle">
 
             <LinearLayout
-
+                android:id="@+id/genres_chip_layout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
                 android:orientation="horizontal"
+                android:layout_marginRight="40dp"
+                android:layout_marginLeft="20dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/producer_genres_recyclerView"
-                    android:layout_width="wrap_content"
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:orientation="horizontal"
-                    app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager" />
+                    android:scrollbars="none">
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/genres_chip_group"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        >
+
+                    </com.google.android.material.chip.ChipGroup>
+                </HorizontalScrollView>
+
+
+
             </LinearLayout>
 
             <ImageButton
@@ -173,21 +186,31 @@
             app:layout_constraintTop_toBottomOf="@+id/regionTitle">
 
             <LinearLayout
-                android:id="@+id/region_layout"
+                android:id="@+id/regions_chip_layout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="horizontal"
+                android:layout_marginRight="40dp"
+                android:layout_marginLeft="20dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/producer_regions_recyclerView"
-                    android:layout_width="wrap_content"
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="10dp"
-                    app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
-                    />
+                    android:scrollbars="none">
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/regions_chip_group"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        >
+
+                    </com.google.android.material.chip.ChipGroup>
+                </HorizontalScrollView>
+
+
             </LinearLayout>
 
                 <ImageButton
