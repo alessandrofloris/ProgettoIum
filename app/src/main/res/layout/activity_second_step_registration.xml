@@ -4,12 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Register">
-
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".SignUp">
+    tools:context=".SecondStepRegistration">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -25,20 +20,9 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="40dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Crea un nuovo profilo produttore"
-                android:textSize="32dp"
-                android:textStyle="bold"
-
-                android:layout_gravity="center_horizontal"/>
-
-            <Space
-                android:layout_width="match_parent"
                 android:layout_height="40dp" />
+
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -53,19 +37,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="20dp" />
 
+
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="*Nome"
+                android:hint="*Username"
                 app:boxBackgroundColor="@android:color/transparent"
                 android:background="@android:color/transparent"
-                android:id="@+id/text_iput_layout_username">
+                android:id="@+id/text_input_layout_username">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:inputType="text"
-                    android:id="@+id/name_input" />
+                    android:id="@+id/username_input" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Space
@@ -75,16 +60,56 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="*Cognome"
+                android:hint="*Email"
                 app:boxBackgroundColor="@android:color/transparent"
                 android:background="@android:color/transparent"
-                android:id="@+id/text_iput_layout_password">
+                android:id="@+id/text_input_layout_email">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:inputType="text"
-                    android:id="@+id/surname_input" />
+                    android:id="@+id/email_input" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="*Password"
+                app:passwordToggleEnabled="true"
+                app:boxBackgroundColor="@android:color/transparent"
+                android:background="@android:color/transparent"
+                android:id="@+id/text_input_layout_password">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="text"
+                    android:id="@+id/password_input" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="*Conferma password"
+                app:passwordToggleEnabled="true"
+                app:boxBackgroundColor="@android:color/transparent"
+                android:background="@android:color/transparent"
+                android:id="@+id/text_input_layout_password_confirm">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="text"
+                    android:id="@+id/password_confirm_input" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Space
@@ -106,11 +131,8 @@
                     android:id="@+id/continue_button"
                     android:layout_alignParentBottom="true"/>
 
-
             </RelativeLayout>
 
         </LinearLayout>
-
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

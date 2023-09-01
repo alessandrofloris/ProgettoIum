@@ -9,3 +9,12 @@ poco distinguibile dal grigio)
 - Aggiungere un pulsante "azzera tutto" per i filtri di ricerca(????)
 - Non permettere di poter avviare più audio contemporaneamente. Quando ne avvi un altro, il precedente si interrompe in automatico
 - Gestire meglio il passaggio da un attività a un altra e il tornare indietro(?)
+  
+## Registrazione - Cose da fare
+
+- Aggiungere controlli sulla password e sulla password di conferma
+- Aggiungere messaggi di errore sulla password e sulla password di conferma
+- Aggiungere controlli sull'username
+- Aggiungere messaggi di errore sull'username
+- Aggiungere controlli sull'email 
+- Aggiungere messaggi di errore sull'email

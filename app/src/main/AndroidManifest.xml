@@ -10,6 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Progetto">
         <activity
+            android:name=".FifthStepRegistration"
+            android:exported="false" />
+        <activity
+            android:name=".FourthStepRegistration"
+            android:exported="false" />
+        <activity
+            android:name=".ThirdStepRegistration"
+            android:exported="false" />
+        <activity
+            android:name=".SecondStepRegistration"
+            android:exported="false" />
+        <activity
             android:name=".ArtistProfile"
             android:exported="false"
             android:parentActivityName=".Home">
@@ -33,9 +45,9 @@
                 android:value="" />
         </activity>
         <activity
-            android:windowSoftInputMode="adjustResize"
             android:name=".PrivateChat"
-            android:exported="false">
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
