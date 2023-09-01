@@ -11,6 +11,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 
 import com.google.android.material.textfield.TextInputEditText;
@@ -19,7 +20,7 @@ import com.google.android.material.textfield.TextInputLayout;
 public class MainActivity extends AppCompatActivity {
 
     public Button log_in;
-    public Button sign_up;
+    public TextView sign_up_link;
     public TextInputEditText username, password;
     public TextInputLayout usernameInputLayout, passwordInputLayout;
 
@@ -43,11 +44,11 @@ public class MainActivity extends AppCompatActivity {
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
         log_in = findViewById(R.id.log_in);
-        sign_up = findViewById(R.id.sign_up);
+        sign_up_link = findViewById(R.id.sign_up_link);
         usernameInputLayout = findViewById(R.id.text_iput_layout_username);
         passwordInputLayout = findViewById(R.id.text_iput_layout_password);
 
-        sign_up.setOnClickListener(new View.OnClickListener() {
+        sign_up_link.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent goToSignUp = new Intent(MainActivity.this, FirstStepRegistration.class);
