@@ -11,122 +11,106 @@
         android:layout_height="match_parent"
         tools:context=".SignUp">
 
-        <!--
-        <com.google.android.material.appbar.AppBarLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:theme="@style/Theme.MyApplication.AppBarOverlay">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="40dp">
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                app:title="Registrazione"
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_baseline_arrow_back_ios_new_24"
+                android:id="@+id/previous_activity_button"/>
+
+            <Space
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary"
-                app:popupTheme="@style/Theme.Progetto" />
+                android:layout_height="40dp" />
 
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/logo"
+                android:layout_gravity="center_horizontal"/>
 
-        </com.google.android.material.appbar.AppBarLayout>
-        -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                android:textSize="20dp"
+                android:layout_gravity="center_horizontal"/>
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-
-            <LinearLayout
+            <Space
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:padding="20dp">
+                android:layout_height="40dp" />
 
-                <ImageView
-                    android:layout_width="35dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/ic_baseline_arrow_back_ios_new_24"
-                    android:id="@+id/previous_activity_button"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Crea un nuovo profilo produttore"
+                android:textSize="32dp"
+                android:textStyle="bold"
 
-                <Space
+                android:layout_gravity="center_horizontal"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="40dp"/>
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nome"
+                app:boxBackgroundColor="@android:color/transparent"
+                android:background="@android:color/transparent"
+                android:id="@+id/text_iput_layout_username">
+
+                <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="40dp" />
+                    android:layout_height="match_parent"
+                    android:inputType="text"
+                    android:id="@+id/name" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/logo"
-                    android:layout_gravity="center_horizontal"/>
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/app_name"
-                    android:textSize="20dp"
-                    android:layout_gravity="center_horizontal"/>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Cognome"
+                app:boxBackgroundColor="@android:color/transparent"
+                android:background="@android:color/transparent"
+                android:id="@+id/text_iput_layout_password">
 
-                <Space
+                <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="70dp" />
+                    android:layout_height="match_parent"
+                    android:inputType="text"
+                    android:id="@+id/surname" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Benvenuto in MusicMatch"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="50dp"/>
 
-                    android:layout_gravity="center_horizontal"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Scegli un tipologia di utente per iniziare,\n se hai dubbi puoi visitare il link sottostante"
-                    android:textSize="16dp"
-                    android:textAlignment="center"
-                    android:layout_gravity="center_horizontal"/>
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:textAllCaps="true"
+                android:text="Prosegui"
+                android:textSize="15dp"
+                android:background="@drawable/button"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/log_in"/>
 
-                <Button
-                    android:layout_width="300dp"
-                    android:layout_height="60dp"
-                    android:textAllCaps="true"
-                    android:text="ARTISTA"
-                    android:textSize="15dp"
-                    android:background="@drawable/button"
-                    android:layout_gravity="center_horizontal"
-                    android:id="@+id/artist_registration"/>
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"/>
 
-                <Button
-                    android:layout_width="300dp"
-                    android:layout_height="60dp"
-                    android:textAllCaps="true"
-                    android:text="PRODUTTORE"
-                    android:textSize="15dp"
-                    android:background="@drawable/button"
-                    android:layout_gravity="center_horizontal"
-                    android:id="@+id/producer_registration"/>
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Dubbi?"
-                    android:textSize="16dp"
-                    android:layout_gravity="center_horizontal"
-                    android:id="@+id/info"
-                    android:linksClickable="true"
-                    />
-
-            </LinearLayout>
-        </ScrollView>
+        </LinearLayout>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
