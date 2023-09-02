@@ -16,6 +16,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -105,6 +106,8 @@ public class ArtistProfile extends AppCompatActivity {
         messageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Integer artistIndex = (Integer) artist.getIdArtist();
+                ArtistService.getInstance().getAllArtist().get(artistIndex).setTexted(true);
                 Intent privateChat = new Intent(getApplicationContext(), PrivateChat.class);
                 privateChat.putExtra(ARTIST_EXTRA, getCurrentArtist());
                 startActivity(privateChat);

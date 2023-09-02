@@ -6,20 +6,27 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Chat extends AppCompatActivity {
 
     public static final String ARTIST_EXTRA ="com.example.progetto.Artist";
     Artist clickedArtist;
+    List<Artist> textedArtists;
+    ChatAdapter chatAdapter;
+    RecyclerView chatRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,57 +34,20 @@ public class Chat extends AppCompatActivity {
         setContentView(R.layout.activity_chat);
 
 
-        TextView[] textViewsNames = new TextView[3];
-        textViewsNames[0] =(TextView) findViewById(R.id.artist_name1);
-        textViewsNames[1] =(TextView) findViewById(R.id.artist_name2);
-        textViewsNames[2] =(TextView) findViewById(R.id.artist_name3);;
 
-        ImageView[] imageViewsProfile = new ImageView[3];
-        imageViewsProfile[0] = (ImageView) findViewById(R.id.profileView1);
-        imageViewsProfile[1] = (ImageView) findViewById(R.id.profileView2);
-        imageViewsProfile[2] = (ImageView) findViewById(R.id.profileView3);
+        textedArtists = new ArrayList<>();
+        textedArtists = ArtistService.getInstance().getTextedArtists();
 
-        for(int i=0; i<=2;i++) {
-            Artist tmpArtist =ArtistService.getInstance().getById(i);
-            textViewsNames[i].setText(tmpArtist.getNomeDarte());
-            imageViewsProfile[i].setImageResource(tmpArtist.getImgID());
+        if(textedArtists.size()>0) {
+            TextView errorMessage = findViewById(R.id.notTextedYet);
+            errorMessage.setVisibility(View.GONE);
         }
 
+        chatRecyclerView = findViewById(R.id.chat_recycler);
+        chatAdapter = new ChatAdapter(this, textedArtists);
+        chatRecyclerView.setAdapter(chatAdapter);
+        chatRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-
-
-        LinearLayout linearLayoutButton1 = findViewById(R.id.profileButton1);
-        linearLayoutButton1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clickedArtist = ArtistRepository.getInstance().artistList.get(0);
-                Intent privateChat = new Intent(getApplicationContext(), PrivateChat.class);
-                privateChat.putExtra(ARTIST_EXTRA, ArtistRepository.getInstance().artistList.get(0));
-                startActivity(privateChat);
-            }
-        });
-
-        LinearLayout linearLayoutButton2 = findViewById(R.id.profileButton2);
-        linearLayoutButton2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clickedArtist = ArtistRepository.getInstance().artistList.get(1);
-                Intent privateChat = new Intent(getApplicationContext(), PrivateChat.class);
-                privateChat.putExtra(ARTIST_EXTRA, ArtistRepository.getInstance().artistList.get(1));
-                startActivity(privateChat);
-            }
-        });
-
-        LinearLayout linearLayoutButton3 = findViewById(R.id.profileButton3);
-        linearLayoutButton3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clickedArtist = ArtistRepository.getInstance().artistList.get(2);
-                Intent privateChat = new Intent(getApplicationContext(), PrivateChat.class);
-                privateChat.putExtra(ARTIST_EXTRA, ArtistRepository.getInstance().artistList.get(2));
-                startActivity(privateChat);
-            }
-        });
 
 
 
@@ -132,4 +102,12 @@ public class Chat extends AppCompatActivity {
         ColorStateList stateList = builder.build();
         return stateList;
     }
+
+
+    public void openArtistProfile(Artist artist) {
+        Intent artistProfile = new Intent(getApplicationContext(), ArtistProfile.class);
+        artistProfile.putExtra(ARTIST_EXTRA, artist);
+        startActivity(artistProfile);
+    }
+
 }

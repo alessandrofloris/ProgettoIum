@@ -18,6 +18,7 @@ public class Artist implements Serializable {
     private Genres[] generi;
     private String shortDesc;
     private boolean liked;
+    private boolean texted;
     private ArrayList<Video> videos;
     private ArrayList<Photo> photos;
     private ArrayList<Audio> audios;
@@ -35,6 +36,7 @@ public class Artist implements Serializable {
         this.generi = generi;
         this.shortDesc = "Ciao, sono "+ getNome() +" vengo da " + getCittaResidenza() + " e faccio " + getGeneri()[0].getDesc() + ", dai un'occhiata alla mia musica!";
         this.liked = false;
+        this.texted = false;
         this.videos = videos;
         this.photos = photos;
         this.audios = audios;
@@ -51,6 +53,7 @@ public class Artist implements Serializable {
         this.regioneResidenza = regioneResidenza;
         this.generi = generi;
         this.liked = false;
+        this.texted = false;
         this.shortDesc = "Ciao, sono "+ getNome() +" vengo da " + getCittaResidenza() + " e faccio " + getGeneri()[0].getDesc() + ", dai un'occhiata alla mia musica!";
         this.videos = videos;
         this.photos = photos;
@@ -68,6 +71,7 @@ public class Artist implements Serializable {
         this.generi = generi;
         this.shortDesc = "Ciao, sono "+ getNome() +" vengo da " + getCittaResidenza() + " e faccio " + getGeneri()[0].getDesc() + ", dai un'occhiata alla mia musica!";
         this.liked = false;
+        this.texted = false;
         this.videos = videos;
     }
 
@@ -83,6 +87,7 @@ public class Artist implements Serializable {
         this.generi = generi;
         this.shortDesc = "Ciao, sono "+ getNome() +" vengo da " + getCittaResidenza() + " e faccio " + getGeneri()[0].getDesc() +", dai un'occhiata alla mia musica!";
         this.liked=false;
+        this.texted = false;
     }
 
 
@@ -97,6 +102,7 @@ public class Artist implements Serializable {
         this.setGeneri(Genres.NONE);
         this.setShortDesc("");
         this.setLiked(false);
+        this.setTexted(false);
     }
 
 
@@ -112,6 +118,7 @@ public class Artist implements Serializable {
         this.setGeneri(Genres.NONE);
         this.setShortDesc("");
         this.setLiked(false);
+        this.setTexted(false);
     }
 
     public Artist(String nome, String cognome, String nomeDarte, Integer imageID, Locations regioneResidenza) {
@@ -124,6 +131,7 @@ public class Artist implements Serializable {
         this.setCittaResidenza("");
         this.setGeneri(Genres.NONE);
         this.liked =false;
+        this.texted = false;
     }
 
 
@@ -141,6 +149,7 @@ public class Artist implements Serializable {
         this.setGeneri(Genres.NONE);
         this.setShortDesc("");
         this.setLiked(false);
+        this.setTexted(false);
         this.setVideos(new ArrayList<>());
         this.setPhotos(new ArrayList<>());
         this.setAudios(new ArrayList<>());
@@ -256,4 +265,12 @@ public class Artist implements Serializable {
     public void setLiked(boolean liked) {
         this.liked = liked;
     }
+
+    public boolean isTexted() {
+        return texted;
+    }
+
+    public void setTexted(boolean texted) {this.texted = texted;}
+
+
 }

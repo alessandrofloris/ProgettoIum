@@ -43,7 +43,7 @@ public class Favorites extends AppCompatActivity {
         likedArtists = ArtistService.getInstance().getLikedArtists();
 
         TextView nLikedArtists = findViewById(R.id.number_liked_artist);
-        messageNumberLikedArtists = "Artisti piaciuti: "+likedArtists.size();
+        messageNumberLikedArtists = "Artisti piaciuti: "+ likedArtists.size();
         nLikedArtists.setText(messageNumberLikedArtists);
 
         findViewById(R.id.sortBy).setOnClickListener(new View.OnClickListener() {

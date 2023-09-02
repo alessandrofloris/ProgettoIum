@@ -26,162 +26,26 @@
                 android:text="I tuoi messaggi"
                 android:textStyle="bold"
                 android:textSize="28sp"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginBottom="20dp"/>
 
-          <!-- ARTISTA 1 -->
-            <LinearLayout
-                android:id="@+id/profileButton1"
-                android:clickable="true"
-                android:focusable="true"
+
+            <TextView
+                android:id="@+id/notTextedYet"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_margin="20dp">
+                android:layout_height="wrap_content"
+                android:text="Non hai messaggiato con nessun artista..."
+                android:textSize="20dp"
+                android:gravity="center"
+                android:visibility="visible"/>
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    app:cardCornerRadius="250dp"
-                    android:layout_gravity="center">
-
-                    <ImageView
-                        android:layout_height="100dp"
-                        android:layout_width="100dp"
-                        android:id="@+id/profileView1"
-                        android:layout_gravity="center"
-                        android:scaleType="centerCrop"
-                        />
-
-
-                </androidx.cardview.widget.CardView>
-
-                <LinearLayout
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/chat_recycler"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
-                <TextView
-                    android:id="@+id/artist_name1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="10dp"/>
-
-                    <TextView
-                        android:id="@+id/artist_chat1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="..."
-                        android:layout_marginTop="10dp"
-                        android:layout_marginLeft="30dp" />
-
-                </LinearLayout>
-            </LinearLayout>
+                    app:layout_constraintBottom_toTopOf="@id/bottom_menu"/>
 
 
-
-            <!-- ARTISTA 2 -->
-
-            <LinearLayout
-                android:id="@+id/profileButton2"
-                android:clickable="true"
-                android:focusable="true"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_margin="20dp">
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    app:cardCornerRadius="250dp"
-                    android:layout_gravity="center">
-
-                    <ImageView
-                        android:layout_height="100dp"
-                        android:layout_width="100dp"
-                        android:id="@+id/profileView2"
-                        android:layout_gravity="center"
-                        android:scaleType="centerCrop"
-                        />
-
-
-                </androidx.cardview.widget.CardView>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-                    <TextView
-                        android:id="@+id/artist_name2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textStyle="bold"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginTop="10dp"/>
-
-                    <TextView
-                        android:id="@+id/artist_chat2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="..."
-                        android:layout_marginTop="10dp"
-                        android:layout_marginLeft="30dp" />
-
-                </LinearLayout>
-            </LinearLayout>
-
-
-            <!-- ARTISTA 3 -->
-
-            <LinearLayout
-                android:id="@+id/profileButton3"
-                android:clickable="true"
-                android:focusable="true"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_margin="20dp">
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    app:cardCornerRadius="250dp"
-                    android:layout_gravity="center">
-
-                    <ImageView
-                        android:layout_height="100dp"
-                        android:layout_width="100dp"
-                        android:id="@+id/profileView3"
-                        android:layout_gravity="center"
-                        android:scaleType="centerCrop"
-                        />
-
-
-                </androidx.cardview.widget.CardView>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-                    <TextView
-                        android:id="@+id/artist_name3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textStyle="bold"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginTop="10dp"/>
-
-                    <TextView
-                        android:id="@+id/artist_chat3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="..."
-                        android:layout_marginTop="10dp"
-                        android:layout_marginLeft="30dp" />
-
-                </LinearLayout>
-            </LinearLayout>
         </LinearLayout>
 
     </ScrollView>
