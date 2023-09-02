@@ -64,7 +64,7 @@
 
                 <Space
                     android:layout_width="match_parent"
-                    android:layout_height="60dp" />
+                    android:layout_height="45dp" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -84,6 +84,18 @@
                     android:gravity="left"
                     android:text="Nome Cognome"
                     android:textSize="15dp" />
+
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:text="Regione"
+                    android:textSize="12dp" />
             </LinearLayout>
 
         </LinearLayout>
@@ -110,7 +122,7 @@
             android:id="@+id/genreTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Generi:"
+            android:text="Generi di riferimento:"
             android:textSize="20dp"
             android:textStyle="bold"
             android:gravity="center"
@@ -119,48 +131,45 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/genres_layout"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/genreTitle">
 
-            <LinearLayout
+            <com.google.android.flexbox.FlexboxLayout
+                xmlns:flex="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/genres_chip_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal"
-                android:orientation="horizontal"
                 android:layout_marginRight="40dp"
                 android:layout_marginLeft="20dp"
+                flex:alignContent="center"
+                flex:flexWrap="wrap"
+                flex:alignItems="center"
+                flex:justifyContent="space_evenly"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
-
-
-                <HorizontalScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:scrollbars="none">
 
                     <com.google.android.material.chip.ChipGroup
                         android:id="@+id/genres_chip_group"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
+                        android:gravity="center"
                         >
-
                     </com.google.android.material.chip.ChipGroup>
-                </HorizontalScrollView>
 
 
 
-            </LinearLayout>
+
+            </com.google.android.flexbox.FlexboxLayout>
 
             <ImageButton
                 android:id="@+id/add_genres"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:src="@drawable/ic_baseline_add_24"
+                android:src="@drawable/ic_baseline_mode_edit_24"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginVertical="12dp"
@@ -182,42 +191,43 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@+id/regionTitle">
 
-            <LinearLayout
+            <com.google.android.flexbox.FlexboxLayout
+                xmlns:flex="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/regions_chip_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
+                flex:alignContent="center"
+                flex:flexWrap="wrap"
+                flex:alignItems="center"
+                flex:justifyContent="space_evenly"
                 android:layout_marginRight="40dp"
                 android:layout_marginLeft="20dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <HorizontalScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:scrollbars="none">
 
                     <com.google.android.material.chip.ChipGroup
                         android:id="@+id/regions_chip_group"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
+                        android:gravity="center"
                         >
 
                     </com.google.android.material.chip.ChipGroup>
-                </HorizontalScrollView>
 
 
-            </LinearLayout>
+            </com.google.android.flexbox.FlexboxLayout>
 
                 <ImageButton
                     android:id="@+id/add_regions"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_baseline_add_24"
+                    android:src="@drawable/ic_baseline_mode_edit_24"
                     android:layout_gravity="center"
                     android:background="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"

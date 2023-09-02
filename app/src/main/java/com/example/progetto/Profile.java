@@ -10,6 +10,7 @@ import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.flexbox.FlexboxLayout;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -44,8 +45,8 @@ public class Profile extends AppCompatActivity {
     ChipGroup locations_chip_group_view;
 
 
-    LinearLayout selected_genres_container_view;
-    LinearLayout selected_regions_container_view;
+    FlexboxLayout selected_genres_container_view;
+    FlexboxLayout selected_regions_container_view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
