@@ -6,4 +6,69 @@
     android:layout_height="match_parent"
     tools:context=".FourthStepRegistration">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="40dp">
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_baseline_arrow_back_ios_new_24"
+            android:id="@+id/previous_activity_button"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="Seleziona fino a 3 regioni"
+            android:textSize="18sp" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="12dp" />
+
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+
+            android:text="Se vuoi puoi scegliere sino a tre regioni da cui pescare i tuoi artisti.\nUseremo queste informazioni pe rconsigliarti nuovi artisti."
+            android:textSize="12sp" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="24dp" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/regions_chip_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager">
+
+        </com.google.android.material.chip.ChipGroup>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:textAllCaps="true"
+                android:text="Prosegui"
+                android:textSize="15sp"
+                android:background="@drawable/button"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/continue_button"
+                android:layout_alignParentBottom="true"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

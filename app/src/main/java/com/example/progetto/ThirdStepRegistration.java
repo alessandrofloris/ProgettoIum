@@ -25,6 +25,7 @@ public class ThirdStepRegistration extends AppCompatActivity {
     Button continue_button;
     ChipGroup genres_chip_group;
     List<Genres> all_genres;
+    int selected_genres;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +47,8 @@ public class ThirdStepRegistration extends AppCompatActivity {
     private void chipGroupConfig() {
         genres_chip_group = findViewById(R.id.genres_chip_group);
 
+        selected_genres = 0;
+
         Chip chip;
         for(Genres genre : all_genres) {
             chip = new Chip(this);
@@ -57,11 +60,15 @@ public class ThirdStepRegistration extends AppCompatActivity {
                 public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
                     Chip c = (Chip) compoundButton;
                     if(checked) {
-                        List<Integer> ids = genres_chip_group.getCheckedChipIds();
-                        if (ids.size() > 3) {
+                        if (selected_genres >= 3) {
                             c.setChecked(false);
                             Toast.makeText(getApplicationContext(), "Attenzione, puoi aggiungere massimo 3 generi!", Toast.LENGTH_SHORT).show();
+
+                        } else {
+                            selected_genres = selected_genres + 1;
                         }
+                    } else {
+                        selected_genres = selected_genres - 1;
                     }
                 }
             });
@@ -72,7 +79,6 @@ public class ThirdStepRegistration extends AppCompatActivity {
 
     private void continueButtonConfig() {
         continue_button = findViewById(R.id.continue_button);
-        continue_button.setEnabled(false);
         continue_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
