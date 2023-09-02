@@ -22,6 +22,18 @@
             android:layout_width="match_parent"
             android:layout_height="40dp" />
 
+        <com.kofigyan.stateprogressbar.StateProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:spb_currentStateNumber="four"
+            app:spb_stateBackgroundColor="#BDBDBD"
+            app:spb_stateForegroundColor="#009688"
+            app:spb_maxStateNumber="five"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+
         <TextView
             android:layout_width="300dp"
             android:layout_height="wrap_content"
@@ -43,17 +55,23 @@
             android:layout_width="wrap_content"
             android:layout_height="24dp" />
 
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/regions_chip_group"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager">
+            android:layout_height="400dp">
 
-        </com.google.android.material.chip.ChipGroup>
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/regions_chip_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager">
+
+            </com.google.android.material.chip.ChipGroup>
+
+        </ScrollView>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <Button
                 android:layout_width="match_parent"
