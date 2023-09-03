@@ -23,7 +23,6 @@ public class Artist implements Serializable {
     private ArrayList<Photo> photos;
     private ArrayList<Audio> audios;
 
-
     public Artist(Integer idArtist, String nome, String cognome, String nomeDarte, Integer imgID, String dataNascita, String cittaResidenza, Locations regioneResidenza, Genres[] generi, ArrayList<Video> videos, ArrayList<Photo> photos, ArrayList<Audio> audios) {
         this.idArtist = idArtist;
         this.nome = nome;

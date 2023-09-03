@@ -51,6 +51,23 @@ public class Chat extends AppCompatActivity {
 
 
 
+        findViewById(R.id.sortBy).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Funzionalità non implementata.", Snackbar.LENGTH_SHORT).show();
+            }
+        });
+
+        findViewById(R.id.search_texted).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Funzionalità non implementata.", Snackbar.LENGTH_SHORT).show();
+            }
+        });
+
+
+
+
         FloatingActionButton home_button = findViewById(R.id.home_button);
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.chat_button);
