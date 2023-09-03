@@ -23,8 +23,7 @@
             android:exported="false" />
         <activity
             android:name=".ArtistProfile"
-            android:exported="false"
-            android:parentActivityName=".Home">
+            android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -37,13 +36,6 @@
             android:exported="false"
             android:label="Regione"
             android:parentActivityName=".Search" />
-        <activity
-            android:name=".HomeArtistContent"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
         <activity
             android:name=".PrivateChat"
             android:exported="false"
