@@ -78,13 +78,6 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".InfoMusicMatch"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".FirstStepRegistration"
             android:exported="false">
             <meta-data
