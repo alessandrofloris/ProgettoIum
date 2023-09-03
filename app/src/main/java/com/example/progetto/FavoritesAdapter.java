@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -18,6 +19,8 @@ import java.util.List;
 public class FavoritesAdapter  extends RecyclerView.Adapter<FavoritesAdapter.FavoritesHolder> {
     ImageView chatButton, removeButton, artistPic;
     TextView artistName;
+    CardView artistCard;
+
     public static final String ARTIST_EXTRA ="com.example.progetto.Artist";
 
 
@@ -72,6 +75,15 @@ public class FavoritesAdapter  extends RecyclerView.Adapter<FavoritesAdapter.Fav
             }
         });
 
+        holder.getArtistCard().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, ArtistProfile.class);
+                intent.putExtra(ARTIST_EXTRA, ArtistRepository.getInstance().artistList.get(holder.artistID));
+                context.startActivity(intent);
+            }
+        });
+
    }
 
     @Override
@@ -90,6 +102,7 @@ public class FavoritesAdapter  extends RecyclerView.Adapter<FavoritesAdapter.Fav
             removeButton = itemView.findViewById(R.id.removeButton);
             artistPic = itemView.findViewById(R.id.artist_image);
             artistName = itemView.findViewById(R.id.artist_name);
+            artistCard = itemView.findViewById(R.id.artist_row);
         }
         public FavoritesHolder linkAdapter(FavoritesAdapter adapter) {
             this.adapter = adapter;
@@ -104,10 +117,11 @@ public class FavoritesAdapter  extends RecyclerView.Adapter<FavoritesAdapter.Fav
             return artistName;
         }
 
-
         public ImageView getChatButton() {
             return chatButton;
         }
+
+        public CardView getArtistCard() {return  artistCard;}
 
         public Integer getArtistID() {
             return artistID;

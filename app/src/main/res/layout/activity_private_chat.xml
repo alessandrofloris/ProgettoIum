@@ -69,7 +69,7 @@
     <!-- messaggio -->
 
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/MiddleLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="500dp"
@@ -83,8 +83,11 @@
             android:id="@+id/right_chat_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
             android:layout_gravity="right"
-            android:layout_margin="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="30dp"
             android:background="@drawable/edit_test_round_corner"
             android:backgroundTint="@color/chat_color_sender"
             android:padding="8dp"
@@ -95,7 +98,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Messaggio di prova 1"
-                android:layout_alignParentEnd="true"
                 android:textColor="@color/white"
                 android:textSize="15dp" />
 
@@ -107,11 +109,13 @@
             android:id="@+id/left_chat_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_margin="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
             android:background="@drawable/edit_test_round_corner"
             android:backgroundTint="@color/chat_color_receiver"
             android:padding="8dp"
+            android:layout_below="@+id/right_chat_layout"
             android:visibility="invisible">
 
             <TextView
@@ -124,7 +128,8 @@
         </LinearLayout>
 
 
-    </LinearLayout>
+    </RelativeLayout>
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/BottomLinearLayout"
@@ -137,29 +142,27 @@
         android:layout_marginLeft="5dp">
 
 
-
         <EditText
-                  android:id="@+id/messageEditText"
-                  android:layout_width="350dp"
-                  android:layout_height="wrap_content"
-                  android:hint="Scrivi un messaggio..."
-                  android:textSize="15dp"
-                  android:padding="10dp"
-                  app:layout_constraintBottom_toBottomOf="parent"
-                  app:layout_constraintStart_toStartOf="parent"/>
+            android:id="@+id/messageEditText"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:hint="Scrivi un messaggio..."
+            android:textSize="15dp"
+            android:padding="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
 
-              <ImageButton
-                  android:id="@+id/sendButton"
-                  android:layout_width="wrap_content"
-                  android:layout_height="match_parent"
-                  android:src="@drawable/ic_baseline_send_24"
-                  android:background="@color/white"
-                  android:layout_marginRight="10dp"
-                  app:layout_constraintStart_toEndOf="@id/messageEditText"
-                  app:layout_constraintEnd_toEndOf="parent"/>
+        <ImageButton
+            android:id="@+id/sendButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_baseline_send_24"
+            android:background="@color/white"
+            android:layout_marginRight="10dp"
+            app:layout_constraintStart_toEndOf="@id/messageEditText"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
-          </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-
-       </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

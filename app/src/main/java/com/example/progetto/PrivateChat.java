@@ -24,10 +24,12 @@ public class PrivateChat extends AppCompatActivity {
     private ImageButton backButton;
     private LinearLayout messageSentLayout;
     private LinearLayout messageReceivedLayout;
+    private LinearLayout artistIconLayout;
     private TextView displayText;
     private TextView artistName;
     private ImageView profilePhoto;
     private Artist artist;
+    public static final String ARTIST_EXTRA ="com.example.progetto.Artist";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +39,6 @@ public class PrivateChat extends AppCompatActivity {
         Intent intent = getIntent();
         Serializable obj = intent.getSerializableExtra(Home.ARTIST_EXTRA);
         artist = (Artist) obj;
-
         editText = findViewById(R.id.messageEditText);
         artistName = findViewById(R.id.artist_name);
         artistName.setText(artist.getNomeDarte());
@@ -47,6 +48,7 @@ public class PrivateChat extends AppCompatActivity {
         displayText = findViewById(R.id.right_chat_textView);
         showButton = findViewById(R.id.sendButton);
         backButton = findViewById(R.id.backButton);
+        artistIconLayout = findViewById(R.id.topLinearLayout);
         messageSentLayout = findViewById(R.id.right_chat_layout);
         messageReceivedLayout = findViewById(R.id.left_chat_layout);
 
@@ -62,6 +64,14 @@ public class PrivateChat extends AppCompatActivity {
         });
 
 
+        artistIconLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ArtistProfile.class);
+                intent.putExtra(ARTIST_EXTRA, ArtistRepository.getInstance().artistList.get(artist.getIdArtist()));
+                startActivity(intent);
+            }
+        });
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override

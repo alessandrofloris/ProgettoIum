@@ -47,7 +47,7 @@
         <activity
             android:name=".PrivateChat"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize">
+            android:windowSoftInputMode="adjustNothing">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
