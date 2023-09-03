@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.appcompat.widget.SearchView;
 import androidx.core.view.ViewCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.chip.Chip;
@@ -35,7 +37,7 @@ public class Search extends AppCompatActivity{
 
     SearchView bar_search_view;
     LinearLayoutCompat no_search_content_view;
-    ListView artists_list_view;
+    RecyclerView artists_recycler_view;
     LinearLayout no_results_found_content_view;
     LinearLayout selected_filters_container_view;
     LinearLayout results_found_content_view;
@@ -73,9 +75,10 @@ public class Search extends AppCompatActivity{
         no_search_content_view = findViewById(R.id.no_filters_selected_content);
         no_results_found_content_view = findViewById(R.id.no_results_found_content);
         results_found_content_view = findViewById(R.id.results_found_content);
-        artists_list_view = findViewById(R.id.artists_list);
+        artists_recycler_view = findViewById(R.id.artists_recyclerView);
         adapter = new SearchAdapter(this, artists);
-        artists_list_view.setAdapter(adapter);
+        artists_recycler_view.setAdapter(adapter);
+        artists_recycler_view.setLayoutManager(new LinearLayoutManager(this));
     }
 
     private void searchBadgesConfig() {

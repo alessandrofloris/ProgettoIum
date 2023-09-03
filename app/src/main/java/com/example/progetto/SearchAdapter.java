@@ -1,6 +1,7 @@
 package com.example.progetto;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,58 +9,95 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchAdapter extends BaseAdapter {
+public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchHolder> {
 
     private Context context;
     List<Artist> artists;
 
+    ImageView  artistPic;
+    TextView artistName;
+    LinearLayout artistLayout;
+
+    public static final String ARTIST_EXTRA ="com.example.progetto.Artist";
 
     public SearchAdapter(Context context, List<Artist> artists) {
         this.context = context;
         this.artists = artists;
     }
 
+    @NonNull
     @Override
-    public int getCount() {
+    public SearchHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.chat_row,parent,false);
+        return new SearchAdapter.SearchHolder(v);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull SearchAdapter.SearchHolder holder, int pos) {
+        holder.getArtistName().setText(artists.get(pos).getNomeDarte());
+        holder.getArtistPic().setImageResource(artists.get(pos).getImgID());
+        holder.artistID = artists.get(pos).getIdArtist();
+        holder.getArtistLayout().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, ArtistProfile.class);
+                intent.putExtra(ARTIST_EXTRA, ArtistRepository.getInstance().artistList.get(holder.artistID));
+                context.startActivity(intent);
+            }
+        });
+
+    }
+
+
+    @Override
+    public int getItemCount() {
         return artists.size();
     }
 
-    @Override
-    public Object getItem(int i) {
-        return artists.get(i);
-    }
 
-    @Override
-    public long getItemId(int i) {
-        // todo sostituire getImageID con getId
-        Artist a = (Artist) this.getItem(i);
-        return a.getImgID() == 0 ? a.getImgID() : 0;
-    }
 
-    @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
 
-        if(view == null) {
-            view = LayoutInflater.from(context).
-                    inflate(R.layout.search_result_list, viewGroup, false);
+    public class SearchHolder extends RecyclerView.ViewHolder {
+        Integer artistID;
+        SearchAdapter adapter;
+
+        public SearchHolder(@NonNull View itemView) {
+            super(itemView);
+            artistPic = itemView.findViewById(R.id.artist_image);
+            artistName = itemView.findViewById(R.id.artist_name);
+            artistLayout = itemView.findViewById(R.id.artist_layout);
+        }
+        public SearchAdapter.SearchHolder linkAdapter(SearchAdapter adapter) {
+            this.adapter = adapter;
+            return this;
         }
 
-        Artist currentArtist = (Artist) getItem(i);
+        public ImageView getArtistPic() {
+            return artistPic;
+        }
 
-        ImageView artist_image_view = view.findViewById(R.id.artist_image);
-        TextView nickname_view = view.findViewById(R.id.text_view_nickname);
+        public TextView getArtistName() {
+            return artistName;
+        }
 
-        // todo aggiungere controllo quando l'artista non ha l'immagine
-        artist_image_view.setImageResource(currentArtist.getImgID());
-        nickname_view.setText(currentArtist.getNomeDarte());
+        public LinearLayout getArtistLayout() {return  artistLayout;}
 
-        return view;
+        public Integer getArtistID() {
+            return artistID;
+        }
+
+
     }
+
+
 }
