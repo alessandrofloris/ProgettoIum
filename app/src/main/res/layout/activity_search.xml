@@ -42,6 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:gravity="center"
             >
 
             <com.google.android.material.card.MaterialCardView
@@ -128,7 +129,9 @@
             android:id="@+id/no_filters_selected_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_gravity="center">
 
             <TextView
                 android:layout_width="250dp"
@@ -136,7 +139,8 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginStart="10dp"
                 android:text="Trova gli artisti che rispettano le tue preferenze"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                android:gravity="center"/>
 
             <TextView
                 android:layout_width="300dp"
@@ -144,7 +148,8 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginStart="10dp"
                 android:text="Cerca per nome, genere e paese di residenza"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:gravity="center"/>
 
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -202,5 +207,5 @@
 
     <include layout="@layout/bottom_nav_bar"
         android:id="@+id/bottom_menu"/>
-    
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
