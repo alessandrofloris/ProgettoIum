@@ -1,10 +1,13 @@
 package com.example.progetto;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.ViewCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -33,11 +36,19 @@ public class FourthStepRegistration extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fourth_step_registration);
 
-        backButtonConfig();
+        toolbarConfig();
         getRegistrationData();
         regionsListInizialization();
         chipGroupConfig();
         continueButtonConfig();
+    }
+
+    private void toolbarConfig() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        if(getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
     }
 
     private void getRegistrationData() {
@@ -103,15 +114,14 @@ public class FourthStepRegistration extends AppCompatActivity {
         });
     }
 
-    private void backButtonConfig() {
-        previous_activity_button = findViewById(R.id.previous_activity_button);
-
-        previous_activity_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

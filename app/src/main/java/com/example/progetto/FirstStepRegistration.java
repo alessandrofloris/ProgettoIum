@@ -1,6 +1,7 @@
 package com.example.progetto;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -30,9 +31,17 @@ public class FirstStepRegistration extends AppCompatActivity {
 
         registration_data = new RegistrationBean();
 
-        backButtonConfig();
+        toolbarConfig();
         inputsConfig();
         continueButtonConfig();
+    }
+
+    private void toolbarConfig() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        if(getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
     }
 
     private void inputsConfig() {
@@ -123,14 +132,4 @@ public class FirstStepRegistration extends AppCompatActivity {
         });
     }
 
-    private void backButtonConfig() {
-        previous_activity_button = findViewById(R.id.previous_activity_button);
-
-        previous_activity_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-    }
 }

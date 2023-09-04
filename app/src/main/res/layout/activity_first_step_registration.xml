@@ -1,27 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Register">
+    tools:context=".FirstStepRegistration">
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:title=" "
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".SignUp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="40dp">
-
-            <ImageView
-                android:layout_width="35dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_baseline_arrow_back_ios_new_24"
-                android:id="@+id/previous_activity_button"/>
+        android:orientation="vertical"
+        android:padding="40dp">
 
             <Space
                 android:layout_width="match_parent"
@@ -103,26 +102,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"/>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:textAllCaps="true"
-                    android:text="Prosegui"
-                    android:textSize="15sp"
-                    android:background="@drawable/button"
-                    android:layout_gravity="center_horizontal"
-                    android:id="@+id/continue_button"
-                    android:layout_alignParentBottom="true"/>
-
-
-            </RelativeLayout>
-
         </LinearLayout>
 
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Prosegui"
+        android:textSize="15sp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/button"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/continue_button"
+        />
+
+</RelativeLayout>

@@ -11,16 +11,20 @@
         android:theme="@style/Theme.Progetto">
         <activity
             android:name=".FifthStepRegistration"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".FourthStepRegistration"/>
         <activity
             android:name=".FourthStepRegistration"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".ThirdStepRegistration"/>
         <activity
             android:name=".ThirdStepRegistration"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".SecondStepRegistration"/>
         <activity
             android:name=".SecondStepRegistration"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".FirstStepRegistration"/>
         <activity
             android:name=".ArtistProfile"
             android:exported="false"
@@ -94,7 +98,8 @@
         </activity>
         <activity
             android:name=".FirstStepRegistration"
-            android:exported="false">
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
