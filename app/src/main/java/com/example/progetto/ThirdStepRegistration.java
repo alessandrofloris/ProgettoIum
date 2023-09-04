@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -26,6 +27,7 @@ public class ThirdStepRegistration extends AppCompatActivity {
     ChipGroup genres_chip_group;
     List<Genres> all_genres;
     int selected_genres;
+    RegistrationBean registration_data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,9 +35,14 @@ public class ThirdStepRegistration extends AppCompatActivity {
         setContentView(R.layout.activity_third_step_registration);
 
         backButtonConfig();
+        getRegistrationData();
         genresListInizialization();
         chipGroupConfig();
         continueButtonConfig();
+    }
+
+    private void getRegistrationData() {
+        registration_data = (RegistrationBean) getIntent().getSerializableExtra("registration_data_2");
     }
 
     private void genresListInizialization() {
@@ -82,7 +89,16 @@ public class ThirdStepRegistration extends AppCompatActivity {
         continue_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Chip c;
+                List<String> selected_genres = new ArrayList<>();
+                List<Integer> selected_chips = genres_chip_group.getCheckedChipIds();
+                for(Integer genre : selected_chips) {
+                    c = (Chip) findViewById(genre);
+                    selected_genres.add(c.getText().toString());
+                }
+                registration_data.setGenres(selected_genres);
                 Intent intent = new Intent(ThirdStepRegistration.this, FourthStepRegistration.class);
+                intent.putExtra("registration_data_3", (Serializable) registration_data);
                 startActivity(intent);
             }
         });

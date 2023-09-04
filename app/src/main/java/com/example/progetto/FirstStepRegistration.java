@@ -12,6 +12,8 @@ import android.widget.ImageView;
 
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.io.Serializable;
+
 public class FirstStepRegistration extends AppCompatActivity {
 
     ImageView previous_activity_button;
@@ -19,10 +21,14 @@ public class FirstStepRegistration extends AppCompatActivity {
     TextInputEditText name_input, surname_input;
     boolean name_input_fill, surname_input_fill;
 
+    RegistrationBean registration_data;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_step_registration);
+
+        registration_data = new RegistrationBean();
 
         backButtonConfig();
         inputsConfig();
@@ -106,7 +112,12 @@ public class FirstStepRegistration extends AppCompatActivity {
         continue_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                registration_data.setName(name_input.getText().toString());
+                registration_data.setSurname(surname_input.getText().toString());
+
                 Intent intent = new Intent(FirstStepRegistration.this, SecondStepRegistration.class);
+                intent.putExtra("registration_data_1", (Serializable) registration_data);
                 startActivity(intent);
             }
         });

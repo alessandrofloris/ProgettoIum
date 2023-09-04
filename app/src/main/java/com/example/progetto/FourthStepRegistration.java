@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -25,6 +26,7 @@ public class FourthStepRegistration extends AppCompatActivity {
     ChipGroup regions_chip_group;
     List<Locations> all_regions;
     int selected_regions;
+    RegistrationBean registration_data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +34,14 @@ public class FourthStepRegistration extends AppCompatActivity {
         setContentView(R.layout.activity_fourth_step_registration);
 
         backButtonConfig();
+        getRegistrationData();
         regionsListInizialization();
         chipGroupConfig();
         continueButtonConfig();
+    }
+
+    private void getRegistrationData() {
+        registration_data = (RegistrationBean) getIntent().getSerializableExtra("registration_data_3");
     }
 
     private void regionsListInizialization() {
@@ -81,7 +88,16 @@ public class FourthStepRegistration extends AppCompatActivity {
         continue_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Chip c;
+                List<String> selected_locations = new ArrayList<>();
+                List<Integer> selected_chips = regions_chip_group.getCheckedChipIds();
+                for(Integer location : selected_chips) {
+                    c = (Chip) findViewById(location);
+                    selected_locations.add(c.getText().toString());
+                }
+                registration_data.setLocations(selected_locations);
                 Intent intent = new Intent(FourthStepRegistration.this, FifthStepRegistration.class);
+                intent.putExtra("registration_data_4", (Serializable) registration_data);
                 startActivity(intent);
             }
         });

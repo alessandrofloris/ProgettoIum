@@ -6,11 +6,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
 import com.google.android.material.textfield.TextInputEditText;
+
+import java.io.Serializable;
+import java.util.ArrayList;
 
 public class SecondStepRegistration extends AppCompatActivity {
 
@@ -18,7 +22,7 @@ public class SecondStepRegistration extends AppCompatActivity {
     Button continue_button;
     TextInputEditText username_input, email_input, password_input, password_confirm_input;
     boolean username_input_fill, email_input_fill, password_input_fill, password_confirm_input_fill;
-
+    RegistrationBean registration_data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +30,13 @@ public class SecondStepRegistration extends AppCompatActivity {
         setContentView(R.layout.activity_second_step_registration);
 
         backButtonConfig();
+        getRegistrationData();
         inputsConfig();
         continueButtonConfig();
+    }
+
+    private void getRegistrationData() {
+        registration_data = (RegistrationBean) getIntent().getSerializableExtra("registration_data_1");
     }
 
     private void inputsConfig() {
@@ -163,7 +172,12 @@ public class SecondStepRegistration extends AppCompatActivity {
         continue_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                registration_data.setUsername(username_input.getText().toString());
+                registration_data.setEmail(email_input.getText().toString());
+                registration_data.setPassword(password_input.getText().toString());
+
                 Intent intent = new Intent(SecondStepRegistration.this, ThirdStepRegistration.class);
+                intent.putExtra("registration_data_2", (Serializable) registration_data);
                 startActivity(intent);
             }
         });

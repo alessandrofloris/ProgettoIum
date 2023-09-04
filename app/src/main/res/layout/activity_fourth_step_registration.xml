@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             app:spb_currentStateNumber="four"
             app:spb_stateBackgroundColor="#BDBDBD"
-            app:spb_stateForegroundColor="#009688"
+            app:spb_stateForegroundColor="@color/azzurrinoboh"
             app:spb_maxStateNumber="five"/>
 
         <Space
