@@ -27,6 +27,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -38,6 +39,7 @@ public class Profile extends AppCompatActivity {
 
     ImageButton addGenres;
     ImageButton addLocations;
+    ImageButton settingsButton;
 
     ArrayList<Locations> selectedLocations;
     ArrayList<Genres> selectedGenres;
@@ -52,6 +54,8 @@ public class Profile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        settingsButton = findViewById(R.id.profile_settings);
 
         addGenres = findViewById(R.id.add_genres);
         addLocations = findViewById(R.id.add_regions);
@@ -82,6 +86,12 @@ public class Profile extends AppCompatActivity {
         });
 
 
+        settingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Funzionalità non implementata.", Snackbar.LENGTH_SHORT).show();
+            }
+        });
 
 
         FloatingActionButton home_button = findViewById(R.id.home_button);

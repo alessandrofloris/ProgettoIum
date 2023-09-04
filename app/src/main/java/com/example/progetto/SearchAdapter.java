@@ -38,7 +38,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchHold
     @NonNull
     @Override
     public SearchHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.chat_row,parent,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.search_result_list,parent,false);
         return new SearchAdapter.SearchHolder(v);
     }
 

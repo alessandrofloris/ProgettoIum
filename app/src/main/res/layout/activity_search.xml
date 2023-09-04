@@ -34,7 +34,8 @@
             android:layout_height="40dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:inputType="text">
+            android:inputType="text"
+            app:searchIcon="@drawable/icon_selector_search">
         </androidx.appcompat.widget.SearchView>
 
         <LinearLayout

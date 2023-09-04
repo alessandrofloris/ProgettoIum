@@ -50,7 +50,7 @@ public class PrivateChat extends AppCompatActivity {
         backButton = findViewById(R.id.backButton);
         artistIconLayout = findViewById(R.id.topLinearLayout);
         messageSentLayout = findViewById(R.id.right_chat_layout);
-        messageReceivedLayout = findViewById(R.id.left_chat_layout);
+        //messageReceivedLayout = findViewById(R.id.left_chat_layout);
 
         showButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,7 +59,7 @@ public class PrivateChat extends AppCompatActivity {
                 displayText.setText(inputText);
                 messageSentLayout.setVisibility(View.VISIBLE);
                 editText.setText("");
-                messageReceivedLayout.setVisibility(View.VISIBLE);
+               // messageReceivedLayout.setVisibility(View.VISIBLE);
             }
         });
 

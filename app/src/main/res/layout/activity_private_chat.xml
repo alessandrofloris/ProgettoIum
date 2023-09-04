@@ -102,31 +102,34 @@
                 android:textSize="15dp" />
 
         </LinearLayout>
+        <!--
+
+               <LinearLayout
+
+                   android:id="@+id/left_chat_layout"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="30dp"
+                   android:layout_marginTop="30dp"
+                   android:layout_marginBottom="30dp"
+                   android:background="@drawable/edit_test_round_corner"
+                   android:backgroundTint="@color/chat_color_receiver"
+                   android:padding="8dp"
+                   android:layout_below="@+id/right_chat_layout"
+                   android:visibility="invisible">
 
 
-        <LinearLayout
+                   <TextView
+                       android:id="@+id/left_chat_textView"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="Ciao, piacere di conoscerti..."
+                       android:textColor="@color/white"
+                       android:textSize="15dp" />
 
-            android:id="@+id/left_chat_layout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="30dp"
-            android:background="@drawable/edit_test_round_corner"
-            android:backgroundTint="@color/chat_color_receiver"
-            android:padding="8dp"
-            android:layout_below="@+id/right_chat_layout"
-            android:visibility="invisible">
 
-            <TextView
-                android:id="@+id/left_chat_textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ciao, piacere di conoscerti..."
-                android:textColor="@color/white"
-                android:textSize="15dp" />
         </LinearLayout>
-
+  -->
 
     </RelativeLayout>
 
@@ -147,10 +150,11 @@
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:hint="Scrivi un messaggio..."
-            android:textSize="15dp"
             android:padding="10dp"
+            android:textSize="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
             android:id="@+id/sendButton"
