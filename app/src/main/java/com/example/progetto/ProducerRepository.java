@@ -11,7 +11,7 @@ public class ProducerRepository {
     public ProducerRepository() {
         producers = new ArrayList<>();
 
-        producers.add(new RegistrationBean("admin", "admin", "admin", "admin@gmial.com"));
+        producers.add(new RegistrationBean("admin", "admin", "admin", "admin@gmial.com", "admin"));
     }
 
     public void addProducer(RegistrationBean producer) {
@@ -23,6 +23,33 @@ public class ProducerRepository {
             instance = new ProducerRepository();
         }
         return instance;
+    }
+
+    public int confermaDatiLogIn(String username, String password){
+        boolean checkUsername=false;
+        boolean checkPassword=false;
+        int result=0;
+
+        for (int i=0;i<producers.size();i++){
+            if(producers.get(i).getUsername().equals(username))checkUsername=true;
+            if(checkUsername){
+                if(producers.get(i).getPassword().equals(password))checkPassword=true;
+            }
+        }
+
+        if(checkPassword&&checkUsername)result=0;
+        else if(checkUsername && !checkPassword) result=1;
+        else if(!checkUsername && !checkPassword) result=2;
+
+        return result;
+    }
+
+    public RegistrationBean getUtente(String username){
+        int i=0;
+        while (!producers.get(i).getUsername().equals(username) && i<producers.size()){
+            i++;
+        }
+        return producers.get(i);
     }
 
     public List<RegistrationBean> getAllProducers() {

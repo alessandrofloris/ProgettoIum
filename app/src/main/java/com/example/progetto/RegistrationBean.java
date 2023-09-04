@@ -19,11 +19,12 @@ public class RegistrationBean implements Serializable {
         genres = new ArrayList<>();
     }
 
-    public RegistrationBean(String name, String surname, String username, String email) {
+    public RegistrationBean(String name, String surname, String username, String email, String password) {
         this.name = name;
         this.surname = surname;
         this.username = username;
         this.email = email;
+        this.password = password;
         locations = new ArrayList<>();
         genres = new ArrayList<>();
     }

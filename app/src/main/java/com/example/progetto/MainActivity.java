@@ -37,8 +37,6 @@ public class MainActivity extends AppCompatActivity {
 
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
-        DataBase.addUtente(new Utente("admin", "admin", "Cagliari", "13/10/1999"));
-
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
         log_in = findViewById(R.id.log_in);
@@ -58,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (!checkLogIn()) {
-                    DataBase.utenteLoggato = username.getText().toString();
                     Intent log_in_succesfull = new Intent(MainActivity.this, Home.class);
                     startActivity(log_in_succesfull);
                 }
@@ -103,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     boolean checkLogIn() {
-        int errori = DataBase.confermaDatiLogIn(username.getText().toString(), password.getText().toString());
+        int errori = ProducerRepository.getInstance().confermaDatiLogIn(username.getText().toString(), password.getText().toString());
 
         if (errori != 0) {
             switch (errori) {

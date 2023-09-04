@@ -141,7 +141,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
 
     public void sideMenuConfig() {
         NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.getMenu().getItem(0).setTitle(DataBase.getUtente("admin").getUsername());
+        navigationView.getMenu().getItem(0).setTitle(ProducerRepository.getInstance().getUtente("admin").getUsername());
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 
             @Override
