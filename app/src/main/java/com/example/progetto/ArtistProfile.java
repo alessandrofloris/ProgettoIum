@@ -1,6 +1,7 @@
 package com.example.progetto;
 
 import androidx.annotation.ColorRes;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
@@ -16,6 +17,8 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -105,6 +108,8 @@ public class ArtistProfile extends AppCompatActivity {
         messageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Integer artistIndex = (Integer) artist.getIdArtist();
+                ArtistService.getInstance().getAllArtist().get(artistIndex).setTexted(true);
                 Intent privateChat = new Intent(getApplicationContext(), PrivateChat.class);
                 privateChat.putExtra(ARTIST_EXTRA, getCurrentArtist());
                 startActivity(privateChat);
@@ -165,6 +170,15 @@ public class ArtistProfile extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     private void toolbarConfig() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

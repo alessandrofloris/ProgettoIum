@@ -34,13 +34,15 @@
             android:layout_height="40dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:inputType="text">
+            android:inputType="text"
+            app:searchIcon="@drawable/icon_selector_search">
         </androidx.appcompat.widget.SearchView>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:gravity="center"
             >
 
             <com.google.android.material.card.MaterialCardView
@@ -127,7 +129,9 @@
             android:id="@+id/no_filters_selected_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_gravity="center">
 
             <TextView
                 android:layout_width="250dp"
@@ -135,7 +139,8 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginStart="10dp"
                 android:text="Trova gli artisti che rispettano le tue preferenze"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                android:gravity="center"/>
 
             <TextView
                 android:layout_width="300dp"
@@ -143,7 +148,8 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginStart="10dp"
                 android:text="Cerca per nome, genere e paese di residenza"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:gravity="center"/>
 
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -184,15 +190,15 @@
                 >
             </TextView>
 
-            <ListView
-                android:id="@+id/artists_list"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/artists_recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:divider="@null"
                 android:layout_marginBottom="50dp"
                 >
-            </ListView>
+            </androidx.recyclerview.widget.RecyclerView>
 
         </LinearLayout>
 
@@ -201,5 +207,5 @@
 
     <include layout="@layout/bottom_nav_bar"
         android:id="@+id/bottom_menu"/>
-    
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -30,6 +30,7 @@ import android.widget.TextView;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Home extends AppCompatActivity implements View.OnClickListener {
 
@@ -50,7 +51,15 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
         recycleViewPopularArtistConfig(popularArtists);
 
         //Horizontal recyclerView list of suggested artists
-        ArrayList<Artist> suggestedArtists = (ArrayList<Artist>) ArtistService.getInstance().getAllArtist();
+        List<Genres> genres = new ArrayList<>();
+        genres.add(Genres.POP);
+        genres.add(Genres.ROCK);
+        List<Locations> locations = new ArrayList<Locations>();
+        locations.add(Locations.LOMBARDIA);
+        locations.add(Locations.SARDEGNA);
+
+        ArrayList<Artist> suggestedArtists = (ArrayList<Artist>) ArtistService.getInstance().searchArtistsByGenres(genres);
+        suggestedArtists = (ArrayList<Artist>) ArtistService.getInstance().filterByLocations(suggestedArtists, locations);
         recycleViewRecommendedArtistConfig(suggestedArtists);
 
         //Horizontal recyclerView list of artists near to you
@@ -132,7 +141,9 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
 
     public void sideMenuConfig() {
         NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.getMenu().getItem(0).setTitle(DataBase.getUtente("admin").getUsername());
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {

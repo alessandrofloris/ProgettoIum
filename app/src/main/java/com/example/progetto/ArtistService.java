@@ -126,6 +126,20 @@ public class ArtistService {
 
         return resultArtists;
     }
+
+    public List<Artist> getTextedArtists() {
+        List<Artist> allArtists = ArtistRepository.getInstance().getAllArtists();
+        List<Artist> resultArtists = new ArrayList<>();
+        for(Artist artist : allArtists) {
+            if(artist.isTexted()) {
+                resultArtists.add(artist);
+            }
+        }
+
+        return resultArtists;
+    }
+
+
     public List<Artist> getPopularArtists() {
         List<Artist> resultArtists = new ArrayList<>();
         //Per adesso prendo i primi 6 artisti, poi ci pensiamo

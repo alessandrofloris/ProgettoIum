@@ -27,8 +27,7 @@
             android:parentActivityName=".FirstStepRegistration"/>
         <activity
             android:name=".ArtistProfile"
-            android:exported="false"
-            android:parentActivityName=".Home">
+            android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -42,16 +41,9 @@
             android:label="Regione"
             android:parentActivityName=".Search" />
         <activity
-            android:name=".HomeArtistContent"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".PrivateChat"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize">
+            android:windowSoftInputMode="adjustNothing">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -85,13 +77,6 @@
                 android:value="" />
         </activity>
         <activity android:name=".Home">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".InfoMusicMatch"
-            android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
