@@ -83,6 +83,9 @@ public class FifthStepRegistration extends AppCompatActivity {
         continue_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                ProducerRepository.getInstance().addProducer(registration_data);
+
                 Intent intent = new Intent(FifthStepRegistration.this, MainActivity.class);
                 startActivity(intent);
             }

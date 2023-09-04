@@ -18,6 +18,16 @@ public class RegistrationBean implements Serializable {
         locations = new ArrayList<>();
         genres = new ArrayList<>();
     }
+
+    public RegistrationBean(String name, String surname, String username, String email) {
+        this.name = name;
+        this.surname = surname;
+        this.username = username;
+        this.email = email;
+        locations = new ArrayList<>();
+        genres = new ArrayList<>();
+    }
+
     public String getName() {
         return name;
     }
