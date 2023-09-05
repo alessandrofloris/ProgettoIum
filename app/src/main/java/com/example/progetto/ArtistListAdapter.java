@@ -42,7 +42,7 @@ public class ArtistListAdapter extends RecyclerView.Adapter<ArtistListAdapter.My
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
         holder.artistName.setText(artists.get(position).getNomeDarte());
         holder.artistPhoto.setImageResource(artists.get(position).getImgID());
-        holder.artist = ArtistService.getInstance().getById(position);
+        holder.artist = artists.get(position);
         holder.bind(holder, listener);
     }
 

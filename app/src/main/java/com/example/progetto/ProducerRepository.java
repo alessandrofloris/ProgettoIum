@@ -11,7 +11,9 @@ public class ProducerRepository {
     public ProducerRepository() {
         producers = new ArrayList<>();
 
-        producers.add(new RegistrationBean("admin", "admin", "admin", "admin@gmial.com", "admin"));
+        ArrayList<Locations> locations = new ArrayList<>();
+        ArrayList<Genres> genres = new ArrayList<>();
+        producers.add(new RegistrationBean("admin", "admin", "admin", "admin@gmial.com", "admin", locations, genres));
     }
 
     public void addProducer(RegistrationBean producer) {

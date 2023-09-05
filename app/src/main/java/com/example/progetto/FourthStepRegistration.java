@@ -100,12 +100,17 @@ public class FourthStepRegistration extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Chip c;
-                List<String> selected_locations = new ArrayList<>();
+                List<Locations> selected_locations = new ArrayList<>();
                 List<Integer> selected_chips = regions_chip_group.getCheckedChipIds();
-                for(Integer location : selected_chips) {
-                    c = (Chip) findViewById(location);
-                    selected_locations.add(c.getText().toString());
+
+                for(Locations location : Locations.values()) {
+                    for(Integer idchip : selected_chips) {
+                        c = (Chip) findViewById(idchip);
+                        if(location.getDesc().equals(c.getText().toString()))
+                            selected_locations.add(location);
+                    }
                 }
+
                 registration_data.setLocations(selected_locations);
                 Intent intent = new Intent(FourthStepRegistration.this, FifthStepRegistration.class);
                 intent.putExtra("registration_data_4", (Serializable) registration_data);

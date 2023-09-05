@@ -64,10 +64,10 @@ public class FifthStepRegistration extends AppCompatActivity {
             genres_chip_group.addView(chip);
         }
 
-        for(String location : registration_data.getLocations()) {
+        for(Locations location : registration_data.getLocations()) {
             chip = new Chip(this);
             chip.setId(ViewCompat.generateViewId());
-            chip.setText(location);
+            chip.setText(location.getDesc());
             regions_chip_group.addView(chip);
         }
 

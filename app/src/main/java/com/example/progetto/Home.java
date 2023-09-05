@@ -46,28 +46,44 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
 
         sideMenuConfig();
 
+        RegistrationBean loggedUser = ProducerRepository.getInstance().getLoggedUser();
+
         //recyclerView list of popular artists
         ArrayList<Artist> popularArtists = (ArrayList<Artist>) ArtistService.getInstance().getPopularArtists();
         recycleViewPopularArtistConfig(popularArtists);
 
-        //Horizontal recyclerView list of suggested artists
-        List<Genres> genres = new ArrayList<>();
-        genres.add(Genres.POP);
-        genres.add(Genres.ROCK);
-        List<Locations> locations = new ArrayList<Locations>();
-        locations.add(Locations.LOMBARDIA);
-        locations.add(Locations.SARDEGNA);
+        //recyclerView list of suggested artists
+        ArrayList<Artist> suggestedArtists;
+        List<Genres> genres = loggedUser.getGenres();
+        List<Locations> locations = loggedUser.getLocations();
 
-        ArrayList<Artist> suggestedArtists = (ArrayList<Artist>) ArtistService.getInstance().searchArtistsByGenres(genres);
-        suggestedArtists = (ArrayList<Artist>) ArtistService.getInstance().filterByLocations(suggestedArtists, locations);
-        recycleViewRecommendedArtistConfig(suggestedArtists);
+        if(genres.isEmpty() && locations.isEmpty()) {
+            findViewById(R.id.no_filters_error).setVisibility(View.VISIBLE);
+        }
+        else {
+            if (!genres.isEmpty()) {
+                if(!locations.isEmpty()) {
+                    suggestedArtists = (ArrayList<Artist>) ArtistService.getInstance().searchArtistsByGenres(genres);
+                    suggestedArtists = (ArrayList<Artist>) ArtistService.getInstance().filterByLocations(suggestedArtists, locations);
+                }
+                else {
+                    suggestedArtists = (ArrayList<Artist>) ArtistService.getInstance().searchArtistsByGenres(genres);
+                }
+            }
+            else {
+                suggestedArtists = (ArrayList<Artist>) ArtistService.getInstance().searchArtistsByLocations(locations);
+            }
+            findViewById(R.id.no_filters_error).setVisibility(View.GONE);
+            recycleViewRecommendedArtistConfig(suggestedArtists);
+        }
+
+
 
         //Horizontal recyclerView list of artists near to you
         ArrayList<Artist> neartoyouArstists = (ArrayList<Artist>) ArtistService.getInstance().getAllArtist();
         recyclerViewNearToYouArtists(neartoyouArstists);
 
         bottomMenuConfig();
-
     }
 
 

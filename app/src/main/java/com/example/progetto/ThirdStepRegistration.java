@@ -103,12 +103,6 @@ public class ThirdStepRegistration extends AppCompatActivity {
                 List<Genres> selected_genres = new ArrayList<>();
                 List<Integer> selected_chips = genres_chip_group.getCheckedChipIds();
 
-               /* for(Integer genre : selected_chips) {
-                    c = (Chip) findViewById(genre);
-                    if(genre.getDesc().equals(c.getText().toString())
-                    selected_genres.add(c.getText().toString());
-                }*/
-
                 for(Genres genre : Genres.values()) {
                     for(Integer idchip : selected_chips) {
                         c = (Chip) findViewById(idchip);

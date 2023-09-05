@@ -11,7 +11,7 @@ public class RegistrationBean implements Serializable {
     private String username;
     private String email;
     private String password;
-    private List<String> locations;
+    private List<Locations> locations;
     private List<Genres> genres;
 
     public RegistrationBean() {
@@ -27,6 +27,16 @@ public class RegistrationBean implements Serializable {
         this.password = password;
         locations = new ArrayList<>();
         genres = new ArrayList<>();
+    }
+
+    public RegistrationBean(String name, String surname, String username, String email, String password, ArrayList<Locations> locations, ArrayList<Genres> genres) {
+        this.name = name;
+        this.surname = surname;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.locations = locations;
+        this.genres = genres;
     }
 
     public String getName() {
@@ -69,11 +79,11 @@ public class RegistrationBean implements Serializable {
         this.password = password;
     }
 
-    public List<String> getLocations() {
-        return locations;
+    public List<Locations> getLocations() {
+        return (ArrayList<Locations>) locations;
     }
 
-    public void setLocations(List<String> locations) {
+    public void setLocations(List<Locations> locations) {
         this.locations = locations;
     }
 

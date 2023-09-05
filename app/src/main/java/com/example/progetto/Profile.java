@@ -37,8 +37,6 @@ import java.util.List;
 
 
 public class Profile extends AppCompatActivity {
-
-
     ImageButton addGenres;
     ImageButton addLocations;
     ImageButton settingsButton;
@@ -51,13 +49,14 @@ public class Profile extends AppCompatActivity {
 
     FlexboxLayout selected_genres_container_view;
     FlexboxLayout selected_regions_container_view;
+    RegistrationBean loggedProducer = ProducerRepository.getInstance().getLoggedUser();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        RegistrationBean loggedProducer = ProducerRepository.getInstance().producers.get(ProducerRepository.getInstance().producers.size()-1);
 
         settingsButton = findViewById(R.id.profile_settings);
 
@@ -81,8 +80,9 @@ public class Profile extends AppCompatActivity {
 
 
         selectedGenres = loggedProducer.getGenres();
-
-
+        updateGenres();
+        selectedLocations = (ArrayList<Locations>) loggedProducer.getLocations();
+        updateLocations();
 
 
         addGenres.setOnClickListener(new View.OnClickListener() {
@@ -221,11 +221,12 @@ public class Profile extends AppCompatActivity {
                         }
                     }
                     selectedLocations = newSelectedLocations;
+                    loggedProducer.setLocations(selectedLocations);
                 }
             });
             locations_chip_group_view.addView(chip);
         }
-
+        loggedProducer.setLocations(selectedLocations);
     }
 
     private void updateGenres() {
@@ -249,11 +250,14 @@ public class Profile extends AppCompatActivity {
                         }
                     }
                     selectedGenres = newSelectedGenres;
+                    loggedProducer.setGenres(selectedGenres);
                 }
             });
+
             genres_chip_group_view.addView(chip);
         }
-
+        loggedProducer.setGenres(selectedGenres);
     }
+
 
 }

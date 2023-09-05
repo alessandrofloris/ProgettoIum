@@ -51,6 +51,17 @@
         android:textSize="26sp"
         android:textStyle="bold" />
 
+    <TextView
+        android:padding="40dp"
+        android:id="@+id/no_filters_error"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal"
+        android:textSize="20dp"
+        android:text="Seleziona i tuoi generi preferiti per visualizzare la lista dei suggeriti."
+        />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycle_suggeritiperte"
         android:layout_width="wrap_content"
@@ -62,7 +73,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:text="Vicini a te"
+        android:text="Nuovi arrivati"
         android:textSize="26sp"
         android:textStyle="bold" />
 
