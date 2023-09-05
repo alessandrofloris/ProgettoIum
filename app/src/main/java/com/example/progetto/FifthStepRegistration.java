@@ -33,7 +33,6 @@ public class FifthStepRegistration extends AppCompatActivity {
         getRegistrationData();
         inputsConfigInitialization();
         continueButtonConfig();
-
     }
 
     private void toolbarConfig() {
@@ -58,10 +57,10 @@ public class FifthStepRegistration extends AppCompatActivity {
         email_text.setText(registration_data.getEmail());
 
         Chip chip;
-        for(String genre : registration_data.getGenres()) {
+        for(Genres genre : registration_data.getGenres()) {
             chip = new Chip(this);
             chip.setId(ViewCompat.generateViewId());
-            chip.setText(genre);
+            chip.setText(genre.getDesc());
             genres_chip_group.addView(chip);
         }
 
@@ -101,5 +100,4 @@ public class FifthStepRegistration extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 }

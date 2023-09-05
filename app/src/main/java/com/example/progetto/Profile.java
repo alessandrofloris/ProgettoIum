@@ -18,6 +18,7 @@ import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.Region;
+import android.media.TimedText;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -25,6 +26,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
@@ -55,6 +57,8 @@ public class Profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        RegistrationBean loggedProducer = ProducerRepository.getInstance().producers.get(ProducerRepository.getInstance().producers.size()-1);
+
         settingsButton = findViewById(R.id.profile_settings);
 
         addGenres = findViewById(R.id.add_genres);
@@ -64,6 +68,20 @@ public class Profile extends AppCompatActivity {
 
         selected_genres_container_view = findViewById(R.id.genres_chip_layout);
         selected_regions_container_view = findViewById(R.id.regions_chip_layout);
+
+        TextView nickName = findViewById(R.id.producer_nickname);
+        TextView name = findViewById(R.id.producer_name);
+        TextView surname = findViewById(R.id.producer_surname);
+        TextView email = findViewById(R.id.producer_email);
+
+        nickName.setText(loggedProducer.getUsername());
+        name.setText(loggedProducer.getName());
+        surname.setText(loggedProducer.getSurname());
+        email.setText(loggedProducer.getEmail());
+
+
+        selectedGenres = loggedProducer.getGenres();
+
 
 
 
@@ -235,8 +253,6 @@ public class Profile extends AppCompatActivity {
             });
             genres_chip_group_view.addView(chip);
         }
-
-
 
     }
 

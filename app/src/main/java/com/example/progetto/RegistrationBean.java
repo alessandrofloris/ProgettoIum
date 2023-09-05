@@ -12,7 +12,7 @@ public class RegistrationBean implements Serializable {
     private String email;
     private String password;
     private List<String> locations;
-    private List<String> genres;
+    private List<Genres> genres;
 
     public RegistrationBean() {
         locations = new ArrayList<>();
@@ -77,11 +77,11 @@ public class RegistrationBean implements Serializable {
         this.locations = locations;
     }
 
-    public List<String> getGenres() {
-        return genres;
+    public ArrayList<Genres> getGenres() {
+        return (ArrayList<Genres>) genres;
     }
 
-    public void setGenres(List<String> genres) {
+    public void setGenres(List<Genres> genres) {
         this.genres = genres;
     }
 }

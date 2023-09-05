@@ -56,4 +56,8 @@ public class ProducerRepository {
         return producers;
     }
 
+    public RegistrationBean getLoggedUser() {
+        return producers.get(producers.size()-1);
+    }
+
 }

@@ -26,6 +26,10 @@ public enum Genres implements FiltersInterface, Serializable {
         this.desc = desc;
     }
 
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
     public String getDesc() {
         return desc;
     }

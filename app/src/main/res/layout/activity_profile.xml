@@ -78,24 +78,44 @@
                     android:layout_height="45dp" />
 
                 <TextView
+                    android:id="@+id/producer_nickname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="left"
                     android:text="Nome Produttore"
-                    android:textSize="20dp" />
+                    android:textSize="26dp"
+                    android:textStyle="bold"/>
 
 
                 <Space
                     android:layout_width="match_parent"
-                    android:layout_height="20dp" />
+                    android:layout_height="10dp" />
 
-                <TextView
-                    android:layout_width="match_parent"
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="left"
-                    android:text="Nome Cognome"
-                    android:textSize="15dp" />
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Nome"
+                        android:id="@+id/producer_name"
+                        android:textSize="17dp"/>
 
+                    <Space
+                        android:layout_width="5dp"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Cognome"
+                        android:id="@+id/producer_surname"
+                        android:textSize="17dp"/>
+                </LinearLayout>
 
                 <Space
                     android:layout_width="match_parent"
@@ -103,11 +123,12 @@
 
 
                 <TextView
+                    android:id="@+id/producer_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="left"
-                    android:text="Regione"
-                    android:textSize="12dp" />
+                    android:text="email@email.com"
+                    android:textSize="17dp" />
 
 
 
@@ -124,6 +145,7 @@
             android:orientation="horizontal"
             app:layout_constraintTop_toBottomOf="@id/Icon_layout">
 
+            <!--
             <TextView
                 android:id="@+id/bio_textViewr"
                 android:layout_width="wrap_content"
@@ -131,6 +153,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="20dp"
                 android:text="Descrizione" />
+                -->
 
         </LinearLayout>
 
@@ -138,13 +161,15 @@
             android:id="@+id/genreTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Generi di riferimento:"
+            android:layout_marginTop="60dp"
+            android:text="Generi musicali di interesse:"
             android:textSize="20dp"
             android:textStyle="bold"
             android:gravity="center"
             app:layout_constraintTop_toBottomOf="@id/bio_layout"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:padding="15dp"
             android:id="@+id/genres_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -176,8 +201,6 @@
                     </com.google.android.material.chip.ChipGroup>
 
 
-
-
             </com.google.android.flexbox.FlexboxLayout>
 
             <ImageButton
@@ -194,6 +217,7 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+
         <TextView
             android:id="@+id/regionTitle"
             android:layout_width="match_parent"
@@ -206,6 +230,7 @@
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:padding="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"

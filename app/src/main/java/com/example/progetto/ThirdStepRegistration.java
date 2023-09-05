@@ -7,7 +7,6 @@ import androidx.core.view.ViewCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -101,12 +100,24 @@ public class ThirdStepRegistration extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Chip c;
-                List<String> selected_genres = new ArrayList<>();
+                List<Genres> selected_genres = new ArrayList<>();
                 List<Integer> selected_chips = genres_chip_group.getCheckedChipIds();
-                for(Integer genre : selected_chips) {
+
+               /* for(Integer genre : selected_chips) {
                     c = (Chip) findViewById(genre);
+                    if(genre.getDesc().equals(c.getText().toString())
                     selected_genres.add(c.getText().toString());
+                }*/
+
+                for(Genres genre : Genres.values()) {
+                    for(Integer idchip : selected_chips) {
+                        c = (Chip) findViewById(idchip);
+                        if(genre.getDesc().equals(c.getText().toString()))
+                            selected_genres.add(genre);
+                    }
                 }
+
+
                 registration_data.setGenres(selected_genres);
                 Intent intent = new Intent(ThirdStepRegistration.this, FourthStepRegistration.class);
                 intent.putExtra("registration_data_3", (Serializable) registration_data);
